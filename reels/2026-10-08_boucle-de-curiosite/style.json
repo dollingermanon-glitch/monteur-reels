@@ -1,0 +1,63 @@
+{
+ "sous_titres_y": 0.6,
+ "phrases_serif": [37, 313, 432],
+ "fondus": [135, 220],
+ "photos_sous_titres": [8.5, 30.0],
+ "elements": [
+  {"type": "kinetic", "at": 0, "fin": 18, "y": 0.77, "lignes": [
+    {"text": "La technique", "style": "sans", "at": 3},
+    {"text": "la plus simple", "style": "sans_y", "at": 5},
+    {"text": "pour qu'on regarde", "style": "serif", "at": 9},
+    {"text": "jusqu'au bout", "style": "serif_y", "at": 17}]},
+  {"type": "resultat", "at": 55, "fin": 65, "label": "ventes de tes offres", "valeur": "+ ventes", "y": 0.8},
+  {"type": "chapitre", "at": 68, "fin": 75, "text": "La technique :", "sub": "la boucle de curiosité"},
+  {"type": "kinetic", "at": 135, "fin": 155, "y": 0.77, "lignes": [
+    {"text": "Au début", "style": "sans", "at": 135},
+    {"text": "de ta vidéo,", "style": "sans", "at": 137},
+    {"text": "tu ouvres", "style": "serif", "at": 146},
+    {"text": "une boucle", "style": "serif_y", "at": 148}]},
+  {"type": "dm", "at": 156, "fin": 199, "y": 0.745, "entete": "dans la tête de ta cliente...", "messages": [
+    {"text": "Attends... c'est quoi la réponse ?", "at": 163},
+    {"text": "Il faut que je sache la suite", "at": 183},
+    {"text": "Je reste jusqu'au bout !", "at": 196}]},
+  {"type": "resultat", "at": 202, "fin": 213, "label": "vidéo regardée", "valeur": "100 %", "y": 0.8},
+  {"type": "kinetic", "at": 220, "fin": 235, "y": 0.77, "lignes": [
+    {"text": "La seule manière", "style": "sans", "at": 220},
+    {"text": "de refermer la boucle", "style": "sans_y", "at": 224},
+    {"text": "c'est de rester", "style": "serif", "at": 227},
+    {"text": "jusqu'à la fin.", "style": "serif_y", "at": 230}]},
+  {"type": "chapitre", "at": 236, "fin": 251, "text": "Exemple #1 :", "sub": "la mauvaise façon"},
+  {"type": "telephone", "at": 281, "fin": 296, "verdict": "ko", "etiquette": "à éviter", "badge_at": 2.2, "image_t": "30",
+   "compte": "ton_compte", "text": "Voici les 3 raisons pour lesquelles les gens regardent ton contenu mais n'achètent pas tes offres"},
+  {"type": "kinetic", "at": 297, "fin": 310, "y": 0.77, "lignes": [
+    {"text": "Tu as tout dévoilé", "style": "sans", "at": 298},
+    {"text": "dans les", "style": "serif", "at": 301},
+    {"text": "3 premières secondes", "style": "serif_y", "at": 303}]},
+  {"type": "carte_noire", "at": 349, "fin": 355, "valeur": "3 à 5 s", "label": "avant de décrocher", "son": "timer"},
+  {"type": "chapitre", "at": 356, "fin": 365, "text": "Exemple #2 :", "sub": "la bonne façon"},
+  {"type": "telephone", "at": 366, "fin": 385, "verdict": "ok", "etiquette": "à copier", "badge_at": 3.0, "image_t": "45",
+   "compte": "ton_compte", "text": "Quand je vais te révéler la vraie raison pour laquelle les gens regardent ton contenu mais n'achètent jamais tes offres..."},
+  {"type": "menu", "at": 390, "fin": 401, "options": ["Archiver", "Modifier", "Supprimer"], "actif": "Supprimer", "tap_at": 397},
+  {"type": "note", "at": 402, "fin": 407, "text": "tu vois\nla différence ?", "x": 0.2, "y": 0.42},
+  {"type": "dm", "at": 408, "fin": 424, "y": 0.745, "entete": "ce qu'elle se dit...", "messages": [
+    {"text": "Attends, quoi ?", "at": 413},
+    {"text": "Qu'est-ce qu'elle va me dire ?!", "at": 415}]},
+  {"type": "carte_noire", "at": 439, "fin": 443, "valeur": "0 post", "label": "on recommence de zéro"},
+  {"type": "kinetic", "at": 466, "fin": 475, "y": 0.77, "lignes": [
+    {"text": "Elle se sent", "style": "sans", "at": 468},
+    {"text": "émotionnellement", "style": "sans_y", "at": 471},
+    {"text": "impliquée", "style": "serif_y", "at": 472}]},
+  {"type": "carte_noire", "at": 481, "fin": 485, "valeur": "Boucle ouverte", "label": "ta cliente reste", "son": "pop"},
+  {"type": "chapitre", "at": 486, "fin": 495, "text": "Attention :", "sub": "le détail important"},
+  {"type": "kinetic", "at": 496, "fin": 504, "y": 0.77, "lignes": [
+    {"text": "Ne la referme", "style": "sans", "at": 498},
+    {"text": "pas", "style": "sans_y", "at": 499},
+    {"text": "trop vite.", "style": "serif_y", "at": 503}]},
+  {"type": "resultat", "at": 510, "fin": 517, "sens": "down", "label": "dès qu'elle a sa réponse", "valeur": "Elle part", "y": 0.8, "son": "pop"},
+  {"type": "kinetic", "at": 527, "fin": 534, "y": 0.77, "lignes": [
+    {"text": "Le Sprint", "style": "sans", "at": 532},
+    {"text": "de Noël", "style": "serif_y", "at": 533}]},
+  {"type": "commentaire", "at": 535, "fin": 549, "mot": "101"},
+  {"type": "carte_noire", "at": 552, "fin": 559, "valeur": "24 déc.", "label": "pour up-level ton contenu"}
+ ]
+}

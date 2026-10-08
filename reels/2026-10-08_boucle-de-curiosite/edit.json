@@ -1,52 +1,322 @@
 {
  "rythme": "max",
  "zoom": "alterne",
- "zoom_punch": [0, 300, 398, 414, 536],
- "drop": [[19,19],[40,46],[66,67],[82,134],[214,216],[252,280],[444,457],[518,520],[560,560]],
+ "zoom_punch": [
+  0,
+  300,
+  398,
+  414,
+  536
+ ],
+ "drop": [
+  [
+   19,
+   19
+  ],
+  [
+   40,
+   46
+  ],
+  [
+   66,
+   67
+  ],
+  [
+   82,
+   134
+  ],
+  [
+   214,
+   216
+  ],
+  [
+   252,
+   280
+  ],
+  [
+   444,
+   457
+  ],
+  [
+   518,
+   520
+  ],
+  [
+   560,
+   560
+  ]
+ ],
  "fix": {
-  "16": "Reel", "20": "Crois-moi,", "25": "techniques :", "39": "regarder,",
-  "47": "mais", "68": "Cette", "75": "curiosité.",
-  "218": "devine", "219": "quoi ?",
-  "247": "Reel,", "290": "ton",
-  "298": "t'as", "353": "3", "354": "à 5",
-  "380": "contenu", "381": "mais", "382": "n'achètent", "385": "offres,",
-  "407": "ici ?", "412": "immédiatement :", "417": "t'es", "420": "me",
-  "429": "toutes", "435": "tout", "437": "notre feed",
+  "16": "Reel",
+  "20": "Crois-moi,",
+  "25": "techniques :",
+  "39": "regarder,",
+  "47": "mais",
+  "68": "Cette",
+  "75": "curiosité.",
+  "218": "devine",
+  "219": "quoi ?",
+  "247": "Reel,",
+  "290": "ton",
+  "298": "t'as",
+  "353": "3",
+  "354": "à 5",
+  "380": "contenu",
+  "381": "mais",
+  "382": "n'achètent",
+  "385": "offres,",
+  "407": "ici ?",
+  "412": "immédiatement :",
+  "417": "t'es",
+  "420": "me",
+  "429": "toutes",
+  "435": "tout",
+  "437": "feed",
   "512": "réponse,",
-  "521": "Ça", "525": "éléments", "532": "Sprint", "534": "Noël.", "535": "Donc", "537": "101,",
-  "546": "Sprint", "550": "up-level", "551": "", "559": "décembre."
+  "521": "Ça",
+  "525": "éléments",
+  "532": "Sprint",
+  "534": "Noël.",
+  "535": "Donc",
+  "537": "101,",
+  "546": "Sprint",
+  "550": "up-level",
+  "551": "",
+  "559": "décembre.",
+  "26": "non",
+  "414": "quoi ?",
+  "424": "fait ?",
+  "190": "question,",
+  "178": "fait,",
+  "157": "qui"
  },
- "transitions": [135, 165, 220, 297, 402, 476, 521],
+ "transitions": [
+  135,
+  165,
+  220,
+  297,
+  402,
+  476,
+  521
+ ],
  "animations": [
-  {"type": "titre", "at": 0, "jusqu_a": 18, "text": "La technique la + simple", "sub": "pour qu'on regarde ton Reel jusqu'au bout"},
-  {"type": "mot_cle", "at": 35, "jusqu_a": 39, "text": "Beaucoup plus fun"},
-  {"type": "notif", "at": 58, "jusqu_a": 65, "icone": "vente", "text": "Nouvelle vente : ton offre"},
-  {"type": "section", "at": 72, "dur": 1.6, "text": "La boucle de curiosité"},
-  {"type": "souligne", "at": 147, "jusqu_a": 155, "text": "Ouvrir une boucle"},
-  {"type": "bulle", "at": 156, "jusqu_a": 164, "style": "dm", "nom": "ta cliente", "text": "Attends... c'est quoi la réponse ?"},
-  {"type": "stats", "at": 179, "jusqu_a": 199, "title": "Sa curiosité", "valeur": "100 %", "barres": [2, 4, 6, 8, 10]},
-  {"type": "mot_cle", "at": 207, "jusqu_a": 213, "text": "Jusqu'à la fin"},
-  {"type": "mot_cle", "at": 217, "dur": 1.1, "text": "Devine quoi ?"},
-  {"type": "chiffre", "at": 227, "jusqu_a": 235, "value": 100, "suffix": " %", "label": "de ta vidéo regardée"},
-  {"type": "section", "at": 236, "dur": 1.4, "text": "Exemple"},
-  {"type": "souligne", "at": 242, "jusqu_a": 251, "text": "La mauvaise façon"},
-  {"type": "bulle", "at": 281, "jusqu_a": 296, "style": "commentaire", "nom": "Ton accroche", "text": "Voici les 3 raisons pour lesquelles les gens regardent ton contenu mais n'achètent pas tes offres"},
-  {"type": "chiffre", "at": 303, "jusqu_a": 310, "value": 3, "suffix": " s", "label": "et tout est dévoilé"},
-  {"type": "mot_cle", "at": 311, "jusqu_a": 319, "text": "Zéro suspense"},
-  {"type": "stats", "at": 345, "jusqu_a": 355, "title": "Rétention", "valeur": "-70 %", "barres": [10, 7, 4, 2, 1]},
-  {"type": "section", "at": 356, "dur": 1.6, "text": "La bonne façon"},
-  {"type": "bulle", "at": 366, "jusqu_a": 385, "style": "commentaire", "nom": "Ton accroche", "text": "Quand je vais te révéler la vraie raison pour laquelle les gens regardent ton contenu mais n'achètent jamais tes offres..."},
-  {"type": "onglets", "at": 393, "jusqu_a": 401, "onglets": ["Modifier", "Archiver", "Supprimer"], "actif": "Supprimer"},
-  {"type": "mot_cle", "at": 404, "jusqu_a": 407, "text": "La différence ?"},
-  {"type": "bulle", "at": 413, "jusqu_a": 424, "style": "dm", "nom": "ta cliente", "text": "Attends, quoi ?!"},
-  {"type": "mot_cle", "at": 440, "jusqu_a": 443, "text": "Repartir de zéro"},
-  {"type": "souligne", "at": 469, "jusqu_a": 475, "text": "Émotionnellement impliquée"},
-  {"type": "mot_cle", "at": 481, "jusqu_a": 485, "text": "Boucle ouverte"},
-  {"type": "section", "at": 486, "dur": 1.5, "text": "Le détail important"},
-  {"type": "mot_cle", "at": 500, "jusqu_a": 504, "text": "Pas trop vite"},
-  {"type": "mot_cle", "at": 513, "jusqu_a": 517, "text": "Et elle part"},
-  {"type": "souligne", "at": 532, "jusqu_a": 534, "text": "Sprint de Noël"},
-  {"type": "cta", "at": 536, "jusqu_a": 549, "text": "Commente 101", "icone": "commentaire"},
-  {"type": "chiffre", "at": 552, "jusqu_a": 559, "value": 24, "suffix": " déc.", "label": "pour up-level ton contenu"}
+  {
+   "type": "titre",
+   "at": 0,
+   "jusqu_a": 18,
+   "text": "La technique la + simple",
+   "sub": "pour qu'on regarde ton Reel jusqu'au bout"
+  },
+  {
+   "type": "mot_cle",
+   "at": 35,
+   "jusqu_a": 39,
+   "text": "Beaucoup plus fun"
+  },
+  {
+   "type": "notif",
+   "at": 58,
+   "jusqu_a": 65,
+   "icone": "vente",
+   "text": "Nouvelle vente : ton offre"
+  },
+  {
+   "type": "section",
+   "at": 72,
+   "dur": 1.6,
+   "text": "La boucle de curiosité"
+  },
+  {
+   "type": "souligne",
+   "at": 147,
+   "jusqu_a": 155,
+   "text": "Ouvrir une boucle"
+  },
+  {
+   "type": "bulle",
+   "at": 156,
+   "jusqu_a": 164,
+   "style": "dm",
+   "nom": "ta cliente",
+   "text": "Attends... c'est quoi la réponse ?"
+  },
+  {
+   "type": "stats",
+   "at": 179,
+   "jusqu_a": 199,
+   "title": "Sa curiosité",
+   "valeur": "100 %",
+   "barres": [
+    2,
+    4,
+    6,
+    8,
+    10
+   ]
+  },
+  {
+   "type": "mot_cle",
+   "at": 207,
+   "jusqu_a": 213,
+   "text": "Jusqu'à la fin"
+  },
+  {
+   "type": "mot_cle",
+   "at": 217,
+   "dur": 1.1,
+   "text": "Devine quoi ?"
+  },
+  {
+   "type": "chiffre",
+   "at": 227,
+   "jusqu_a": 235,
+   "value": 100,
+   "suffix": " %",
+   "label": "de ta vidéo regardée"
+  },
+  {
+   "type": "section",
+   "at": 236,
+   "dur": 1.4,
+   "text": "Exemple"
+  },
+  {
+   "type": "souligne",
+   "at": 242,
+   "jusqu_a": 251,
+   "text": "La mauvaise façon"
+  },
+  {
+   "type": "bulle",
+   "at": 281,
+   "jusqu_a": 296,
+   "style": "commentaire",
+   "nom": "Ton accroche",
+   "text": "Voici les 3 raisons pour lesquelles les gens regardent ton contenu mais n'achètent pas tes offres"
+  },
+  {
+   "type": "chiffre",
+   "at": 303,
+   "jusqu_a": 310,
+   "value": 3,
+   "suffix": " s",
+   "label": "et tout est dévoilé"
+  },
+  {
+   "type": "mot_cle",
+   "at": 311,
+   "jusqu_a": 319,
+   "text": "Zéro suspense"
+  },
+  {
+   "type": "stats",
+   "at": 345,
+   "jusqu_a": 355,
+   "title": "Rétention",
+   "valeur": "-70 %",
+   "barres": [
+    10,
+    7,
+    4,
+    2,
+    1
+   ]
+  },
+  {
+   "type": "section",
+   "at": 356,
+   "dur": 1.6,
+   "text": "La bonne façon"
+  },
+  {
+   "type": "bulle",
+   "at": 366,
+   "jusqu_a": 385,
+   "style": "commentaire",
+   "nom": "Ton accroche",
+   "text": "Quand je vais te révéler la vraie raison pour laquelle les gens regardent ton contenu mais n'achètent jamais tes offres..."
+  },
+  {
+   "type": "onglets",
+   "at": 393,
+   "jusqu_a": 401,
+   "onglets": [
+    "Modifier",
+    "Archiver",
+    "Supprimer"
+   ],
+   "actif": "Supprimer"
+  },
+  {
+   "type": "mot_cle",
+   "at": 404,
+   "jusqu_a": 407,
+   "text": "La différence ?"
+  },
+  {
+   "type": "bulle",
+   "at": 413,
+   "jusqu_a": 424,
+   "style": "dm",
+   "nom": "ta cliente",
+   "text": "Attends, quoi ?!"
+  },
+  {
+   "type": "mot_cle",
+   "at": 440,
+   "jusqu_a": 443,
+   "text": "Repartir de zéro"
+  },
+  {
+   "type": "souligne",
+   "at": 469,
+   "jusqu_a": 475,
+   "text": "Émotionnellement impliquée"
+  },
+  {
+   "type": "mot_cle",
+   "at": 481,
+   "jusqu_a": 485,
+   "text": "Boucle ouverte"
+  },
+  {
+   "type": "section",
+   "at": 486,
+   "dur": 1.5,
+   "text": "Le détail important"
+  },
+  {
+   "type": "mot_cle",
+   "at": 500,
+   "jusqu_a": 504,
+   "text": "Pas trop vite"
+  },
+  {
+   "type": "mot_cle",
+   "at": 513,
+   "jusqu_a": 517,
+   "text": "Et elle part"
+  },
+  {
+   "type": "souligne",
+   "at": 532,
+   "jusqu_a": 534,
+   "text": "Sprint de Noël"
+  },
+  {
+   "type": "cta",
+   "at": 536,
+   "jusqu_a": 549,
+   "text": "Commente 101",
+   "icone": "commentaire"
+  },
+  {
+   "type": "chiffre",
+   "at": 552,
+   "jusqu_a": 559,
+   "value": 24,
+   "suffix": " déc.",
+   "label": "pour up-level ton contenu"
+  }
  ]
 }
