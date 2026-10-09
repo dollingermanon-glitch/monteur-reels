@@ -327,6 +327,8 @@ def main():
         f.write(f'ffmpeg -y -loglevel error {ins} -filter_complex "{fc}" -map "[v]" -map "[a]" '
                 f'-c:v libx264 -preset veryfast -crf 12 -c:a aac -b:a 256k "{cut}"')
     sh(f'sh "{os.path.join(wd, "concat.sh")}"')
+    if "--cut-only" in sys.argv:
+        print(f"✓ montage {total:.1f}s, {len(segs)} plans"); return
 
     # 3) sous-titres + animations (version incrustée + version fond vert sans ombres)
     zone = face.zone(norm, zs, fy)

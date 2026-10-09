@@ -156,7 +156,7 @@ class Kinetic(El):
             if spr.width > 1000:
                 spr = text_spr(txt, kind, int(size * 1000 / spr.width), color)
             self.lines.append((spr, T(ln["at"]) if "at" in ln else self.t0))
-        self.head = text_spr(s["entete"], "hand", 54, WHITE, spacing=3) if s.get("entete") else None
+        self.head = text_spr(s["entete"], "hand", 64, WHITE, spacing=3) if s.get("entete") else None
         gap = s.get("gap", -18)
         tot = sum(sp.height + gap for sp, _ in self.lines) + (self.head.height + 6 if self.head else 0)
         self.y = s.get("y", 0.75) * H - tot / 2
@@ -651,6 +651,10 @@ def main():
             els.append(Phone(s, T, frame_at(float(s.get("image_t", 2.0)))))
         else:
             els.append(TYPES[s["type"]](s, T))
+    for k, (e, s_) in enumerate(zip(els, st["elements"])):
+        if s_.get("hold"):
+            nxt = [x.t0 for x in els[k + 1:]]
+            e.t1 = max(e.t1, (nxt[0] if nxt else total) - 0.02)
     caps = Captions(kept, st, T)
     washes = sorted([e.t0 for e in els if isinstance(e, Chapter)] + [T(x) for x in st.get("fondus", [])])
     import numpy as np
@@ -658,9 +662,9 @@ def main():
 
     def wash_alpha(t):
         for w0 in washes:
-            x = (t - (w0 - 0.25)) / 0.9
+            x = (t - (w0 - 0.45)) / 0.7
             if 0 <= x <= 1:
-                return (math.sin(x * math.pi) ** 0.9) * 0.72
+                return (math.sin(x * math.pi) ** 0.9) * 0.62
         return 0
 
     def hidden(a, b, t):
