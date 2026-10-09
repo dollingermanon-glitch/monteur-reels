@@ -1,0 +1,221 @@
+{
+ "sous_titres_y": 0.56,
+ "phrases_serif": [
+  99
+ ],
+ "fondus": [
+  207,
+  271
+ ],
+ "photos_sous_titres": [
+  2.0
+ ],
+ "elements": [
+  {
+   "type": "kinetic",
+   "at": 10,
+   "fin": 20,
+   "y": 0.76,
+   "lignes": [
+    {
+     "text": "Un détail",
+     "style": "sans",
+     "at": 10
+    },
+    {
+     "text": "qui change tout",
+     "style": "serif",
+     "at": 12
+    },
+    {
+     "text": "à la qualité",
+     "style": "serif_y",
+     "at": 16
+    }
+   ]
+  },
+  {
+   "type": "carte_noire",
+   "at": 56,
+   "fin": 73,
+   "valeur": "iPhone 16 Plus",
+   "label": "même pas la caméra arrière",
+   "y": 0.8
+  },
+  {
+   "type": "carte_noire",
+   "at": 92,
+   "fin": 98,
+   "valeur": "1 clic",
+   "label": "zéro réglage",
+   "y": 0.8
+  },
+  {
+   "type": "photos",
+   "at": 108,
+   "fin": 118,
+   "y": 0.79,
+   "images": [
+    {
+     "image": "16.jpg",
+     "legende": "Barbie",
+     "at": 110,
+     "x": 0.29,
+     "rot": -6,
+     "largeur": 380
+    },
+    {
+     "image": "17.jpg",
+     "legende": "Stranger Things",
+     "at": 111,
+     "x": 0.71,
+     "rot": 5,
+     "largeur": 440
+    }
+   ]
+  },
+  {
+   "type": "chapitre",
+   "at": 125,
+   "fin": 126,
+   "text": "Le tuto :",
+   "sub": "copier les couleurs d'un film",
+   "y": 0.7
+  },
+  {
+   "type": "capture",
+   "at": 127,
+   "fin": 134,
+   "image": "19.jpg",
+   "largeur": 860,
+   "y": 0.82,
+   "focus": [
+    {
+     "box": [
+      560,
+      720,
+      690,
+      862
+     ],
+     "at": 129
+    }
+   ]
+  },
+  {
+   "type": "capture",
+   "at": 135,
+   "fin": 142,
+   "image": "18.jpg",
+   "largeur": 860,
+   "y": 0.8,
+   "focus": [
+    {
+     "box": [
+      345,
+      262,
+      487,
+      404
+     ],
+     "at": 138
+    }
+   ]
+  },
+  {
+   "type": "ecran",
+   "at": 143,
+   "fin": 152,
+   "video": "../raw3/rec2.mp4",
+   "de": 4,
+   "a": 13.5,
+   "legende": "exemple : Barbie",
+   "y": 0.735
+  },
+  {
+   "type": "ecran",
+   "at": 153,
+   "fin": 166,
+   "video": "../raw3/rec1.mp4",
+   "de": 10,
+   "a": 19.5,
+   "legende": "exemple : Stranger Things",
+   "y": 0.735
+  },
+  {
+   "type": "chapitre",
+   "at": 167,
+   "fin": 173,
+   "text": "Attention :",
+   "sub": "il y a un piège",
+   "y": 0.7
+  },
+  {
+   "type": "kinetic",
+   "at": 178,
+   "fin": 192,
+   "y": 0.76,
+   "lignes": [
+    {
+     "text": "Même astuce",
+     "style": "sans",
+     "at": 182
+    },
+    {
+     "text": "pas le même",
+     "style": "serif",
+     "at": 187
+    },
+    {
+     "text": "résultat",
+     "style": "serif_y",
+     "at": 190
+    }
+   ]
+  },
+  {
+   "type": "carte_noire",
+   "at": 219,
+   "fin": 230,
+   "valeur": "La lumière",
+   "label": "le vrai secret",
+   "y": 0.8
+  },
+  {
+   "type": "kinetic",
+   "at": 264,
+   "fin": 270,
+   "y": 0.76,
+   "lignes": [
+    {
+     "text": "c'était",
+     "style": "serif",
+     "at": 265
+    },
+    {
+     "text": "la lumière",
+     "style": "sans_y",
+     "at": 266
+    },
+    {
+     "text": "qui jouait énormément",
+     "style": "serif",
+     "at": 268
+    }
+   ]
+  },
+  {
+   "type": "commentaire",
+   "at": 295,
+   "fin": 304,
+   "mot": "101",
+   "y": 0.8
+  },
+  {
+   "type": "carte_noire",
+   "at": 305,
+   "fin": 307,
+   "valeur": "Abonne-toi",
+   "label": "pour plus d'astuces",
+   "y": 0.8
+  }
+ ]
+}

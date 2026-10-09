@@ -63,7 +63,7 @@ def plan(tr, ed):
         dropped.discard(i)
     keys = set(ed.get("highlight", []))
     pb, pa = RYTHME.get(ed.get("rythme", "max"), RYTHME["max"])
-    kept = [w for w in words if w["i"] not in dropped]
+    kept = sorted([w for w in words if w["i"] not in dropped], key=lambda w: w["start"])
     for w in kept:
         w["key"] = w["i"] in keys
 

@@ -191,11 +191,14 @@ class Chapter(El):
         super().__init__(s, T)
         self.a = text_spr(s["text"], "sans", 96, WHITE)
         self.b = text_spr(s["sub"], "script", 92, WHITE) if s.get("sub") else None
+        self.a = shadowed(self.a, 18, (0, 2), 150)
+        if self.b:
+            self.b = shadowed(self.b, 18, (0, 2), 150)
         self.sfx = [(self.t0 - 0.15, "woosh", 0.5)]
 
     def draw(self, c, t):
         inn, out = self.life(t)
-        y = H * 0.57
+        y = H * self.s.get("y", 0.57)
         put(c, self.a, W / 2, y, scale=0.9 + 0.1 * ease_back(inn), alpha=inn * out)
         if self.b:
             x = ease_out((t - self.t0 - 0.25) / 0.35)
@@ -523,8 +526,133 @@ class Note(El):
             c.alpha_composite(ov)
 
 
+
+
+def _wd_path(p):
+    return p if os.path.isabs(p) else os.path.join(WORKDIR, p)
+
+
+def round_img(img, r):
+    img = img.convert("RGBA")
+    m = Image.new("L", img.size, 0)
+    ImageDraw.Draw(m).rounded_rectangle((0, 0, img.width - 1, img.height - 1), r, fill=255)
+    img.putalpha(m)
+    return img
+
+
+class Photos(El):
+    """Photos (style polaroid) qui pop l'une après l'autre."""
+
+    def __init__(self, s, T):
+        super().__init__(s, T)
+        self.items = []
+        for k, it in enumerate(s["images"]):
+            im = Image.open(_wd_path(it["image"])).convert("RGB")
+            w = it.get("largeur", 420)
+            im = im.resize((w, int(w * im.height / im.width)), Image.LANCZOS)
+            if im.height > 520:
+                im = im.crop((0, (im.height - 520) // 2, w, (im.height - 520) // 2 + 520))
+            card = Image.new("RGBA", (im.width + 28, im.height + 28 + (60 if it.get("legende") else 0)), (255, 255, 255, 255))
+            card.paste(im, (14, 14))
+            if it.get("legende"):
+                sp = text_spr(it["legende"], "hand_b", 40, INK, shadow=False)
+                card.alpha_composite(sp, ((card.width - sp.width) // 2, im.height + 22))
+            self.items.append((shadowed(round_img(card, 12), 18, (0, 10), 110), T(it["at"]) if "at" in it else self.t0 + 0.4 * k,
+                               it.get("x", 0.3 + 0.4 * k), it.get("rot", -6 + 12 * k)))
+        self.y = s.get("y", 0.76) * H
+        self.sfx = [(ta, "pop", 0.45) for _, ta, _, _ in self.items]
+
+    def draw(self, c, t):
+        _, out = self.life(t)
+        for spr, ta, x, rot in self.items:
+            u = (t - ta) / 0.4
+            if u >= 0:
+                put(c, spr, x * W, self.y + 40 * (1 - ease_out(u)), scale=0.6 + 0.4 * ease_back(u),
+                    alpha=min(1, u * 2) * out, rot=rot * (0.5 + 0.5 * ease_out(u)))
+
+
+class Capture(El):
+    """Capture d'écran en carte arrondie + anneau qui entoure la zone citée + tap."""
+
+    def __init__(self, s, T):
+        super().__init__(s, T)
+        im = Image.open(_wd_path(s["image"])).convert("RGB")
+        if s.get("crop"):
+            im = im.crop(tuple(s["crop"]))
+        w = s.get("largeur", 900)
+        self.k = w / im.width
+        im = im.resize((w, int(im.height * self.k)), Image.LANCZOS)
+        self.card = shadowed(round_img(im, 30), 20, (0, 10), 120)
+        self.pad = (self.card.width - im.width) // 2, (self.card.height - im.height) // 2
+        self.ox, self.oy = s.get("crop", [0, 0])[:2]
+        self.focus = [(f["box"], T(f["at"]) if "at" in f else self.t0 + 0.8) for f in s.get("focus", [])]
+        self.y = s.get("y", 0.75) * H
+        self.lab = text_spr(s["legende"], "hand_b", 56, WHITE) if s.get("legende") else None
+        self.sfx = [(self.t0, "woosh", 0.35)] + [(ft, "click2", 0.7) for _, ft in self.focus]
+
+    def draw(self, c, t):
+        inn, out = self.life(t)
+        img = self.card.copy()
+        d = ImageDraw.Draw(img)
+        for box, ft in self.focus:
+            u = (t - ft) / 0.35
+            if u < 0:
+                continue
+            x0, y0, x1, y1 = [(v - o) * self.k for v, o in zip(box, (self.ox, self.oy, self.ox, self.oy))]
+            x0 += self.pad[0]; x1 += self.pad[0]; y0 += self.pad[1]; y1 += self.pad[1]
+            g = 14 * (1 - ease_out(u))
+            d.rounded_rectangle((x0 - 10 - g, y0 - 10 - g, x1 + 10 + g, y1 + 10 + g), 26, outline=YELLOW, width=7)
+            if u < 1.6:
+                cx, cy, r = (x0 + x1) / 2, (y0 + y1) / 2, 30 + 50 * min(1, u / 1.6)
+                a = int(200 * (1 - min(1, u / 1.6)))
+                d.ellipse((cx - r, cy - r, cx + r, cy + r), outline=(255, 255, 255, a), width=6)
+        cy = self.y + 70 * (1 - ease_out(inn))
+        put(c, img, W / 2, cy, scale=0.85 + 0.15 * ease_back(inn), alpha=min(1, inn * 2) * out)
+        if self.lab:
+            put(c, self.lab, W / 2, cy - img.height / 2 - 30, alpha=ease_out((t - self.t0 - 0.2) / 0.3) * out)
+
+
+class ScreenRec(El):
+    """Enregistrement d'écran joué (accéléré) dans un cadre de téléphone qui pop."""
+    hides_caps = True
+
+    def __init__(self, s, T):
+        super().__init__(s, T)
+        self.ph = s.get("hauteur", 1020)
+        src = _wd_path(s["video"])
+        a, b = s["de"], s["a"]
+        dur = max(0.5, self.t1 - self.t0)
+        self.dir = os.path.join(WORKDIR, f"_rec_{os.path.basename(src)}_{a}_{b}")
+        if not os.path.isdir(self.dir):
+            os.makedirs(self.dir)
+            sp = (b - a) / dur
+            subprocess.run(f'ffmpeg -v error -y -ss {a} -t {b - a} -i "{src}" -vf "setpts=PTS/{sp:.4f},fps={FPS},'
+                           f'scale=-2:{self.ph}" -an "{self.dir}/f%05d.png"', shell=True, check=True)
+        self.frames = sorted(os.listdir(self.dir))
+        self.lab = None
+        if s.get("legende"):
+            tx = text_spr(s["legende"], "semi", 40, WHITE, shadow=False)
+            pill = rrect((tx.width + 60, tx.height + 34), (tx.height + 34) // 2, (14, 14, 14, 235))
+            pill.alpha_composite(tx, (30, 17))
+            self.lab = shadowed(pill, 12, (0, 6), 110)
+        self.y = s.get("y", 0.72) * H
+        self.sfx = [(self.t0, "woosh", 0.45)]
+
+    def draw(self, c, t):
+        inn, out = self.life(t)
+        k = min(len(self.frames) - 1, max(0, int((t - self.t0) * FPS)))
+        fr = Image.open(os.path.join(self.dir, self.frames[k])).convert("RGBA")
+        fr = round_img(fr, 34)
+        border = rrect((fr.width + 16, fr.height + 16), 42, (18, 18, 18, 255))
+        border.alpha_composite(fr, (8, 8))
+        spr = shadowed(border, 22, (0, 12), 140)
+        cy = self.y + 600 * (1 - ease_back(min(1, (t - self.t0) / 0.5), 1.1))
+        put(c, spr, W / 2, cy, alpha=out)
+        if self.lab:
+            put(c, self.lab, W / 2, cy - spr.height / 2 + 6, alpha=ease_out((t - self.t0 - 0.3) / 0.3) * out)
+
 TYPES = {"kinetic": Kinetic, "chapitre": Chapter, "carte_noire": DarkCard, "resultat": ResultCard,
-         "dm": DMStack, "telephone": Phone, "menu": Sheet, "commentaire": CommentCTA, "note": Note}
+         "dm": DMStack, "telephone": Phone, "menu": Sheet, "commentaire": CommentCTA, "note": Note, "photos": Photos, "capture": Capture, "ecran": ScreenRec}
 
 
 # ───────────────────── sous-titres : phrase entière, frappe manuscrite + curseur ─────────────────────
@@ -628,8 +756,13 @@ def make_wash():
     return rgb
 
 
+WORKDIR = '.'
+
+
 def main():
+    global WORKDIR
     wd = sys.argv[1]
+    WORKDIR = wd
     photos = "--photos" in sys.argv
     tr = json.load(open(os.path.join(wd, "transcript.json")))
     ed = json.load(open(os.path.join(wd, "edit.json")))
