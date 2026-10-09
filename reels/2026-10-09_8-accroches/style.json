@@ -1,47 +1,263 @@
 {
  "sous_titres_y": 0.6,
  "phrases_serif": [],
- "fondus": [36, 41, 46, 54, 66, 79, 87, 93],
- "photos_sous_titres": [1.5, 3.2],
+ "fondus": [],
+ "photos_sous_titres": [
+  1.5,
+  3.2
+ ],
  "elements": [
-  {"type": "kinetic", "at": 18, "fin": 35, "hold": true, "y": 0.785, "lignes": [
-    {"text": "8 accroches", "style": "sans", "at": 22, "taille": 130},
-    {"text": "pour attirer l'attention", "style": "serif", "at": 28},
-    {"text": "dès les premières secondes", "style": "serif_y", "at": 30}]},
-  {"type": "kinetic", "at": 36, "fin": 40, "hold": true, "y": 0.785, "entete": "accroche #1", "lignes": [
-    {"text": "Qu'est-ce qui", "style": "sans", "at": 36},
-    {"text": "se passerait", "style": "sans", "at": 38},
-    {"text": "si…", "style": "serif_y", "at": 40}]},
-  {"type": "kinetic", "at": 41, "fin": 45, "hold": true, "y": 0.785, "entete": "accroche #2", "lignes": [
-    {"text": "Avant de", "style": "sans", "at": 41},
-    {"text": "te lancer", "style": "sans", "at": 43},
-    {"text": "dans…", "style": "serif_y", "at": 45}]},
-  {"type": "kinetic", "at": 46, "fin": 53, "hold": true, "y": 0.785, "entete": "accroche #3", "lignes": [
-    {"text": "J'ai failli", "style": "sans", "at": 46},
-    {"text": "ne jamais poster ça", "style": "sans", "at": 48},
-    {"text": "parce que…", "style": "serif_y", "at": 52}]},
-  {"type": "kinetic", "at": 54, "fin": 65, "hold": true, "y": 0.785, "entete": "accroche #4", "lignes": [
-    {"text": "Ne m'en veux pas", "style": "sans", "at": 54},
-    {"text": "pour ce que", "style": "serif", "at": 58},
-    {"text": "je vais te dire,", "style": "serif", "at": 61},
-    {"text": "mais…", "style": "serif_y", "at": 65}]},
-  {"type": "kinetic", "at": 66, "fin": 78, "hold": true, "y": 0.785, "entete": "accroche #5", "lignes": [
-    {"text": "Bon, tu vas", "style": "sans", "at": 66},
-    {"text": "peut-être me détester", "style": "sans", "at": 69},
-    {"text": "une fois que j'aurai dit ça,", "style": "serif", "at": 72},
-    {"text": "mais…", "style": "serif_y", "at": 78}]},
-  {"type": "kinetic", "at": 79, "fin": 86, "hold": true, "y": 0.785, "entete": "accroche #6", "lignes": [
-    {"text": "Je suis la seule", "style": "sans", "at": 79},
-    {"text": "à avoir remarqué", "style": "serif", "at": 83},
-    {"text": "que…", "style": "serif_y", "at": 86}]},
-  {"type": "kinetic", "at": 87, "fin": 92, "hold": true, "y": 0.785, "entete": "accroche #7", "lignes": [
-    {"text": "Beaucoup trop", "style": "sans", "at": 87},
-    {"text": "de gens", "style": "sans", "at": 89},
-    {"text": "sous-estiment…", "style": "serif_y", "at": 91}]},
-  {"type": "kinetic", "at": 93, "fin": 97, "hold": true, "y": 0.785, "entete": "accroche #8", "lignes": [
-    {"text": "Je suis", "style": "sans", "at": 93},
-    {"text": "littéralement", "style": "sans_y", "at": 95},
-    {"text": "choquée par…", "style": "serif_y", "at": 96}]},
-  {"type": "commentaire", "at": 98, "fin": 109, "mot": "MIEL", "y": 0.8}
- ]
+  {
+   "type": "kinetic",
+   "at": 18,
+   "fin": 35,
+   "hold": true,
+   "y": 0.785,
+   "lignes": [
+    {
+     "text": "8 accroches",
+     "style": "sans",
+     "at": 22,
+     "taille": 130
+    },
+    {
+     "text": "pour attirer l'attention",
+     "style": "serif",
+     "at": 28
+    },
+    {
+     "text": "dès les premières secondes",
+     "style": "serif_y",
+     "at": 30
+    }
+   ],
+   "simple": true
+  },
+  {
+   "type": "kinetic",
+   "at": 36,
+   "fin": 40,
+   "hold": true,
+   "y": 0.785,
+   "entete": "accroche #1",
+   "lignes": [
+    {
+     "text": "Qu'est-ce qui",
+     "style": "sans",
+     "at": 36
+    },
+    {
+     "text": "se passerait",
+     "style": "sans",
+     "at": 38
+    },
+    {
+     "text": "si…",
+     "style": "serif_y",
+     "at": 40
+    }
+   ],
+   "simple": true
+  },
+  {
+   "type": "kinetic",
+   "at": 41,
+   "fin": 45,
+   "hold": true,
+   "y": 0.785,
+   "entete": "accroche #2",
+   "lignes": [
+    {
+     "text": "Avant de",
+     "style": "sans",
+     "at": 41
+    },
+    {
+     "text": "te lancer",
+     "style": "sans",
+     "at": 43
+    },
+    {
+     "text": "dans…",
+     "style": "serif_y",
+     "at": 45
+    }
+   ],
+   "simple": true
+  },
+  {
+   "type": "kinetic",
+   "at": 46,
+   "fin": 53,
+   "hold": true,
+   "y": 0.785,
+   "entete": "accroche #3",
+   "lignes": [
+    {
+     "text": "J'ai failli",
+     "style": "sans",
+     "at": 46
+    },
+    {
+     "text": "ne jamais poster ça",
+     "style": "sans",
+     "at": 48
+    },
+    {
+     "text": "parce que…",
+     "style": "serif_y",
+     "at": 52
+    }
+   ],
+   "simple": true
+  },
+  {
+   "type": "kinetic",
+   "at": 54,
+   "fin": 65,
+   "hold": true,
+   "y": 0.785,
+   "entete": "accroche #4",
+   "lignes": [
+    {
+     "text": "Ne m'en veux pas",
+     "style": "sans",
+     "at": 54
+    },
+    {
+     "text": "pour ce que",
+     "style": "serif",
+     "at": 58
+    },
+    {
+     "text": "je vais te dire,",
+     "style": "serif",
+     "at": 61
+    },
+    {
+     "text": "mais…",
+     "style": "serif_y",
+     "at": 65
+    }
+   ],
+   "simple": true
+  },
+  {
+   "type": "kinetic",
+   "at": 66,
+   "fin": 78,
+   "hold": true,
+   "y": 0.785,
+   "entete": "accroche #5",
+   "lignes": [
+    {
+     "text": "Bon, tu vas",
+     "style": "sans",
+     "at": 66
+    },
+    {
+     "text": "peut-être me détester",
+     "style": "sans",
+     "at": 69
+    },
+    {
+     "text": "une fois que j'aurai dit ça,",
+     "style": "serif",
+     "at": 72
+    },
+    {
+     "text": "mais…",
+     "style": "serif_y",
+     "at": 78
+    }
+   ],
+   "simple": true
+  },
+  {
+   "type": "kinetic",
+   "at": 79,
+   "fin": 86,
+   "hold": true,
+   "y": 0.785,
+   "entete": "accroche #6",
+   "lignes": [
+    {
+     "text": "Je suis la seule",
+     "style": "sans",
+     "at": 79
+    },
+    {
+     "text": "à avoir remarqué",
+     "style": "serif",
+     "at": 83
+    },
+    {
+     "text": "que…",
+     "style": "serif_y",
+     "at": 86
+    }
+   ],
+   "simple": true
+  },
+  {
+   "type": "kinetic",
+   "at": 87,
+   "fin": 92,
+   "hold": true,
+   "y": 0.785,
+   "entete": "accroche #7",
+   "lignes": [
+    {
+     "text": "Beaucoup trop",
+     "style": "sans",
+     "at": 87
+    },
+    {
+     "text": "de gens",
+     "style": "sans",
+     "at": 89
+    },
+    {
+     "text": "sous-estiment…",
+     "style": "serif_y",
+     "at": 91
+    }
+   ],
+   "simple": true
+  },
+  {
+   "type": "kinetic",
+   "at": 93,
+   "fin": 97,
+   "hold": true,
+   "y": 0.785,
+   "entete": "accroche #8",
+   "lignes": [
+    {
+     "text": "Je suis",
+     "style": "sans",
+     "at": 93
+    },
+    {
+     "text": "littéralement",
+     "style": "sans_y",
+     "at": 95
+    },
+    {
+     "text": "choquée par…",
+     "style": "serif_y",
+     "at": 96
+    }
+   ],
+   "simple": true
+  },
+  {
+   "type": "commentaire",
+   "at": 98,
+   "fin": 109,
+   "mot": "MIEL",
+   "y": 0.8
+  }
+ ],
+ "sons": false
 }

@@ -161,6 +161,8 @@ class Kinetic(El):
         tot = sum(sp.height + gap for sp, _ in self.lines) + (self.head.height + 6 if self.head else 0)
         self.y = s.get("y", 0.75) * H - tot / 2
         self.sfx = [(self.t0, "woosh", 0.35)] + [(ta, "pop", 0.22) for _, ta in self.lines[1:]]
+        if s.get("simple"):
+            self.lines = [(sp, self.t0) for sp, _ in self.lines]
 
     def draw(self, c, t):
         _, out = self.life(t)
@@ -170,6 +172,10 @@ class Kinetic(El):
             put(c, self.head, W / 2, y + self.head.height / 2, alpha=a * out)
             y += self.head.height + 6
         for spr, ta in self.lines:
+            if self.s.get("simple"):
+                put(c, spr, W / 2, y + spr.height / 2, alpha=ease_out((t - self.t0) / 0.4) * out)
+                y += spr.height + self.s.get("gap", -18)
+                continue
             x = (t - ta) / 0.22
             if x >= 0:
                 sc = 1.35 - 0.35 * ease_out(x)
@@ -703,6 +709,8 @@ def main():
     # sons : liste d'événements
     events = [tuple(x) + (None,) * (4 - len(x)) for e in els for x in e.sfx if 0 <= x[0] < total]
     events += [(w - 0.3, "woosh", 0.45, None) for w in [T(x) for x in st.get("fondus", [])]]
+    if st.get("sons", True) is False:
+        events = []
     events.sort()
     sfx_in = " ".join(f'-i "{os.path.join(SFX, n + ".mp3")}"' for _, n, _, _ in events)
     fc = "[0:v][1:v]overlay=0:0:format=auto,format=yuv420p[v];"

@@ -25,7 +25,7 @@ import face
 W, H, FPS = fx.W, fx.H, 30
 WORKDIR = '.'
 RYTHME = {  # marge gardée avant / après chaque mot (s)
-    "max": (0.03, 0.05), "soutenu": (0.05, 0.08), "naturel": (0.09, 0.16)}
+    "max": (0.03, 0.05), "soutenu": (0.05, 0.08), "naturel": (0.09, 0.16), "lent": (0.15, 0.75)}
 
 
 def sh(cmd, inp=None):
