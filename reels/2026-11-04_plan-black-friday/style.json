@@ -1,0 +1,271 @@
+{
+ "sous_titres_y": 0.64,
+ "phrases_serif": [],
+ "fondus": [],
+ "photos_sous_titres": [],
+ "elements": [
+  {
+   "type": "kinetic",
+   "at": 0,
+   "fin": 8,
+   "y": 0.8,
+   "entete": "[spécial Black Friday]",
+   "lignes": [
+    {
+     "text": "Un plan simple",
+     "style": "sans",
+     "at": 2
+    },
+    {
+     "text": "pour vendre",
+     "style": "serif",
+     "at": 4
+    },
+    {
+     "text": "au Black Friday",
+     "style": "serif_y",
+     "at": 7
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 12,
+   "fin": 18,
+   "y": 0.8,
+   "lignes": [
+    {
+     "text": "Ne publie pas",
+     "style": "sans",
+     "at": 12
+    },
+    {
+     "text": "au hasard.",
+     "style": "serif",
+     "at": 15
+    },
+    {
+     "text": "Publie stratégiquement.",
+     "style": "serif_y",
+     "at": 17
+    }
+   ]
+  },
+  {
+   "type": "chapitre",
+   "at": 19,
+   "fin": 22,
+   "text": "Post #1 :",
+   "sub": "montre ton expertise",
+   "y": 0.72
+  },
+  {
+   "type": "dm",
+   "at": 23,
+   "fin": 38,
+   "y": 0.7,
+   "entete": "ce qu'elles se disent...",
+   "messages": [
+    {
+     "text": "Elle maîtrise vraiment son sujet",
+     "at": 28
+    },
+    {
+     "text": "Je veux apprendre avec elle",
+     "at": 35
+    }
+   ],
+   "cache_st": true
+  },
+  {
+   "type": "kinetic",
+   "at": 49,
+   "fin": 54,
+   "y": 0.8,
+   "lignes": [
+    {
+     "text": "Pas de confiance,",
+     "style": "sans",
+     "at": 49
+    },
+    {
+     "text": "pas de vente.",
+     "style": "serif_y",
+     "at": 52
+    }
+   ]
+  },
+  {
+   "type": "chapitre",
+   "at": 61,
+   "fin": 69,
+   "text": "Post #2 :",
+   "sub": "raconte ton histoire",
+   "y": 0.72
+  },
+  {
+   "type": "kinetic",
+   "at": 70,
+   "fin": 77,
+   "y": 0.8,
+   "lignes": [
+    {
+     "text": "Les gens achètent",
+     "style": "sans",
+     "at": 70
+    },
+    {
+     "text": "des coachs,",
+     "style": "sans_y",
+     "at": 73
+    },
+    {
+     "text": "pas du coaching.",
+     "style": "serif",
+     "at": 75
+    }
+   ]
+  },
+  {
+   "type": "dm",
+   "at": 86,
+   "fin": 91,
+   "y": 0.7,
+   "entete": "demande-leur en story...",
+   "messages": [
+    {
+     "text": "Tu bloques sur quoi en ce moment ?",
+     "at": 90
+    }
+   ],
+   "cache_st": true
+  },
+  {
+   "type": "chapitre",
+   "at": 97,
+   "fin": 105,
+   "text": "Post #3 :",
+   "sub": "montre les coulisses",
+   "y": 0.72
+  },
+  {
+   "type": "carte_noire",
+   "at": 117,
+   "fin": 120,
+   "valeur": "Liste d'attente",
+   "label": "ouverte",
+   "y": 0.82
+  },
+  {
+   "type": "resultat",
+   "at": 121,
+   "fin": 130,
+   "label": "ta liste d'attente",
+   "valeur": "+ inscrites",
+   "y": 0.83
+  },
+  {
+   "type": "kinetic",
+   "at": 131,
+   "fin": 133,
+   "y": 0.8,
+   "lignes": [
+    {
+     "text": "Fais monter",
+     "style": "sans",
+     "at": 131
+    },
+    {
+     "text": "l'envie.",
+     "style": "serif_y",
+     "at": 133
+    }
+   ]
+  },
+  {
+   "type": "chapitre",
+   "at": 137,
+   "fin": 145,
+   "text": "Jour J :",
+   "sub": "lance ton offre",
+   "y": 0.72
+  },
+  {
+   "type": "carte_noire",
+   "at": 164,
+   "fin": 170,
+   "valeur": "Montre-les",
+   "label": "tes premières ventes",
+   "y": 0.82
+  },
+  {
+   "type": "resultat",
+   "at": 171,
+   "fin": 190,
+   "label": "engouement = ventes",
+   "valeur": "+ ventes",
+   "y": 0.83
+  },
+  {
+   "type": "kinetic",
+   "at": 193,
+   "fin": 205,
+   "y": 0.8,
+   "lignes": [
+    {
+     "text": "Un lancement",
+     "style": "sans",
+     "at": 193
+    },
+    {
+     "text": "sans stratégie",
+     "style": "sans_y",
+     "at": 195
+    },
+    {
+     "text": "= zéro vente",
+     "style": "serif_y",
+     "at": 204
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 220,
+   "fin": 227,
+   "y": 0.8,
+   "lignes": [
+    {
+     "text": "Tu as besoin",
+     "style": "sans",
+     "at": 220
+    },
+    {
+     "text": "d'un vrai plan",
+     "style": "sans_y",
+     "at": 223
+    },
+    {
+     "text": "de lancement.",
+     "style": "serif",
+     "at": 226
+    }
+   ]
+  },
+  {
+   "type": "carte_noire",
+   "at": 231,
+   "fin": 247,
+   "valeur": "11 novembre",
+   "label": "atelier : ton Black Friday de A à Z",
+   "y": 0.82
+  },
+  {
+   "type": "commentaire",
+   "at": 255,
+   "fin": 265,
+   "mot": "CLUB",
+   "y": 0.82
+  }
+ ]
+}

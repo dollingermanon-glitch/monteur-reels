@@ -807,7 +807,7 @@ def main():
         return 0
 
     def hidden(a, b, t):
-        return any(e.hides_caps and e.t0 - 0.05 <= t < e.t1 for e in els)
+        return any((e.hides_caps or e.s.get("cache_st")) and e.t0 - 0.05 <= t < e.t1 for e in els)
 
     def compose(t):
         full = Image.new("RGBA", (W, H), (0, 0, 0, 0))
