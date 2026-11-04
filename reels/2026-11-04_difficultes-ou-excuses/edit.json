@@ -1,0 +1,43 @@
+{
+ "rythme": "max",
+ "zoom": "alterne",
+ "zoom_punch": [12, 138, 184, 214],
+ "drop": [[0, 0]],
+ "fix": {
+  "1": "J'ai",
+  "68": "seule",
+  "122": "elles",
+  "138": "ça",
+  "149": "le",
+  "173": "confuse,",
+  "180": "15",
+  "192": "bébé Bezos,"
+ },
+ "animations": [
+  {"type": "titre", "at": 1, "jusqu_a": 5, "text": "Difficultés ou excuses", "sub": "la phrase qui m'a choquée"},
+  {"type": "bulle", "style": "commentaire", "nom": "une coach", "at": 6, "jusqu_a": 19, "text": "J'ai de l'empathie pour tes difficultés. Mais aucune patience pour tes excuses."},
+  {"type": "mot_cle", "at": 25, "jusqu_a": 28, "text": "Choquée"},
+  {"type": "mot_cle", "at": 34, "jusqu_a": 39, "text": "D'accord avec elle"},
+  {"type": "liste", "at": 40, "jusqu_a": 68, "title": "Je sais que...", "items": [
+   {"text": "la vie peut être injuste", "at": 44},
+   {"text": "il y a des journées difficiles", "at": 55},
+   {"text": "on peut se sentir seule", "at": 66}
+  ]},
+  {"type": "mot_cle", "at": 73, "jusqu_a": 77, "text": "Pourquoi moi"},
+  {"type": "souligne", "at": 90, "jusqu_a": 98, "text": "Ce qui est en mon pouvoir"},
+  {"type": "mot_cle", "at": 105, "jusqu_a": 110, "text": "Faire changer les choses"},
+  {"type": "mot_cle", "at": 123, "jusqu_a": 128, "text": "Pas ta faute"},
+  {"type": "souligne", "at": 131, "jusqu_a": 141, "text": "Ta responsabilité"},
+  {"type": "section", "at": 142, "jusqu_a": 150, "text": "Et dans ton business ?"},
+  {"type": "liste", "at": 151, "jusqu_a": 172, "title": "C'est normal de...", "items": [
+   {"text": "ne pas tout savoir", "at": 154},
+   {"text": "commencer à 200 abonnés", "at": 160},
+   {"text": "se sentir perdue", "at": 167}
+  ]},
+  {"type": "chiffre", "at": 175, "jusqu_a": 183, "value": 15, "suffix": " fois", "label": "par jour à tout remettre en question"},
+  {"type": "mot_cle", "at": 184, "jusqu_a": 189, "text": "Personne ne naît entrepreneur"},
+  {"type": "mot_cle", "at": 198, "jusqu_a": 206, "text": "Énorme différence"},
+  {"type": "bulle", "style": "dm", "nom": "toi", "at": 207, "jusqu_a": 213, "text": "Ok, ça ne fonctionne pas encore pour moi..."},
+  {"type": "cta", "at": 214, "jusqu_a": 219, "text": "Enregistre ce rappel", "icone": "coeur"}
+ ]
+}
