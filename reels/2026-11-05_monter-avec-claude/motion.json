@@ -1,0 +1,29 @@
+{
+ "nom": "monter-avec-claude",
+ "duree": 41.0,
+ "note": "Timing ESTIMÉ (voix off pas encore enregistrée). À recaler sur la vraie voix : modifier les \"t\" et les sous-titres.",
+ "scenes": [
+  {"type": "hook", "t": 0.0, "sous_titres": [
+    [0.0, 1.6, "Je ne monte plus *AUCUN*"], [1.6, 2.6, "de mes reels."],
+    [2.6, 3.8, "C'est *Claude* qui le fait."], [3.8, 5.2, "En *7 étapes*."]]},
+  {"type": "ouvre", "t": 5.2, "sous_titres": [[5.2, 7.0, "Un : tu ouvres *Claude*."]]},
+  {"type": "charte", "t": 7.0, "sous_titres": [
+    [7.0, 8.6, "Deux : tu lui donnes *ta charte*."], [8.6, 10.6, "Tes couleurs, tes polices,"],
+    [10.6, 11.9, "tes sous-titres, ton rythme."], [11.9, 13.5, "Le montage *te ressemble*."]]},
+  {"type": "skill", "t": 13.5, "sous_titres": [
+    [13.5, 15.4, "Trois : si t'as un *skill* de montage,"], [15.4, 17.0, "tu l'ajoutes aussi."]]},
+  {"type": "matiere", "t": 17.0, "sous_titres": [
+    [17.0, 18.7, "Quatre : tu prépares *ta matière*."], [18.7, 20.5, "Tes rushs, tes photos, tes sons."]]},
+  {"type": "upload", "t": 20.5, "sous_titres": [[20.5, 22.6, "Cinq : tu balances *tout* dans Claude."]]},
+  {"type": "demande", "t": 22.6, "sous_titres": [
+    [22.6, 23.8, "Six : tu lui dis :"], [23.8, 26.0, "« *monte-moi ça* en suivant ma charte »."]]},
+  {"type": "attends", "t": 26.0, "sous_titres": [
+    [26.0, 27.3, "Sept : *tu attends*."], [27.3, 29.5, "En général, *30 minutes*."]]},
+  {"type": "retouche", "t": 29.5, "sous_titres": [
+    [29.5, 30.8, "Une retouche ?"], [30.8, 32.0, "Tu *redemandes*. C'est tout."]]},
+  {"type": "payoff", "t": 32.0, "sous_titres": [
+    [32.0, 33.6, "Moi, ce temps-là,"], [33.6, 35.5, "je le passe sur ce qui fait *vraiment vendre*."]]},
+  {"type": "cta", "t": 35.5, "sous_titres": [
+    [35.5, 37.4, "Commente *MONTAGE*"], [37.4, 41.0, "et je t'envoie ma charte + le skill en DM."]]}
+ ]
+}
