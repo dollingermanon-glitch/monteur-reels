@@ -1,0 +1,349 @@
+{
+ "sous_titres_y": 0.64,
+ "phrases_serif": [],
+ "fondus": [],
+ "photos_sous_titres": [],
+ "elements": [
+  {
+   "type": "kinetic",
+   "at": 0,
+   "fin": 11,
+   "y": 0.8,
+   "lignes": [
+    {
+     "text": "3 choses stupides",
+     "style": "sans",
+     "at": 0
+    },
+    {
+     "text": "que j'ai faites,",
+     "style": "serif",
+     "at": 4
+    },
+    {
+     "text": "mais qui m'ont changé la vie.",
+     "style": "serif_y",
+     "at": 8
+    }
+   ]
+  },
+  {
+   "type": "chapitre",
+   "at": 12,
+   "dur": 1.6,
+   "text": "Chose #1 :",
+   "sub": "vider mon dressing",
+   "y": 0.72
+  },
+  {
+   "type": "carte_noire",
+   "at": 18,
+   "fin": 26,
+   "valeur": "90 %",
+   "label": "de mes habits noirs, à la poubelle",
+   "y": 0.83
+  },
+  {
+   "type": "kinetic",
+   "at": 102,
+   "fin": 116,
+   "y": 0.8,
+   "lignes": [
+    {
+     "text": "Toute ma garde-robe",
+     "style": "sans",
+     "at": 102
+    },
+    {
+     "text": "autour de ce que lui aimait,",
+     "style": "serif",
+     "at": 106
+    },
+    {
+     "text": "pas de moi.",
+     "style": "serif_y",
+     "at": 112
+    }
+   ]
+  },
+  {
+   "type": "note",
+   "at": 121,
+   "fin": 129,
+   "text": "le fameux\nCinnamon Roll",
+   "x": 0.2,
+   "y": 0.52,
+   "cache_st": true
+  },
+  {
+   "type": "kinetic",
+   "at": 143,
+   "fin": 172,
+   "y": 0.8,
+   "lignes": [
+    {
+     "text": "Plus joyeuse,",
+     "style": "sans",
+     "at": 143
+    },
+    {
+     "text": "plus de plaisir à m'habiller,",
+     "style": "serif",
+     "at": 149
+    },
+    {
+     "text": "ma personnalité",
+     "style": "sans_y",
+     "at": 158
+    },
+    {
+     "text": "est ressortie.",
+     "style": "serif",
+     "at": 162
+    }
+   ]
+  },
+  {
+   "type": "chapitre",
+   "at": 173,
+   "dur": 1.8,
+   "text": "Chose #2 :",
+   "sub": "me mettre au centre",
+   "y": 0.72
+  },
+  {
+   "type": "kinetic",
+   "at": 221,
+   "fin": 227,
+   "y": 0.8,
+   "lignes": [
+    {
+     "text": "Alors j'ai fait",
+     "style": "sans",
+     "at": 221
+    },
+    {
+     "text": "l'inverse.",
+     "style": "serif_y",
+     "at": 227
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 273,
+   "fin": 281,
+   "y": 0.8,
+   "lignes": [
+    {
+     "text": "Au milieu",
+     "style": "sans_y",
+     "at": 277
+    },
+    {
+     "text": "de la pièce.",
+     "style": "serif",
+     "at": 279
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 345,
+   "fin": 363,
+   "y": 0.8,
+   "lignes": [
+    {
+     "text": "C'était OK",
+     "style": "sans",
+     "at": 352
+    },
+    {
+     "text": "de prendre",
+     "style": "serif",
+     "at": 354
+    },
+    {
+     "text": "ma place.",
+     "style": "serif_y",
+     "at": 356
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 393,
+   "fin": 405,
+   "y": 0.8,
+   "lignes": [
+    {
+     "text": "Ça m'a donné",
+     "style": "sans",
+     "at": 393
+    },
+    {
+     "text": "le droit d'exister,",
+     "style": "serif_y",
+     "at": 396
+    },
+    {
+     "text": "d'être là.",
+     "style": "serif",
+     "at": 399
+    }
+   ]
+  },
+  {
+   "type": "chapitre",
+   "at": 406,
+   "dur": 2.0,
+   "text": "Chose #3 :",
+   "sub": "la plus chelou",
+   "y": 0.72
+  },
+  {
+   "type": "kinetic",
+   "at": 418,
+   "fin": 429,
+   "y": 0.8,
+   "lignes": [
+    {
+     "text": "J'ai arrêté de chercher",
+     "style": "sans",
+     "at": 418
+    },
+    {
+     "text": "des solutions",
+     "style": "sans_y",
+     "at": 422
+    },
+    {
+     "text": "à la place de mes clientes.",
+     "style": "serif",
+     "at": 424
+    }
+   ]
+  },
+  {
+   "type": "carte_noire",
+   "at": 448,
+   "fin": 460,
+   "valeur": "Grande sœur",
+   "label": "la posture de l'aînée",
+   "y": 0.83
+  },
+  {
+   "type": "dm",
+   "at": 494,
+   "fin": 515,
+   "y": 0.67,
+   "cache_st": true,
+   "entete": "dans ma tête...",
+   "messages": [
+    {
+     "text": "Et si elle essayait ça ?",
+     "at": 497
+    },
+    {
+     "text": "Ou plutôt ça ?",
+     "at": 500
+    },
+    {
+     "text": "Ou encore ça ?",
+     "at": 503
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 521,
+   "fin": 529,
+   "y": 0.8,
+   "lignes": [
+    {
+     "text": "Un déclic,",
+     "style": "sans_y",
+     "at": 524
+    },
+    {
+     "text": "j'ai changé ma posture.",
+     "style": "serif",
+     "at": 527
+    }
+   ]
+  },
+  {
+   "type": "dm",
+   "at": 545,
+   "fin": 571,
+   "y": 0.67,
+   "cache_st": true,
+   "entete": "mes questions aujourd'hui...",
+   "messages": [
+    {
+     "text": "Tu y crois vraiment ?",
+     "at": 549
+    },
+    {
+     "text": "Et si cette stratégie n'était pas la bonne ?",
+     "at": 553
+    },
+    {
+     "text": "Cette offre, elle te ressemble ?",
+     "at": 559
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 611,
+   "fin": 616,
+   "y": 0.8,
+   "lignes": [
+    {
+     "text": "Demande-lui",
+     "style": "sans_y",
+     "at": 611
+    },
+    {
+     "text": "à la place.",
+     "style": "serif",
+     "at": 614
+    }
+   ]
+  },
+  {
+   "type": "resultat",
+   "at": 659,
+   "fin": 677,
+   "label": "résultats du Socials Club",
+   "valeur": "Explosent",
+   "y": 0.83
+  },
+  {
+   "type": "kinetic",
+   "at": 678,
+   "fin": 683,
+   "y": 0.8,
+   "lignes": [
+    {
+     "text": "Coïncidence ?",
+     "style": "serif_y",
+     "at": 678
+    },
+    {
+     "text": "Moi, j'y crois pas trop.",
+     "style": "sans",
+     "at": 679
+    }
+   ]
+  },
+  {
+   "type": "commentaire",
+   "at": 707,
+   "fin": 713,
+   "mot": "CLUB",
+   "y": 0.82
+  }
+ ]
+}
