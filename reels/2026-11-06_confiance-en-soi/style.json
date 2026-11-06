@@ -46,12 +46,13 @@
    ]
   },
   {
-   "type": "carte_noire",
-   "at": 35,
+   "type": "surligneur",
+   "at": 37,
    "fin": 45,
-   "valeur": "Ça se construit",
-   "label": "la confiance ne tombe pas du ciel",
-   "y": 0.83
+   "text": "Pas par magie",
+   "sub": "ça se construit.",
+   "sub_at": 43,
+   "y": 0.8
   },
   {
    "type": "chapitre",
@@ -120,12 +121,29 @@
    ]
   },
   {
-   "type": "resultat",
-   "at": 96,
+   "type": "jauge",
+   "at": 90,
    "fin": 112,
-   "label": "à chaque Reel publié",
-   "valeur": "+ de preuves",
-   "y": 0.83
+   "label": "ta confiance",
+   "y": 0.82,
+   "paliers": [
+    {
+     "at": 91,
+     "valeur": 0.2
+    },
+    {
+     "at": 95,
+     "valeur": 0.45
+    },
+    {
+     "at": 99,
+     "valeur": 0.7
+    },
+    {
+     "at": 102,
+     "valeur": 0.95
+    }
+   ]
   },
   {
    "type": "kinetic",
@@ -151,32 +169,26 @@
    ]
   },
   {
-   "type": "kinetic",
+   "type": "cycle",
    "at": 132,
    "fin": 148,
-   "y": 0.8,
-   "lignes": [
+   "y": 0.76,
+   "etapes": [
     {
-     "text": "Action,",
-     "style": "sans",
-     "at": 132
+     "text": "Action",
+     "at": 133
     },
     {
-     "text": "répétition,",
-     "style": "sans",
+     "text": "Répétition",
      "at": 137
     },
     {
-     "text": "puis confiance.",
-     "style": "serif_y",
+     "text": "Confiance",
      "at": 142
-    },
-    {
-     "text": "Pas l'inverse.",
-     "style": "serif",
-     "at": 146
     }
-   ]
+   ],
+   "fin_texte": "pas l'inverse !",
+   "fin_at": 146
   },
   {
    "type": "chapitre",
@@ -187,40 +199,42 @@
    "y": 0.72
   },
   {
-   "type": "kinetic",
-   "at": 161,
+   "type": "checklist",
+   "at": 166,
    "fin": 179,
-   "y": 0.8,
-   "lignes": [
+   "y": 0.77,
+   "titre": "dans le Socials Club...",
+   "items": [
     {
-     "text": "Tester,",
-     "style": "sans_y",
+     "text": "Tester",
      "at": 169
     },
     {
-     "text": "apprendre, se tromper,",
-     "style": "serif",
+     "text": "Apprendre",
      "at": 170
     },
     {
-     "text": "se soutenir,",
-     "style": "serif",
+     "text": "Se tromper",
+     "at": 171
+    },
+    {
+     "text": "Se soutenir",
      "at": 173
     },
     {
-     "text": "progresser.",
-     "style": "serif_y",
+     "text": "Progresser",
      "at": 177
     }
    ]
   },
   {
-   "type": "carte_noire",
+   "type": "surligneur",
    "at": 186,
    "fin": 191,
-   "valeur": "Sans peur",
-   "label": "d'être jugée",
-   "y": 0.83
+   "text": "Sans peur",
+   "sub": "d'être jugée.",
+   "sub_at": 189,
+   "y": 0.8
   },
   {
    "type": "kinetic",

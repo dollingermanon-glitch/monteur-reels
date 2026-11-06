@@ -651,8 +651,176 @@ class ScreenRec(El):
         if self.lab:
             put(c, self.lab, W / 2, cy - spr.height / 2 + 6, alpha=ease_out((t - self.t0 - 0.3) / 0.3) * out)
 
+
+# ───────────── effets clairs (charte SKR : crème / jaune / caramel, jamais de noir) ─────────────
+CARD = (255, 250, 238, 250)
+TRACK = (240, 228, 204, 255)
+GOLD = (242, 210, 127, 255)
+CARAMEL = (122, 91, 56, 255)
+
+
+class Progress(El):
+    """Carte crème + jauge jaune qui se remplit par paliers (la confiance qui se construit)."""
+
+    def __init__(self, s, T):
+        super().__init__(s, T)
+        self.lab = text_spr(s["label"], "semi", 42, CARAMEL, shadow=False)
+        self.paliers = [(T(p["at"]), p["valeur"]) for p in s["paliers"]]
+        self.y = s.get("y", 0.8) * H
+        self.sfx = [(self.t0, "woosh", 0.3)] + [(ta, "pop", 0.4) for ta, _ in self.paliers]
+
+    def level(self, t):
+        v, prev, t_prev = 0.0, 0.0, self.t0
+        for ta, val in self.paliers:
+            if t >= ta:
+                prev, t_prev, v = val, ta, val
+        # easing vers le dernier palier atteint
+        k = ease_out((t - t_prev) / 0.5)
+        before = 0.0
+        for ta, val in self.paliers:
+            if ta < t_prev:
+                before = val
+        return before + (v - before) * k
+
+    def draw(self, c, t):
+        inn, out = self.life(t)
+        cw, ch = 880, 240
+        img = rrect((cw, ch), 40, CARD)
+        img.alpha_composite(self.lab, (50, 40))
+        d = ImageDraw.Draw(img)
+        x0, y0, x1, y1 = 50, 140, cw - 180, 190
+        d.rounded_rectangle((x0, y0, x1, y1), 25, fill=TRACK)
+        v = self.level(t)
+        if v > 0.01:
+            d.rounded_rectangle((x0, y0, x0 + max(50, (x1 - x0) * v), y1), 25, fill=GOLD)
+        pc = text_spr(f"{int(round(v * 100))} %", "black", 58, CARAMEL, shadow=False)
+        img.alpha_composite(pc, (cw - 50 - pc.width, 165 - pc.height // 2))
+        put(c, shadowed(img, 18, (0, 10), 70), W / 2, self.y + 70 * (1 - ease_out(inn)),
+            scale=0.85 + 0.15 * ease_back(inn), alpha=min(1, inn * 2) * out)
+
+
+class Checklist(El):
+    """Titre manuscrit + liste crème dont chaque ligne se coche en jaune au moment où elle est dite."""
+    hides_caps = True
+
+    def __init__(self, s, T):
+        super().__init__(s, T)
+        self.head = text_spr(s["titre"], "hand_b", 62, WHITE) if s.get("titre") else None
+        self.items = [(text_spr(it["text"], "semi", 46, CARAMEL, shadow=False), T(it["at"])) for it in s["items"]]
+        self.y = s.get("y", 0.76) * H
+        self.sfx = [(self.t0, "woosh", 0.3)] + [(ta, "click2", 0.6) for _, ta in self.items]
+
+    def draw(self, c, t):
+        inn, out = self.life(t)
+        rh_ = 96
+        cw, ch = 760, rh_ * len(self.items) + 40
+        img = rrect((cw, ch), 36, CARD)
+        d = ImageDraw.Draw(img)
+        for k, (spr, ta) in enumerate(self.items):
+            cy = 20 + k * rh_ + rh_ // 2
+            u = (t - ta) / 0.3
+            if k:
+                d.line((40, 20 + k * rh_, cw - 40, 20 + k * rh_), fill=TRACK, width=3)
+            r = 26
+            if u >= 0:
+                rr = r * (0.6 + 0.4 * ease_back(min(1, u)))
+                d.ellipse((60 - rr, cy - rr, 60 + rr, cy + rr), fill=GOLD)
+                if u > 0.4:
+                    d.line((48, cy, 57, cy + 10, 74, cy - 10), fill=CARAMEL, width=7, joint="curve")
+                a = 1.0
+            else:
+                d.ellipse((60 - r, cy - r, 60 + r, cy + r), outline=TRACK, width=5)
+                a = 0.35
+            lay = spr.copy(); lay.putalpha(lay.getchannel("A").point(lambda v, a=a: int(v * a)))
+            img.alpha_composite(lay, (110, cy - spr.height // 2))
+        spr = shadowed(img, 18, (0, 10), 70)
+        y = self.y
+        if self.head:
+            put(c, self.head, W / 2, y - spr.height / 2 - 50, alpha=ease_out((t - self.t0) / 0.3) * out, rot=3)
+        put(c, spr, W / 2, y + 60 * (1 - ease_out(inn)), scale=0.9 + 0.1 * ease_back(inn), alpha=min(1, inn * 2) * out)
+
+
+class Marker(El):
+    """Mot en capitales caramel sur un coup de surligneur jaune qui balaie de gauche à droite."""
+    hides_caps = True
+
+    def __init__(self, s, T):
+        super().__init__(s, T)
+        self.txt = text_spr(s["text"].upper(), "black", s.get("taille", 120), CARAMEL, shadow=False)
+        if self.txt.width > 900:
+            self.txt = text_spr(s["text"].upper(), "black", int(s.get("taille", 120) * 900 / self.txt.width), CARAMEL, shadow=False)
+        self.sub = text_spr(s["sub"], "hand_b", 64, WHITE) if s.get("sub") else None
+        self.t_sub = T(s["sub_at"]) if "sub_at" in s else self.t0 + 0.6
+        self.y = s.get("y", 0.78) * H
+        self.sfx = [(self.t0, "woosh", 0.35)] + ([(self.t_sub, "pop", 0.3)] if self.sub else [])
+
+    def draw(self, c, t):
+        inn, out = self.life(t)
+        pw, ph = self.txt.width + 70, self.txt.height + 46
+        img = Image.new("RGBA", (pw, ph), (0, 0, 0, 0))
+        u = ease_out((t - self.t0) / 0.4)
+        if u > 0:
+            ImageDraw.Draw(img).rounded_rectangle((0, 8, max(20, pw * u), ph - 8), 18, fill=GOLD)
+        a = ease_out((t - self.t0 - 0.15) / 0.25)
+        lay = self.txt.copy(); lay.putalpha(lay.getchannel("A").point(lambda v: int(v * a)))
+        img.alpha_composite(lay, (35, 23))
+        put(c, shadowed(img, 14, (0, 6), 60), W / 2, self.y, alpha=out, rot=-2)
+        if self.sub:
+            x = ease_out((t - self.t_sub) / 0.35)
+            put(c, self.sub, W / 2 + 60, self.y + ph / 2 + 40, alpha=x * out, rot=-3)
+
+
+class Cycle(El):
+    """Pastilles qui apparaissent l'une sous l'autre, reliées par des flèches dessinées (A → B → C)."""
+    hides_caps = True
+
+    def __init__(self, s, T):
+        super().__init__(s, T)
+        self.steps = []
+        for k, st in enumerate(s["etapes"]):
+            last = k == len(s["etapes"]) - 1
+            tx = text_spr(st["text"], "black", 62, CARAMEL, shadow=False)
+            pill = rrect((tx.width + 90, tx.height + 44), (tx.height + 44) // 2, GOLD if last else CARD)
+            pill.alpha_composite(tx, (45, 22))
+            self.steps.append((shadowed(pill, 14, (0, 8), 70), T(st["at"])))
+        self.foot = text_spr(s["fin_texte"], "hand_b", 66, WHITE) if s.get("fin_texte") else None
+        self.t_foot = T(s["fin_at"]) if "fin_at" in s else self.t1 - 1
+        self.gap = 70
+        self.y = s.get("y", 0.75) * H
+        self.sfx = [(ta, "pop", 0.4) for _, ta in self.steps] + ([(self.t_foot, "notif2", 0.35)] if self.foot else [])
+
+    def draw(self, c, t):
+        _, out = self.life(t)
+        hs = [sp.height for sp, _ in self.steps]
+        tot = sum(hs) + self.gap * (len(hs) - 1)
+        y = self.y - tot / 2
+        ov = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+        d = ImageDraw.Draw(ov)
+        centers = []
+        for (sp, ta), h in zip(self.steps, hs):
+            centers.append((y + h / 2, ta, sp))
+            y += h + self.gap
+        for k in range(1, len(centers)):
+            (ya, _, spa), (yb, tb, _) = centers[k - 1], centers[k]
+            p = ease_out((t - (tb - 0.35)) / 0.3)
+            if p > 0:
+                y0, y1 = ya + spa.height / 2 - 14, yb - centers[k][2].height / 2 + 14
+                ye = y0 + (y1 - y0) * p
+                d.line((W / 2, y0, W / 2, ye), fill=(255, 255, 255, int(255 * out)), width=7)
+                if p > 0.95:
+                    d.line((W / 2 - 18, ye - 20, W / 2, ye, W / 2 + 18, ye - 20), fill=(255, 255, 255, int(255 * out)), width=7, joint="curve")
+        c.alpha_composite(ov)
+        for cy, ta, sp in centers:
+            u = (t - ta) / 0.35
+            if u >= 0:
+                put(c, sp, W / 2, cy, scale=0.6 + 0.4 * ease_back(min(1, u)), alpha=min(1, u * 2) * out)
+        if self.foot:
+            x = ease_out((t - self.t_foot) / 0.35)
+            put(c, self.foot, W / 2 + 120, y - self.gap + 50, alpha=x * out, rot=-5)
+
 TYPES = {"kinetic": Kinetic, "chapitre": Chapter, "carte_noire": DarkCard, "resultat": ResultCard,
-         "dm": DMStack, "telephone": Phone, "menu": Sheet, "commentaire": CommentCTA, "note": Note, "photos": Photos, "capture": Capture, "ecran": ScreenRec}
+         "dm": DMStack, "telephone": Phone, "menu": Sheet, "commentaire": CommentCTA, "note": Note, "photos": Photos, "capture": Capture, "ecran": ScreenRec,
+         "jauge": Progress, "checklist": Checklist, "surligneur": Marker, "cycle": Cycle}
 
 
 # ───────────────────── sous-titres : phrase entière, frappe manuscrite + curseur ─────────────────────

@@ -69,8 +69,13 @@ def plan(tr, ed):
 
     # intervalles gardés : chaque mot + marges, sans jamais mordre sur un mot supprimé
     ivs = []
+    pause = ed.get("pause_fin_phrase", 0.0)  # respiration gardée après . ? ! , (s)
     for w in kept:
         lo, hi = w["start"] - pb, w["end"] + pa
+        if pause and w["text"].rstrip().endswith((".", "?", "!", ",", ":")):
+            nxt = [x for x in words if x["i"] > w["i"]]
+            room = (nxt[0]["start"] - w["end"]) if nxt else pause
+            hi = w["end"] + max(pa, min(pause * (1 if w["text"].rstrip()[-1] in ".?!:" else 0.5), room - pb))
         if w["i"] > 0 and words[w["i"] - 1]["i"] in dropped:
             lo = max(lo, (words[w["i"] - 1]["end"] + w["start"]) / 2)
         if w["i"] + 1 < len(words) and words[w["i"] + 1]["i"] in dropped:
