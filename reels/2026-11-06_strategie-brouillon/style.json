@@ -1,0 +1,152 @@
+{
+ "sous_titres_y": 0.64,
+ "phrases_serif": [],
+ "fondus": [],
+ "photos_sous_titres": [
+  8.6,
+  26.5
+ ],
+ "elements": [
+  {
+   "type": "kinetic",
+   "at": 0,
+   "fin": 11,
+   "y": 0.8,
+   "lignes": [
+    {
+     "text": "Je force Instagram",
+     "style": "sans",
+     "at": 1
+    },
+    {
+     "text": "à montrer mes Reels",
+     "style": "serif",
+     "at": 5
+    },
+    {
+     "text": "à des non-abonnés.",
+     "style": "serif_y",
+     "at": 9
+    }
+   ]
+  },
+  {
+   "type": "carte_noire",
+   "at": 15,
+   "fin": 21,
+   "valeur": "+1 000",
+   "label": "abonnés gagnés en octobre",
+   "y": 0.83
+  },
+  {
+   "type": "kinetic",
+   "at": 33,
+   "fin": 39,
+   "y": 0.8,
+   "lignes": [
+    {
+     "text": "Plusieurs Reels",
+     "style": "sans",
+     "at": 33
+    },
+    {
+     "text": "viraux.",
+     "style": "serif_y",
+     "at": 38
+    }
+   ]
+  },
+  {
+   "type": "resultat",
+   "at": 48,
+   "fin": 55,
+   "label": "la barre est dépassée",
+   "valeur": "9 000 abonnés",
+   "y": 0.83
+  },
+  {
+   "type": "kinetic",
+   "at": 56,
+   "fin": 63,
+   "y": 0.8,
+   "lignes": [
+    {
+     "text": "Je te montre",
+     "style": "sans",
+     "at": 56
+    },
+    {
+     "text": "exactement comment.",
+     "style": "serif_y",
+     "at": 61
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 77,
+   "fin": 94,
+   "y": 0.8,
+   "lignes": [
+    {
+     "text": "J'aide les business",
+     "style": "sans",
+     "at": 77
+    },
+    {
+     "text": "à devenir plus visibles",
+     "style": "serif_y",
+     "at": 83
+    },
+    {
+     "text": "et à mieux vendre.",
+     "style": "serif",
+     "at": 88
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 103,
+   "fin": 117,
+   "y": 0.8,
+   "lignes": [
+    {
+     "text": "Une des stratégies",
+     "style": "sans",
+     "at": 105
+    },
+    {
+     "text": "les plus puissantes",
+     "style": "sans_y",
+     "at": 109
+    },
+    {
+     "text": "de 2026.",
+     "style": "serif",
+     "at": 115
+    }
+   ]
+  },
+  {
+   "type": "chapitre",
+   "at": 118,
+   "fin": 121,
+   "text": "Étape #1 :",
+   "sub": "le brouillon",
+   "y": 0.72
+  },
+  {
+   "type": "menu",
+   "at": 131,
+   "fin": 139,
+   "options": [
+    "Enregistrer le brouillon",
+    "Supprimer",
+    "Annuler"
+   ],
+   "actif": "Enregistrer le brouillon",
+   "tap_at": 137
+  }
+ ]
+}
