@@ -1,0 +1,46 @@
+{
+ "sous_titres_y": 0.64,
+ "phrases_serif": [],
+ "fondus": [],
+ "photos_sous_titres": [],
+ "elements": [
+  {"type": "kinetic", "at": 0, "fin": 11, "y": 0.8, "lignes": [
+    {"text": "Comment je force Instagram", "style": "sans", "at": 0},
+    {"text": "à montrer mes Reels", "style": "serif", "at": 5},
+    {"text": "aux non-abonnés.", "style": "serif_y", "at": 9}]},
+  {"type": "resultat", "at": 12, "fin": 21, "label": "abonnés gagnés en octobre", "valeur": "+1 000", "y": 0.8},
+  {"type": "kinetic", "at": 22, "fin": 31, "y": 0.8, "lignes": [
+    {"text": "Ma stratégie", "style": "sans", "at": 22},
+    {"text": "la plus puissante", "style": "sans_y", "at": 26},
+    {"text": "jusqu'ici.", "style": "serif", "at": 29}]},
+  {"type": "carte_noire", "at": 37, "fin": 46, "valeur": "9 000", "label": "abonnés dépassés en 1 mois", "y": 0.83},
+  {"type": "chapitre", "at": 47, "dur": 1.7, "text": "La méthode :", "sub": "les Reels d'essai", "y": 0.72},
+  {"type": "carte_noire", "at": 61, "fin": 71, "valeur": "200 abonnés", "label": "minimum pour y avoir accès", "y": 0.83},
+  {"type": "menu", "at": 82, "fin": 89, "options": ["Enregistrer en brouillon", "Dupliquer", "Supprimer"], "actif": "Dupliquer", "tap_at": 88},
+  {"type": "kinetic", "at": 90, "fin": 105, "y": 0.8, "lignes": [
+    {"text": "Reel n°1", "style": "sans_y", "at": 90},
+    {"text": "posté normalement", "style": "serif", "at": 96},
+    {"text": "sur ton feed.", "style": "serif", "at": 102}]},
+  {"type": "kinetic", "at": 106, "fin": 125, "y": 0.8, "lignes": [
+    {"text": "Reel n°2", "style": "sans_y", "at": 106},
+    {"text": "accroche modifiée", "style": "serif", "at": 112},
+    {"text": "+ léger zoom", "style": "serif_y", "at": 123}]},
+  {"type": "menu", "at": 126, "fin": 150, "options": ["Partager sur ton feed", "Reel d'essai"], "actif": "Reel d'essai", "tap_at": 132},
+  {"type": "kinetic", "at": 151, "fin": 160, "y": 0.8, "lignes": [
+    {"text": "Montré uniquement", "style": "sans", "at": 155},
+    {"text": "aux non-abonnés.", "style": "serif_y", "at": 158}]},
+  {"type": "carte_noire", "at": 169, "fin": 186, "valeur": "Tes abonnés", "label": "le Reel n°1, sur ton fil principal", "y": 0.83},
+  {"type": "kinetic", "at": 187, "fin": 207, "y": 0.8, "lignes": [
+    {"text": "2 contenus", "style": "sans_y", "at": 191},
+    {"text": "1 seule publication", "style": "serif", "at": 195},
+    {"text": "2 audiences", "style": "sans_y", "at": 204}]},
+  {"type": "chapitre", "at": 208, "dur": 1.5, "text": "Petite astuce :", "sub": "recycle tes tops", "y": 0.72},
+  {"type": "kinetic", "at": 220, "fin": 244, "y": 0.8, "lignes": [
+    {"text": "Télécharge,", "style": "sans", "at": 226},
+    {"text": "modifie,", "style": "sans", "at": 228},
+    {"text": "reposte en Reel d'essai.", "style": "serif_y", "at": 237}]},
+  {"type": "carte_noire", "at": 245, "fin": 254, "valeur": "2 à 3 mois", "label": "à répéter régulièrement", "y": 0.83, "son": "timer"},
+  {"type": "resultat", "at": 255, "fin": 261, "label": "nouveaux abonnés", "valeur": "Chaque jour", "y": 0.8},
+  {"type": "commentaire", "at": 288, "fin": 299, "mot": "TEAM", "y": 0.82}
+ ]
+}
