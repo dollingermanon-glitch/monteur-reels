@@ -69,30 +69,110 @@
    ]
   },
   {
-   "type": "kinetic",
-   "at": 50,
-   "fin": 55,
+   "type": "capture",
+   "cache_st": true,
+   "image": "charlotte.png",
+   "at": 56,
+   "fin": 59,
+   "largeur": 720,
+   "y": 0.76,
+   "legende": "Charlotte"
+  },
+  {
+   "type": "capture",
+   "cache_st": true,
+   "image": "manon_profil.png",
+   "at": 60,
+   "fin": 62,
+   "largeur": 960,
    "y": 0.8,
-   "lignes": [
+   "legende": "Manon"
+  },
+  {
+   "type": "capture",
+   "cache_st": true,
+   "image": "manon_reel.png",
+   "at": 63,
+   "fin": 73,
+   "largeur": 640,
+   "y": 0.77,
+   "legende": "un seul Reel de Manon",
+   "focus": [
     {
-     "text": "Leur compte Insta",
-     "style": "serif",
-     "at": 52
-    },
-    {
-     "text": "explosait.",
-     "style": "sans_y",
-     "at": 55
+     "box": [
+      20,
+      563,
+      622,
+      612
+     ],
+     "at": 66
     }
    ]
   },
   {
-   "type": "carte_noire",
-   "at": 63,
+   "type": "capture",
+   "cache_st": true,
+   "image": "celine.webp",
+   "at": 74,
+   "fin": 77,
+   "crop": [
+    30,
+    72,
+    575,
+    395
+   ],
+   "largeur": 820,
+   "y": 0.74,
+   "legende": "Céline",
+   "focus": [
+    {
+     "box": [
+      452,
+      368,
+      520,
+      392
+     ],
+     "at": 75
+    }
+   ]
+  },
+  {
+   "type": "capture",
+   "cache_st": true,
+   "image": "sarah.png",
+   "at": 78,
+   "dur": 2.3,
+   "largeur": 720,
+   "y": 0.76,
+   "legende": "Sarah"
+  },
+  {
+   "type": "capture",
+   "cache_st": true,
+   "image": "sarah_reels.webp",
+   "at": "28.5s",
    "fin": 80,
-   "valeur": "100 000+ vues",
-   "label": "sur les Reels de mes clientes",
-   "y": 0.83
+   "largeur": 900,
+   "y": 0.79,
+   "legende": "les Reels de Sarah",
+   "focus": [
+    {
+     "box": [
+      452,
+      692,
+      610,
+      745
+     ]
+    },
+    {
+     "box": [
+      880,
+      692,
+      1040,
+      745
+     ]
+    }
+   ]
   },
   {
    "type": "kinetic",
