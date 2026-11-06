@@ -16,8 +16,8 @@ sys.path.insert(0, HERE)
 import render_hd as rh  # plan de coupe (mêmes coupes que le montage déjà rendu)
 
 W, H, FPS = 1080, 1920, 30
-FD = os.path.join(ROOT, "fonts")
-SFX = os.path.join(ROOT, "sfx")
+FD = next(d for d in (os.path.join(HERE, "fonts"), os.path.join(ROOT, "fonts")) if os.path.isdir(d))
+SFX = next(d for d in (os.path.join(HERE, "sfx"), os.path.join(ROOT, "sfx")) if os.path.isdir(d))
 
 WHITE = (255, 255, 255, 255)
 YELLOW = (246, 228, 170, 255)      # jaune beurre pastel (doux)

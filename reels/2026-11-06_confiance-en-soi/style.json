@@ -1,0 +1,308 @@
+{
+ "sous_titres_y": 0.64,
+ "phrases_serif": [],
+ "fondus": [],
+ "photos_sous_titres": [],
+ "elements": [
+  {
+   "type": "kinetic",
+   "at": 0,
+   "fin": 21,
+   "y": 0.8,
+   "lignes": [
+    {
+     "text": "Tu attends d'avoir",
+     "style": "sans",
+     "at": 0
+    },
+    {
+     "text": "confiance en toi",
+     "style": "serif_y",
+     "at": 3
+    },
+    {
+     "text": "pour te montrer ?",
+     "style": "serif",
+     "at": 9
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 23,
+   "fin": 28,
+   "y": 0.8,
+   "lignes": [
+    {
+     "text": "C'est peut-être ça",
+     "style": "sans",
+     "at": 23
+    },
+    {
+     "text": "le problème.",
+     "style": "serif_y",
+     "at": 27
+    }
+   ]
+  },
+  {
+   "type": "carte_noire",
+   "at": 35,
+   "fin": 45,
+   "valeur": "Ça se construit",
+   "label": "la confiance ne tombe pas du ciel",
+   "y": 0.83
+  },
+  {
+   "type": "chapitre",
+   "at": 46,
+   "fin": 50,
+   "text": "Ce qui se passe :",
+   "sub": "dans ton cerveau",
+   "y": 0.72
+  },
+  {
+   "type": "kinetic",
+   "at": 51,
+   "fin": 58,
+   "y": 0.8,
+   "lignes": [
+    {
+     "text": "Tu passes à l'action,",
+     "style": "sans",
+     "at": 51
+    },
+    {
+     "text": "tu publies un Reel.",
+     "style": "serif_y",
+     "at": 55
+    }
+   ]
+  },
+  {
+   "type": "dm",
+   "at": 59,
+   "fin": 82,
+   "y": 0.6,
+   "cache_st": true,
+   "entete": "ton cerveau se dit...",
+   "messages": [
+    {
+     "text": "OK, je l'ai fait.",
+     "at": 65
+    },
+    {
+     "text": "J'en suis pas morte.",
+     "at": 69
+    },
+    {
+     "text": "Je suis capable.",
+     "at": 73
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 83,
+   "fin": 89,
+   "y": 0.8,
+   "lignes": [
+    {
+     "text": "Et il s'est",
+     "style": "sans",
+     "at": 83
+    },
+    {
+     "text": "rien passé de grave.",
+     "style": "serif_y",
+     "at": 86
+    }
+   ]
+  },
+  {
+   "type": "resultat",
+   "at": 96,
+   "fin": 112,
+   "label": "à chaque Reel publié",
+   "valeur": "+ de preuves",
+   "y": 0.83
+  },
+  {
+   "type": "kinetic",
+   "at": 119,
+   "fin": 131,
+   "y": 0.8,
+   "lignes": [
+    {
+     "text": "Pas confiante",
+     "style": "sans",
+     "at": 119
+    },
+    {
+     "text": "avant d'agir.",
+     "style": "serif",
+     "at": 123
+    },
+    {
+     "text": "On n'est jamais prête.",
+     "style": "serif_y",
+     "at": 128
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 132,
+   "fin": 148,
+   "y": 0.8,
+   "lignes": [
+    {
+     "text": "Action,",
+     "style": "sans",
+     "at": 132
+    },
+    {
+     "text": "répétition,",
+     "style": "sans",
+     "at": 137
+    },
+    {
+     "text": "puis confiance.",
+     "style": "serif_y",
+     "at": 142
+    },
+    {
+     "text": "Pas l'inverse.",
+     "style": "serif",
+     "at": 146
+    }
+   ]
+  },
+  {
+   "type": "chapitre",
+   "at": 156,
+   "fin": 160,
+   "text": "Le Socials Club :",
+   "sub": "créé pour ça",
+   "y": 0.72
+  },
+  {
+   "type": "kinetic",
+   "at": 161,
+   "fin": 179,
+   "y": 0.8,
+   "lignes": [
+    {
+     "text": "Tester,",
+     "style": "sans_y",
+     "at": 169
+    },
+    {
+     "text": "apprendre, se tromper,",
+     "style": "serif",
+     "at": 170
+    },
+    {
+     "text": "se soutenir,",
+     "style": "serif",
+     "at": 173
+    },
+    {
+     "text": "progresser.",
+     "style": "serif_y",
+     "at": 177
+    }
+   ]
+  },
+  {
+   "type": "carte_noire",
+   "at": 186,
+   "fin": 191,
+   "valeur": "Sans peur",
+   "label": "d'être jugée",
+   "y": 0.83
+  },
+  {
+   "type": "kinetic",
+   "at": 195,
+   "fin": 204,
+   "y": 0.8,
+   "lignes": [
+    {
+     "text": "Parfois, il te manque",
+     "style": "sans",
+     "at": 195
+    },
+    {
+     "text": "juste un environnement.",
+     "style": "serif_y",
+     "at": 202
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 205,
+   "fin": 223,
+   "y": 0.8,
+   "lignes": [
+    {
+     "text": "Les mêmes envies,",
+     "style": "sans",
+     "at": 209
+    },
+    {
+     "text": "les mêmes objectifs,",
+     "style": "sans_y",
+     "at": 214
+    },
+    {
+     "text": "qui te comprennent.",
+     "style": "serif",
+     "at": 217
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 232,
+   "fin": 242,
+   "y": 0.8,
+   "lignes": [
+    {
+     "text": "Exactement ce que",
+     "style": "sans",
+     "at": 236
+    },
+    {
+     "text": "je voulais construire.",
+     "style": "serif_y",
+     "at": 239
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 249,
+   "fin": 262,
+   "y": 0.8,
+   "lignes": [
+    {
+     "text": "Arrête d'attendre",
+     "style": "sans",
+     "at": 249
+    },
+    {
+     "text": "d'être prête.",
+     "style": "serif_y",
+     "at": 251
+    },
+    {
+     "text": "Le compte que tu mérites.",
+     "style": "serif",
+     "at": 257
+    }
+   ]
+  }
+ ]
+}
