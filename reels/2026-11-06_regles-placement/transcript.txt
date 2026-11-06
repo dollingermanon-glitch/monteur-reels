@@ -1,0 +1,5 @@
+   3.08s  [0]Rappelle-toi, [1]tes [2]yeux [3]vont [4]ici [5]et [6]pas [7]ici.
+  12.09s  [8]Les [9]sous-titres [10]doivent [11]se [12]trouver [13]ici
+  14.97s  [14]et [15]non [16]pas [17]ici.
+  20.51s  [18]Les [19]sous-titres [20]doivent [21]se [22]trouver [23]ici [24]et [25]non [26]pas [27]ici.
+  29.66s  [28]Tes [29]yeux [30]doivent [31]regarder [32]ici [33]et [34]non [35]pas [36]ici.

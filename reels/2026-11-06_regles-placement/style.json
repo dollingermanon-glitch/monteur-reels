@@ -1,0 +1,164 @@
+{
+ "sous_titres_y": 0.64,
+ "phrases_serif": [],
+ "fondus": [],
+ "photos_sous_titres": [],
+ "elements": [
+  {
+   "type": "regle",
+   "at": 0,
+   "fin": 7,
+   "n": 1,
+   "text": "RÈGLE 1",
+   "hold": true
+  },
+  {
+   "type": "zones",
+   "at": 0,
+   "fin": 7,
+   "zones": [
+    {
+     "y": 0.31,
+     "y2": 0.47,
+     "ok": true,
+     "label": "ligne des yeux",
+     "at": 4
+    },
+    {
+     "y": 0.75,
+     "y2": 0.88,
+     "ok": false,
+     "label": "trop bas",
+     "at": 6
+    }
+   ],
+   "hold": true
+  },
+  {
+   "type": "regle",
+   "at": 18,
+   "fin": 27,
+   "n": 2,
+   "text": "RÈGLE 2",
+   "hold": true
+  },
+  {
+   "type": "zones",
+   "at": 18,
+   "fin": 27,
+   "zones": [
+    {
+     "y": 0.585,
+     "y2": 0.735,
+     "ok": true,
+     "label": "sous-titres",
+     "at": 23
+    },
+    {
+     "y": 0.8,
+     "y2": 0.94,
+     "ok": false,
+     "label": "caché par l'appli",
+     "at": 25
+    }
+   ],
+   "hold": true
+  },
+  {
+   "type": "regle",
+   "at": 28,
+   "fin": 36,
+   "n": 3,
+   "text": "RÈGLE 3",
+   "hold": true
+  },
+  {
+   "type": "mini_tel",
+   "at": 28,
+   "fin": 36,
+   "ok_at": 32,
+   "ko_at": 34,
+   "image_t": "7.4",
+   "y": 0.74,
+   "largeur": 360,
+   "ok": "l'objectif",
+   "ko": "pas l'écran",
+   "hold": true
+  },
+  {
+   "type": "regle",
+   "at": 37,
+   "fin": 44,
+   "n": 4,
+   "text": "RÈGLE 4",
+   "hold": true
+  },
+  {
+   "type": "zones",
+   "at": 37,
+   "fin": 44,
+   "zones": [
+    {
+     "y": 0.145,
+     "y2": 0.255,
+     "ok": true,
+     "label": "titre",
+     "at": 40,
+     "exemple": "Ton titre",
+     "taille": 104
+    },
+    {
+     "y": 0.76,
+     "y2": 0.9,
+     "ok": false,
+     "label": "pas ici",
+     "at": 42,
+     "exemple": "Ton titre",
+     "taille": 96
+    }
+   ],
+   "hold": true
+  },
+  {
+   "type": "regle",
+   "at": 48,
+   "fin": 58,
+   "n": 5,
+   "text": "RÈGLE 5",
+   "hold": true
+  },
+  {
+   "type": "note",
+   "at": 53,
+   "fin": 58,
+   "text": "ta tête",
+   "x": 0.2,
+   "y": 0.14,
+   "hold": true
+  },
+  {
+   "type": "rature",
+   "at": 54,
+   "fin": 58,
+   "entete": "et pas de là :",
+   "text": "les idées des autres",
+   "barre_at": 56,
+   "y": 0.83,
+   "hold": true
+  },
+  {
+   "type": "regle",
+   "at": 81,
+   "fin": 89,
+   "n": 5,
+   "text": "BONUS",
+   "hold": true
+  },
+  {
+   "type": "ui_reel",
+   "at": 81,
+   "fin": 89,
+   "rouge_at": 87
+  }
+ ]
+}
