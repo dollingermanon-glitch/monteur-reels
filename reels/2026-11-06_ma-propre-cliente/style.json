@@ -1,0 +1,260 @@
+{
+ "sous_titres_y": 0.64,
+ "phrases_serif": [],
+ "fondus": [],
+ "photos_sous_titres": [],
+ "elements": [
+  {
+   "type": "kinetic",
+   "at": 0,
+   "fin": 12,
+   "y": 0.8,
+   "lignes": [
+    {
+     "text": "En octobre,",
+     "style": "sans",
+     "at": 0
+    },
+    {
+     "text": "je me suis traitée",
+     "style": "serif",
+     "at": 5
+    },
+    {
+     "text": "comme ma propre cliente.",
+     "style": "serif_y",
+     "at": 10
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 61,
+   "fin": 71,
+   "y": 0.8,
+   "lignes": [
+    {
+     "text": "Des milliers",
+     "style": "sans_y",
+     "at": 63
+    },
+    {
+     "text": "d'abonnés",
+     "style": "serif",
+     "at": 65
+    },
+    {
+     "text": "pour mes coachées.",
+     "style": "serif",
+     "at": 66
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 93,
+   "fin": 101,
+   "y": 0.8,
+   "lignes": [
+    {
+     "text": "Mais cette fois,",
+     "style": "sans",
+     "at": 93
+    },
+    {
+     "text": "je l'applique",
+     "style": "serif",
+     "at": 96
+    },
+    {
+     "text": "à moi-même.",
+     "style": "serif_y",
+     "at": 100
+    }
+   ]
+  },
+  {
+   "type": "chapitre",
+   "at": 115,
+   "dur": 1.0,
+   "text": "Le plan :",
+   "sub": "comme pour une cliente",
+   "y": 0.72
+  },
+  {
+   "type": "dm",
+   "at": 119,
+   "fin": 147,
+   "y": 0.58,
+   "cache_st": true,
+   "entete": "sur le papier...",
+   "messages": [
+    {
+     "text": "+ Je sais exactement quoi faire",
+     "at": 119
+    },
+    {
+     "text": "- M'y tenir tous les jours",
+     "at": 126
+    },
+    {
+     "text": "- Ne pas savoir quand ça va marcher",
+     "at": 137
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 155,
+   "fin": 161,
+   "y": 0.8,
+   "lignes": [
+    {
+     "text": "La régularité,",
+     "style": "sans",
+     "at": 157
+    },
+    {
+     "text": "ça se construit.",
+     "style": "serif_y",
+     "at": 159
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 167,
+   "fin": 172,
+   "y": 0.8,
+   "lignes": [
+    {
+     "text": "Jour 1",
+     "style": "sans",
+     "at": 167
+    },
+    {
+     "text": "Jour 2",
+     "style": "sans",
+     "at": 169
+    },
+    {
+     "text": "Jour 3",
+     "style": "sans_y",
+     "at": 171
+    }
+   ]
+  },
+  {
+   "type": "carte_noire",
+   "at": 175,
+   "fin": 182,
+   "valeur": "30 jours",
+   "label": "1 Reel par jour",
+   "y": 0.83
+  },
+  {
+   "type": "kinetic",
+   "at": 198,
+   "fin": 205,
+   "y": 0.8,
+   "lignes": [
+    {
+     "text": "Quand j'ai vu les chiffres,",
+     "style": "serif",
+     "at": 199
+    },
+    {
+     "text": "J'ai halluciné.",
+     "style": "sans_y",
+     "at": 204
+    }
+   ]
+  },
+  {
+   "type": "resultat",
+   "at": 213,
+   "fin": 227,
+   "label": "abonnés grâce à UN seul Reel",
+   "valeur": "+500",
+   "y": 0.83
+  },
+  {
+   "type": "carte_noire",
+   "at": 248,
+   "fin": 257,
+   "valeur": "+1 000 abonnés",
+   "label": "en 30 jours",
+   "y": 0.83
+  },
+  {
+   "type": "kinetic",
+   "at": 270,
+   "fin": 283,
+   "y": 0.8,
+   "lignes": [
+    {
+     "text": "Pas besoin",
+     "style": "sans",
+     "at": 270
+    },
+    {
+     "text": "que chaque Reel explose",
+     "style": "serif_y",
+     "at": 274
+    },
+    {
+     "text": "pour dépasser mon objectif.",
+     "style": "serif",
+     "at": 280
+    }
+   ]
+  },
+  {
+   "type": "dm",
+   "at": 299,
+   "fin": 322,
+   "y": 0.58,
+   "cache_st": true,
+   "entete": "ce dont j'avais vraiment besoin :",
+   "messages": [
+    {
+     "text": "Faire du volume",
+     "at": 302
+    },
+    {
+     "text": "Appliquer les bonnes stratégies",
+     "at": 310
+    },
+    {
+     "text": "Laisser mes contenus fonctionner",
+     "at": 316
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 323,
+   "fin": 330,
+   "y": 0.8,
+   "lignes": [
+    {
+     "text": "Chaque Reel",
+     "style": "sans_y",
+     "at": 325
+    },
+    {
+     "text": "= un test.",
+     "style": "serif",
+     "at": 328
+    }
+   ]
+  },
+  {
+   "type": "commentaire",
+   "at": 373,
+   "fin": 379,
+   "mot": "QG",
+   "y": 0.82
+  }
+ ]
+}
