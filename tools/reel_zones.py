@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """Reel « zones » — format « tes yeux vont ici / et non pas ici ».
 
-Inspiré de la référence « exemple broke » : sous-titres courts en capitales avec le mot
-prononcé surligné, zones colorées qui montrent où va (ou ne va pas) chaque élément,
-petites étiquettes, gros mot qui pop, cadre « zone interdite ». Le tout à la charte SKR
-(jaune délavé / jaune soutenu, caramel, crème, Fredoka + Poppins, pas de noir, pas de rose).
+Mécanique reprise de la référence « exemple broke » (zones qui montrent où va / ne va pas
+chaque élément, étiquettes, mot qui pop, cadre « zone interdite »), mais 100 % à la charte SKR :
+sous-titres Poppins Bold blanc qui s'écrivent en direct (sans mot surligné), titres Fredoka
+capitales jaune délavé, texte secondaire manuscrit blanc (Sriracha), pastilles jaune soutenu
+au texte caramel, zones « non » crème hachurées caramel. Pas de noir, pas de rose, pas d'emoji.
 
 Usage : python3 reel_zones.py <workdir> [--photos]
 Lit  <workdir>/norm.mp4, transcript.json, zones.json
@@ -25,7 +26,7 @@ ACCENT = (242, 210, 127, 255)      # jaune soutenu
 CREME = (255, 250, 240, 255)
 CARAMEL = (122, 91, 56, 255)
 OUI = (242, 210, 127)              # zone « ici » : jaune soutenu
-NON = (214, 112, 86)               # zone « pas ici » : terracotta doux (ni rose, ni noir)
+NON = (255, 250, 240)              # zone « pas ici » : crème hachurée caramel
 SHADOW = (70, 45, 25)
 
 
@@ -71,8 +72,8 @@ def badge(ok, size=86):
     s = 4
     img = Image.new("RGBA", (size * s, size * s), (0, 0, 0, 0))
     d = ImageDraw.Draw(img)
-    d.ellipse((0, 0, size * s - 1, size * s - 1), fill=CREME)
-    col = CARAMEL if ok else NON + (255,)
+    d.ellipse((0, 0, size * s - 1, size * s - 1), fill=ACCENT if ok else CREME)
+    col = CARAMEL
     lw = int(size * s * 0.11)
     if ok:
         pts = [(0.27, 0.53), (0.44, 0.69), (0.74, 0.34)]
@@ -84,12 +85,35 @@ def badge(ok, size=86):
 
 
 @lru_cache(maxsize=None)
-def label_spr(text, size=58, color=WHITE):
+def label_spr(text, size=58, color=TITRE):
     f = font("Fredoka-Bold.ttf", size)
     bb = f.getbbox(text)
     img = Image.new("RGBA", (bb[2] + 20, bb[3] + 20), (0, 0, 0, 0))
     ImageDraw.Draw(img).text((10 - bb[0], 10), text, font=f, fill=color)
-    return shadowed(img, 7, (0, 3), 170)
+    return shadowed(img, 11, (0, 4), 170)
+
+
+@lru_cache(maxsize=None)
+def hand_spr(text, size=56, color=WHITE):
+    f = font("Sriracha-Regular.ttf", size)
+    bb = f.getbbox(text)
+    img = Image.new("RGBA", (bb[2] + 30, bb[3] + 30), (0, 0, 0, 0))
+    ImageDraw.Draw(img).text((15 - bb[0], 12), text, font=f, fill=color)
+    return shadowed(img, 10, (0, 3), 200)
+
+
+@lru_cache(maxsize=None)
+def ig_tile(size=170):
+    """Logo Instagram monochrome à la charte : tuile jaune soutenu, appareil caramel."""
+    k = 4; S = size * k
+    img = Image.new("RGBA", (S, S), (0, 0, 0, 0))
+    d = ImageDraw.Draw(img)
+    d.rounded_rectangle((0, 0, S - 1, S - 1), int(S * 0.24), fill=ACCENT)
+    lw = int(S * 0.075)
+    d.rounded_rectangle((S * .2, S * .2, S * .8, S * .8), int(S * .17), outline=CARAMEL, width=lw)
+    d.ellipse((S * .355, S * .355, S * .645, S * .645), outline=CARAMEL, width=lw)
+    d.ellipse((S * .64, S * .29, S * .72, S * .37), fill=CARAMEL)
+    return shadowed(img.resize((size, size), Image.LANCZOS), 12, (0, 6), 110)
 
 
 @lru_cache(maxsize=None)
@@ -122,8 +146,7 @@ class Zone:
         if a <= 0:
             return
         col = OUI if self.ok else NON
-        alpha = int(s.get("alpha", 0.72 if self.ok else 0.62) * 255 * a)
-        edge = tuple(int(v * 0.82) for v in col) + (int(230 * a),)
+        alpha = int(s.get("alpha", 0.72 if self.ok else 0.6) * 255 * a)
         x0, y0, x1, y1 = [v * (W if k % 2 == 0 else H) for k, v in enumerate(s["box"])]
         lay = Image.new("RGBA", (W, H), (0, 0, 0, 0))
         d = ImageDraw.Draw(lay)
@@ -133,14 +156,21 @@ class Zone:
         cx, cy = (x0 + x1) / 2, (y0 + y1) / 2
         hw, hh = (x1 - x0) / 2 * k, (y1 - y0) / 2 * k
         if shape == "rond":
-            d.ellipse((cx - hw, cy - hh, cx + hw, cy + hh), fill=col + (alpha,), outline=edge, width=5)
+            d.ellipse((cx - hw, cy - hh, cx + hw, cy + hh), fill=col + (alpha,))
         elif shape == "cadre":
             ep = s.get("epaisseur", 70)
             d.rectangle((0, 0, W, H), fill=col + (alpha,))
             d.rounded_rectangle((x0 + ep, y0 + ep, x1 - ep, y1 - ep * 3.2), 28, fill=(0, 0, 0, 0))
         else:
-            d.rounded_rectangle((cx - hw, cy - hh, cx + hw, cy + hh), s.get("rayon", 22), fill=col + (alpha,),
-                                outline=edge, width=5)
+            d.rounded_rectangle((cx - hw, cy - hh, cx + hw, cy + hh), s.get("rayon", 22), fill=col + (alpha,))
+        if not self.ok:
+            # hachures caramel douces, limitées à la forme
+            mask = lay.getchannel("A").point(lambda v: 255 if v > 0 else 0)
+            hat = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+            hd = ImageDraw.Draw(hat)
+            for x in range(-H, W, 46):
+                hd.line([(x, H), (x + H, 0)], fill=CARAMEL[:3] + (int(120 * a),), width=9)
+            lay.alpha_composite(Image.composite(hat, Image.new("RGBA", (W, H), (0, 0, 0, 0)), mask))
         c.alpha_composite(lay)
         # pastille check / croix
         if s.get("icone", True):
@@ -185,23 +215,67 @@ class CTA(Pop):
         put(c, pill_spr(txt, s.get("taille", 64), bg, CARAMEL), s["x"] * W, s["y"] * H, sc, a_out)
 
 
-TYPES = {"zone": Zone, "pop": Pop, "cta": CTA}
+class Titre(Pop):
+    """Accroche : capitales arrondies jaune délavé + ligne manuscrite blanche."""
+
+    def __init__(self, s):
+        super().__init__(s)
+        f = font("Fredoka-Bold.ttf", s.get("taille", 104))
+        words, lines, cur = s["text"].upper().split(), [], ""
+        for w in words:
+            if cur and f.getlength(cur + " " + w) > 960:
+                lines.append(cur); cur = w
+            else:
+                cur = (cur + " " + w).strip()
+        lines.append(cur)
+        self.lines = [label_spr(l, s.get("taille", 104)) for l in lines]
+        self.sub = hand_spr(s["sub"], s.get("taille_sub", 60)) if s.get("sub") else None
+
+    def draw(self, c, t):
+        s = self.s
+        a_out = min(1, max(0, (self.t1 - t) / 0.2))
+        y = s["y"] * H
+        for k, spr in enumerate(self.lines):
+            x = (t - self.t0 - 0.12 * k) / 0.3
+            if x > 0:
+                put(c, spr, W / 2, y + spr.height / 2, 1.25 - 0.25 * ease_out(x), min(1, x * 1.6) * a_out)
+            y += spr.height - 34
+        if self.sub:
+            x = (t - self.t0 - 0.12 * len(self.lines) - 0.1) / 0.35
+            if x > 0:
+                put(c, self.sub, W / 2, y + self.sub.height / 2 + 4, 1, ease_out(x) * a_out)
 
 
-# ───────────────────── sous-titres : capitales, mot actif surligné ─────────────────────
+class LogoIG(Pop):
+    def draw(self, c, t):
+        s = self.s
+        a_out = min(1, max(0, (self.t1 - t) / 0.15))
+        sc = ease_back((t - self.t0) / 0.3, 2.0)
+        put(c, ig_tile(s.get("taille", 170)), s["x"] * W, s["y"] * H, sc, a_out)
+        if s.get("label"):
+            x = (t - self.t0 - 0.15) / 0.3
+            put(c, hand_spr(s["label"], 52), s["x"] * W, s["y"] * H + s.get("taille", 170) * 0.5 + 40,
+                1, ease_out(x) * a_out)
+
+
+TYPES = {"zone": Zone, "pop": Pop, "cta": CTA, "titre": Titre, "logo_ig": LogoIG}
+
+
+# ───────────────────── sous-titres : charte SKR, le texte s'écrit en direct ─────────────────────
 class Captions:
-    def __init__(self, words, y, size=70, max_mots=3, max_car=16, fixes=None):
+    def __init__(self, words, y, size=62, max_mots=3, max_car=20, fixes=None):
         self.y, self.size = y, size
         fixes = fixes or {}
         ws = []
         for w in words:
             txt = fixes.get(str(w["i"]), w["text"])
             if txt:
-                ws.append(dict(w, text=txt.upper()))
+                ws.append(dict(w, text=txt))
         chunks, cur = [], []
         for w in ws:
             cand = " ".join(x["text"] for x in cur + [w])
-            if cur and (w["text"].strip(",.") in ("ET", "MAIS", "OU") or len(cur) >= max_mots or len(cand) > max_car or w["start"] - cur[-1]["end"] > 0.6):
+            if cur and (w["text"].lower().strip(",.") in ("et", "mais", "ou") or len(cur) >= max_mots
+                        or len(cand) > max_car or w["start"] - cur[-1]["end"] > 0.6):
                 chunks.append(cur); cur = []
             cur.append(w)
             if re.search(r"[.!?,]$", w["text"]):
@@ -209,48 +283,36 @@ class Captions:
         if cur:
             chunks.append(cur)
         self.chunks = []
+        f = font("Poppins-Bold.ttf", size)
         for k, ch in enumerate(chunks):
+            text = " ".join(w["text"] for w in ch)
+            text = text[0].upper() + text[1:] if k == 0 or re.search(r"[.!?]$", chunks[k - 1][-1]["text"]) else text
             nxt = chunks[k + 1][0]["start"] if k + 1 < len(chunks) else ch[-1]["end"] + 1.0
-            self.chunks.append({"words": ch, "t0": ch[0]["start"] - 0.04,
-                                "t1": min(nxt - 0.02, ch[-1]["end"] + 0.9)})
+            self.chunks.append({"words": ch, "text": text, "w": f.getlength(text),
+                                "t0": ch[0]["start"] - 0.04, "t1": min(nxt - 0.02, ch[-1]["end"] + 0.9)})
 
-    @lru_cache(maxsize=512)
-    def sprite(self, k, active):
+    @lru_cache(maxsize=1024)
+    def sprite(self, k, n):
         ch = self.chunks[k]
         f = font("Poppins-Bold.ttf", self.size)
-        sp = f.getlength(" ")
-        texts = [w["text"] for w in ch["words"]]
-        # 2 lignes si trop large
-        lines, cur = [], []
-        for j, tx in enumerate(texts):
-            if cur and f.getlength(" ".join(texts[i] for i in cur + [j])) > 900:
-                lines.append(cur); cur = []
-            cur.append(j)
-        lines.append(cur)
-        lh = int(self.size * 1.18)
-        bw = int(max(f.getlength(" ".join(texts[i] for i in l)) for l in lines)) + 40
-        img = Image.new("RGBA", (bw, lh * len(lines) + 30), (0, 0, 0, 0))
-        d = ImageDraw.Draw(img)
-        for r, l in enumerate(lines):
-            lw = f.getlength(" ".join(texts[i] for i in l))
-            x = (bw - lw) / 2
-            for i in l:
-                col = ACCENT if i == active else WHITE
-                d.text((x, 10 + r * lh), texts[i], font=f, fill=col,
-                       stroke_width=3, stroke_fill=(92, 64, 38, 255))
-                x += f.getlength(texts[i]) + sp
-        return shadowed(img, 8, (0, 4), 150)
+        bw = int(ch["w"]) + 40
+        img = Image.new("RGBA", (bw, int(self.size * 1.5)), (0, 0, 0, 0))
+        ImageDraw.Draw(img).text((20, 8), ch["text"][:n], font=f, fill=WHITE)
+        return shadowed(img, 9, (0, 4), 150)
 
     def draw(self, c, t, y=None):
         for k, ch in enumerate(self.chunks):
             if ch["t0"] <= t < ch["t1"]:
-                act = -1
-                for j, w in enumerate(ch["words"]):
-                    if t >= w["start"] - 0.04:
-                        act = j
-                spr = self.sprite(k, act)
-                sc = 0.88 + 0.12 * ease_back((t - ch["t0"]) / 0.14)
-                put(c, spr, W / 2, (y or self.y) * H, sc)
+                n, pos = 0, 0
+                for w in ch["words"]:
+                    L = len(w["text"]) + 1
+                    if t >= w["end"]:
+                        n = pos + L
+                    elif t >= w["start"] - 0.04:
+                        n = pos + max(1, int(L * (t - w["start"] + 0.04) / max(0.08, w["end"] - w["start"])))
+                    pos += L
+                spr = self.sprite(k, min(n, len(ch["text"])))
+                put(c, spr, W / 2, (y or self.y) * H)
                 return
 
 
