@@ -1,10 +1,25 @@
 {
  "rythme": "naturel",
  "zoom": "alterne",
- "zoom_punch": [0, 149, 341, 353, 388, 424, 454],
+ "zoom_punch": [
+  0,
+  149,
+  153,
+  341,
+  353,
+  388,
+  424,
+  454
+ ],
  "drop": [
-  [13, 15],
-  [50, 64]
+  [
+   13,
+   15
+  ],
+  [
+   50,
+   64
+  ]
  ],
  "fix": {
   "6": "l'Instagram",
@@ -47,7 +62,7 @@
    "at": 33,
    "dur": 1.6,
    "text": "Signe #1",
-   "size": 108
+   "size": 116
   },
   {
    "type": "mot_cle",
@@ -71,11 +86,20 @@
    "at": 81,
    "jusqu_a": 86,
    "title": "Ton reel est censé t'apporter :",
-   "size": 58,
+   "size": 64,
    "items": [
-    {"text": "Des abonnés", "at": 82},
-    {"text": "De l'engagement", "at": 84},
-    {"text": "Des ventes", "at": 86}
+    {
+     "text": "Des abonnés",
+     "at": 82
+    },
+    {
+     "text": "De l'engagement",
+     "at": 84
+    },
+    {
+     "text": "Des ventes",
+     "at": 86
+    }
    ]
   },
   {
@@ -99,26 +123,59 @@
    "at": 115,
    "dur": 1.6,
    "text": "Signe #2",
-   "size": 108
+   "size": 116
   },
   {
    "type": "souligne",
    "at": 138,
    "jusqu_a": 141,
    "text": "Une équipe de foot",
-   "size": 100
+   "size": 108
   },
   {
    "type": "liste",
    "at": 142,
-   "jusqu_a": 200,
+   "jusqu_a": 152,
    "title": "Sur un terrain :",
-   "size": 58,
+   "icone": "ballon",
+   "size": 64,
    "items": [
-    {"text": "Des attaquants", "at": 149},
-    {"text": "Des milieux", "at": 171},
-    {"text": "Des défenseurs", "at": 180},
-    {"text": "Un gardien", "at": 183}
+    {
+     "text": "Des attaquants",
+     "at": 149
+    }
+   ]
+  },
+  {
+   "type": "notif",
+   "at": 153,
+   "jusqu_a": 165,
+   "icone": "ballon",
+   "text": "11 Mbappés qui sprintent sur le terrain ?",
+   "size": 56,
+   "icon_size": 64,
+   "max_chars": 20
+  },
+  {
+   "type": "liste",
+   "at": 166,
+   "jusqu_a": 200,
+   "title": "Et aussi :",
+   "icone": "ballon",
+   "size": 64,
+   "items": [
+    {
+     "text": "Des milieux",
+     "at": 171
+    },
+    {
+     "text": "Des défenseurs",
+     "at": 180
+    },
+    {
+     "text": "Un gardien",
+     "at": 183
+    }
    ]
   },
   {
@@ -135,18 +192,27 @@
    "at": 208,
    "dur": 1.6,
    "text": "Signe #3",
-   "size": 108
+   "size": 116
   },
   {
    "type": "liste",
    "at": 210,
    "jusqu_a": 274,
    "title": "3 types de contenus :",
-   "size": 58,
+   "size": 64,
    "items": [
-    {"text": "Attirer → abonnés", "at": 225},
-    {"text": "Engager → commentaires & DM", "at": 239},
-    {"text": "Convertir → ventes", "at": 256}
+    {
+     "text": "Attirer → abonnés",
+     "at": 225
+    },
+    {
+     "text": "Engager → commentaires & DM",
+     "at": 239
+    },
+    {
+     "text": "Convertir → ventes",
+     "at": 256
+    }
    ]
   },
   {
@@ -163,7 +229,7 @@
    "at": 312,
    "jusqu_a": 314,
    "text": "Énormément de ventes",
-   "size": 100
+   "size": 108
   },
   {
    "type": "chiffre",
@@ -188,7 +254,7 @@
    "at": 365,
    "jusqu_a": 368,
    "text": "Faire grossir mon compte",
-   "size": 100
+   "size": 108
   },
   {
    "type": "mot_cle",
@@ -204,7 +270,7 @@
    "at": 382,
    "jusqu_a": 384,
    "text": "Stratégie de croissance",
-   "size": 100
+   "size": 108
   },
   {
    "type": "chiffre",
@@ -228,7 +294,7 @@
    "at": 418,
    "jusqu_a": 422,
    "text": "Mini-formation offerte de 11 jours",
-   "size": 92
+   "size": 100
   },
   {
    "type": "cta",
@@ -236,18 +302,27 @@
    "jusqu_a": 428,
    "text": "BF2026",
    "icone": "commentaire",
-   "size": 68
+   "size": 76
   },
   {
    "type": "liste",
    "at": 436,
    "jusqu_a": 440,
    "title": "Chaque jour, un hack pour :",
-   "size": 58,
+   "size": 64,
    "items": [
-    {"text": "Attirer", "at": 437},
-    {"text": "Engager", "at": 438},
-    {"text": "Vendre", "at": 440}
+    {
+     "text": "Attirer",
+     "at": 437
+    },
+    {
+     "text": "Engager",
+     "at": 438
+    },
+    {
+     "text": "Vendre",
+     "at": 440
+    }
    ]
   },
   {
@@ -255,7 +330,7 @@
    "at": 446,
    "jusqu_a": 448,
    "text": "Ta liste VIP",
-   "size": 100
+   "size": 108
   },
   {
    "type": "chiffre",
