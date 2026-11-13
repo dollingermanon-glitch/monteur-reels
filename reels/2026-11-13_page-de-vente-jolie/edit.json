@@ -38,26 +38,45 @@
    "sub": "fais une page qui vend"
   },
   {
-   "type": "liste",
+   "type": "souligne",
    "at": 10,
-   "jusqu_a": 33,
-   "title": "Laquelle vend le plus ?",
-   "items": [
-    {
-     "text": "Page 1",
-     "at": 22
-    },
-    {
-     "text": "Page 2",
-     "at": 24
-    }
+   "jusqu_a": 21,
+   "text": "Laquelle vend le plus ?"
+  },
+  {
+   "type": "capture",
+   "at": 22,
+   "jusqu_a": 23,
+   "image": "page_jolie.png",
+   "crop": [
+    0,
+    0,
+    1448,
+    420
    ]
   },
   {
-   "type": "mot_cle",
-   "at": 34,
+   "type": "capture",
+   "at": 24,
    "jusqu_a": 41,
-   "text": "La deuxième"
+   "image": "page_vend.png",
+   "crop": [
+    280,
+    100,
+    1720,
+    420
+   ],
+   "focus": [
+    {
+     "box": [
+      445,
+      160,
+      1535,
+      308
+     ],
+     "at": 34
+    }
+   ]
   },
   {
    "type": "section",
@@ -66,10 +85,27 @@
    "text": "Erreur #1"
   },
   {
-   "type": "souligne",
+   "type": "capture",
    "at": 58,
    "jusqu_a": 70,
-   "text": "Le nom en énorme"
+   "image": "page_jolie.png",
+   "crop": [
+    0,
+    0,
+    1448,
+    420
+   ],
+   "focus": [
+    {
+     "box": [
+      290,
+      120,
+      1140,
+      350
+     ],
+     "at": 60
+    }
+   ]
   },
   {
    "type": "mot_cle",
@@ -80,16 +116,33 @@
   {
    "type": "bulle",
    "at": 98,
-   "jusqu_a": 110,
+   "jusqu_a": 102,
    "style": "commentaire",
    "nom": "ta future cliente",
    "text": "Ok, mais ça va m'apporter quoi ?"
   },
   {
-   "type": "souligne",
-   "at": 111,
+   "type": "capture",
+   "at": 103,
    "jusqu_a": 113,
-   "text": "Ta promesse"
+   "image": "page_vend.png",
+   "crop": [
+    280,
+    100,
+    1720,
+    420
+   ],
+   "focus": [
+    {
+     "box": [
+      445,
+      160,
+      1535,
+      308
+     ],
+     "at": 111
+    }
+   ]
   },
   {
    "type": "chiffre",
@@ -216,10 +269,39 @@
    ]
   },
   {
-   "type": "mot_cle",
+   "type": "capture",
+   "at": 310,
+   "jusqu_a": 317,
+   "image": "page_jolie.png",
+   "crop": [
+    0,
+    0,
+    1448,
+    420
+   ]
+  },
+  {
+   "type": "capture",
    "at": 318,
    "jusqu_a": 327,
-   "text": "La 2e convertit"
+   "image": "page_vend.png",
+   "crop": [
+    280,
+    100,
+    1720,
+    420
+   ],
+   "focus": [
+    {
+     "box": [
+      320,
+      352,
+      1660,
+      392
+     ],
+     "at": 323
+    }
+   ]
   },
   {
    "type": "mot_cle",
