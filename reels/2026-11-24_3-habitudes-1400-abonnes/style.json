@@ -1,0 +1,461 @@
+{
+ "sous_titres_y": 0.64,
+ "phrases_serif": [],
+ "fondus": [],
+ "photos_sous_titres": [],
+ "elements": [
+  {
+   "type": "kinetic",
+   "at": 0,
+   "fin": 19,
+   "y": 0.8,
+   "lignes": [
+    {
+     "text": "3 habitudes cheloues",
+     "style": "sans",
+     "at": 0
+    },
+    {
+     "text": "+1 400 abonnés",
+     "style": "sans_y",
+     "at": 8
+    },
+    {
+     "text": "en 1 mois et demi.",
+     "style": "serif",
+     "at": 13
+    }
+   ]
+  },
+  {
+   "type": "resultat",
+   "at": 20,
+   "fin": 22,
+   "label": "nouveaux abonnés en octobre",
+   "valeur": "+1 400",
+   "y": 0.83
+  },
+  {
+   "type": "kinetic",
+   "at": 23,
+   "fin": 38,
+   "y": 0.8,
+   "lignes": [
+    {
+     "text": "Trop créative",
+     "style": "sans",
+     "at": 29
+    },
+    {
+     "text": "pour avoir un calendrier",
+     "style": "serif",
+     "at": 33
+    },
+    {
+     "text": "de contenu.",
+     "style": "serif_y",
+     "at": 36
+    }
+   ]
+  },
+  {
+   "type": "carte_noire",
+   "at": 62,
+   "fin": 70,
+   "valeur": "800+",
+   "label": "posts publiés sur Instagram",
+   "y": 0.83
+  },
+  {
+   "type": "kinetic",
+   "at": 71,
+   "fin": 80,
+   "y": 0.8,
+   "lignes": [
+    {
+     "text": "Spontanée",
+     "style": "sans",
+     "at": 73
+    },
+    {
+     "text": "≠ stratégique.",
+     "style": "serif_y",
+     "at": 78
+    }
+   ]
+  },
+  {
+   "type": "chapitre",
+   "at": 94,
+   "fin": 95,
+   "text": "Habitude #1 :",
+   "sub": "2 casquettes",
+   "y": 0.72
+  },
+  {
+   "type": "kinetic",
+   "at": 104,
+   "fin": 109,
+   "y": 0.8,
+   "lignes": [
+    {
+     "text": "Créative",
+     "style": "sans",
+     "at": 104
+    },
+    {
+     "text": "et stratégique",
+     "style": "serif",
+     "at": 105
+    },
+    {
+     "text": "en même temps ? Non.",
+     "style": "serif_y",
+     "at": 107
+    }
+   ]
+  },
+  {
+   "type": "carte_noire",
+   "at": 114,
+   "fin": 120,
+   "valeur": "Stratégiste",
+   "label": "casquette n°1",
+   "y": 0.83
+  },
+  {
+   "type": "note",
+   "at": 121,
+   "fin": 131,
+   "text": "1 fois\npar mois",
+   "x": 0.22,
+   "y": 0.5,
+   "cache_st": true
+  },
+  {
+   "type": "dm",
+   "at": 140,
+   "fin": 160,
+   "y": 0.67,
+   "cache_st": true,
+   "entete": "ce que je décide...",
+   "messages": [
+    {
+     "text": "Quels posts vont attirer des abonnés ?",
+     "at": 140
+    },
+    {
+     "text": "Lesquels vont engager ?",
+     "at": 146
+    },
+    {
+     "text": "Lesquels vont vendre ?",
+     "at": 151
+    }
+   ]
+  },
+  {
+   "type": "chapitre",
+   "at": 185,
+   "fin": 186,
+   "text": "Habitude #2 :",
+   "sub": "laisser des trous",
+   "y": 0.72
+  },
+  {
+   "type": "kinetic",
+   "at": 197,
+   "fin": 206,
+   "y": 0.8,
+   "lignes": [
+    {
+     "text": "Des trous",
+     "style": "sans_y",
+     "at": 201
+    },
+    {
+     "text": "volontairement",
+     "style": "serif",
+     "at": 199
+    },
+    {
+     "text": "dans mon calendrier.",
+     "style": "serif",
+     "at": 204
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 221,
+   "fin": 238,
+   "y": 0.8,
+   "lignes": [
+    {
+     "text": "Une idée demain ?",
+     "style": "sans",
+     "at": 224
+    },
+    {
+     "text": "Je la publie",
+     "style": "serif",
+     "at": 228
+    },
+    {
+     "text": "sans tout casser.",
+     "style": "serif_y",
+     "at": 234
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 252,
+   "fin": 264,
+   "y": 0.8,
+   "lignes": [
+    {
+     "text": "De la structure,",
+     "style": "sans",
+     "at": 252
+    },
+    {
+     "text": "et de la place",
+     "style": "serif",
+     "at": 256
+    },
+    {
+     "text": "pour être spontanée.",
+     "style": "serif_y",
+     "at": 263
+    }
+   ]
+  },
+  {
+   "type": "chapitre",
+   "at": 265,
+   "fin": 267,
+   "text": "Habitude #3 :",
+   "sub": "1 semaine d'avance",
+   "y": 0.72
+  },
+  {
+   "type": "carte_noire",
+   "at": 279,
+   "fin": 288,
+   "valeur": "< 2 h",
+   "label": "de création par semaine",
+   "y": 0.83
+  },
+  {
+   "type": "carte_noire",
+   "at": 295,
+   "fin": 304,
+   "valeur": "Exécutante",
+   "label": "casquette n°2",
+   "y": 0.83
+  },
+  {
+   "type": "kinetic",
+   "at": 317,
+   "fin": 347,
+   "y": 0.8,
+   "lignes": [
+    {
+     "text": "Quoi publier ?",
+     "style": "sans",
+     "at": 317
+    },
+    {
+     "text": "Pourquoi ?",
+     "style": "serif",
+     "at": 325
+    },
+    {
+     "text": "Déjà décidé.",
+     "style": "serif_y",
+     "at": 339
+    }
+   ]
+  },
+  {
+   "type": "dm",
+   "at": 348,
+   "fin": 368,
+   "y": 0.67,
+   "cache_st": true,
+   "entete": "avant, à 18 h...",
+   "messages": [
+    {
+     "text": "Il faut qu'un Reel sorte !",
+     "at": 360
+    }
+   ]
+  },
+  {
+   "type": "carte_noire",
+   "at": 369,
+   "fin": 394,
+   "valeur": "0 abonné",
+   "label": "avec un mème posté dans le rush",
+   "y": 0.83
+  },
+  {
+   "type": "photos",
+   "at": 395,
+   "fin": 400,
+   "y": 0.74,
+   "cache_st": true,
+   "images": [
+    {
+     "image": "inserts/1.webp",
+     "largeur": 430,
+     "x": 0.5,
+     "rot": -4,
+     "legende": "ce carrousel",
+     "at": 395
+    }
+   ]
+  },
+  {
+   "type": "capture",
+   "at": 401,
+   "fin": 405,
+   "image": "inserts/2.png",
+   "largeur": 860,
+   "y": 0.74,
+   "cache_st": true,
+   "focus": [
+    {
+     "box": [
+      425,
+      97,
+      548,
+      125
+     ],
+     "at": 401
+    },
+    {
+     "box": [
+      458,
+      238,
+      548,
+      268
+     ],
+     "at": 403
+    }
+   ]
+  },
+  {
+   "type": "capture",
+   "at": 406,
+   "fin": 412,
+   "image": "inserts/3.png",
+   "largeur": 860,
+   "y": 0.76,
+   "cache_st": true,
+   "focus": [
+    {
+     "box": [
+      468,
+      15,
+      545,
+      48
+     ],
+     "at": 406
+    }
+   ]
+  },
+  {
+   "type": "capture",
+   "at": 413,
+   "fin": 428,
+   "image": "inserts/4.png",
+   "largeur": 820,
+   "y": 0.74,
+   "cache_st": true,
+   "focus": [
+    {
+     "box": [
+      15,
+      150,
+      560,
+      185
+     ],
+     "at": 413
+    },
+    {
+     "box": [
+      15,
+      305,
+      560,
+      345
+     ],
+     "at": 417
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 429,
+   "fin": 441,
+   "y": 0.8,
+   "lignes": [
+    {
+     "text": "Des résultats réguliers ?",
+     "style": "sans",
+     "at": 429
+    },
+    {
+     "text": "Il te faut",
+     "style": "serif",
+     "at": 437
+    },
+    {
+     "text": "un système.",
+     "style": "serif_y",
+     "at": 440
+    }
+   ]
+  },
+  {
+   "type": "carte_noire",
+   "at": 445,
+   "fin": 473,
+   "valeur": "Mini-formation",
+   "label": "gratuite · 11 jours · hacks + outils",
+   "y": 0.83
+  },
+  {
+   "type": "commentaire",
+   "at": 474,
+   "fin": 482,
+   "mot": "BF2026",
+   "y": 0.82
+  },
+  {
+   "type": "carte_noire",
+   "at": 483,
+   "fin": 495,
+   "valeur": "Liste VIP",
+   "label": "Black Friday",
+   "y": 0.83
+  },
+  {
+   "type": "carte_noire",
+   "at": 496,
+   "fin": 505,
+   "valeur": "-60 %",
+   "label": "sur toutes mes formations",
+   "y": 0.83
+  },
+  {
+   "type": "carte_noire",
+   "at": 506,
+   "fin": 519,
+   "valeur": "1 acheté = 1 offert",
+   "label": "sur toutes mes formations",
+   "y": 0.83
+  }
+ ]
+}
