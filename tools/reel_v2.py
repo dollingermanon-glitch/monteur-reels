@@ -651,8 +651,87 @@ class ScreenRec(El):
         if self.lab:
             put(c, self.lab, W / 2, cy - spr.height / 2 + 6, alpha=ease_out((t - self.t0 - 0.3) / 0.3) * out)
 
+
+class Feed(El):
+    """Grille façon profil Instagram (défi « trouve la vraie ») puis révélation : pastilles IA / VRAIE PHOTO."""
+    hides_caps = True
+
+    def __init__(self, s, T):
+        super().__init__(s, T)
+        cw = s.get("largeur_case", 330)
+        self.cells = []
+        for k, it in enumerate(s["images"]):
+            im = Image.open(_wd_path(it["image"])).convert("RGB")
+            ch = int(cw * 4 / 3)
+            r = max(cw / im.width, ch / im.height)
+            im = im.resize((int(im.width * r + 0.5), int(im.height * r + 0.5)), Image.LANCZOS)
+            im = im.crop(((im.width - cw) // 2, (im.height - ch) // 2, (im.width - cw) // 2 + cw, (im.height - ch) // 2 + ch))
+            self.cells.append((im, bool(it.get("vraie"))))
+        self.cw, self.ch = cw, int(cw * 4 / 3)
+        self.gap = 12
+        n = len(self.cells)
+        self.pos = []
+        rows = [list(range(i, min(n, i + 3))) for i in range(0, n, 3)]
+        gh = len(rows) * self.ch + (len(rows) - 1) * self.gap
+        cy0 = s.get("y", 0.6) * H - gh / 2
+        for r_, row in enumerate(rows):
+            rw = len(row) * cw + (len(row) - 1) * self.gap
+            for j, k in enumerate(row):
+                self.pos.append((W / 2 - rw / 2 + j * (cw + self.gap) + cw / 2, cy0 + r_ * (self.ch + self.gap) + self.ch / 2))
+        self.top = cy0
+        self.head = text_spr(s["entete"], "black", 78, YELLOW) if s.get("entete") else None
+        self.head2 = text_spr(s["entete_revele"], "black", 78, YELLOW) if s.get("entete_revele") else None
+        self.reveal = T(s["revele_at"]) if "revele_at" in s else None
+        self.badges = {}
+        for txt, bg, fg in (("IA", (246, 228, 170, 255), (122, 91, 56, 255)), ("VRAIE PHOTO", (255, 255, 255, 255), (122, 91, 56, 255))):
+            tx = text_spr(txt, "black", 44 if txt == "IA" else 36, fg, shadow=False)
+            pill = rrect((tx.width + 50, tx.height + 30), (tx.height + 30) // 2, bg)
+            pill.alpha_composite(tx, (25, 15))
+            self.badges[txt] = shadowed(pill, 12, (0, 6), 120)
+        self.nums = []
+        for k in range(n):
+            b = Image.new("RGBA", (64, 64), (0, 0, 0, 0))
+            ImageDraw.Draw(b).ellipse((0, 0, 63, 63), fill=(255, 255, 255, 235))
+            tx = text_spr(str(k + 1), "black", 38, (122, 91, 56, 255), shadow=False)
+            b.alpha_composite(tx, ((64 - tx.width) // 2, (64 - tx.height) // 2 - 2))
+            self.nums.append(b)
+        self.sfx = [(self.t0, "woosh", 0.4)] + [(self.t0 + 0.12 * k, "pop", 0.25) for k in range(n)]
+        if self.reveal is not None:
+            self.sfx += [(self.reveal + 0.18 * k, "click2" if not c[1] else "notif2", 0.6) for k, c in enumerate(self.cells)]
+
+    def draw(self, c, t):
+        _, out = self.life(t)
+        inn = min(1, (t - self.t0) / 0.3)
+        dim = Image.new("RGBA", (W, H), (40, 28, 18, int(150 * inn * out)))
+        c.alpha_composite(dim)
+        rv = self.reveal is not None and t >= self.reveal
+        hd = self.head2 if (rv and self.head2) else self.head
+        if hd:
+            put(c, hd, W / 2, self.top - hd.height / 2 - 20, alpha=ease_out((t - self.t0) / 0.3) * out)
+        for k, ((im, real), (x, y)) in enumerate(zip(self.cells, self.pos)):
+            u = (t - self.t0 - 0.12 * k) / 0.35
+            if u < 0:
+                continue
+            ta = self.reveal + 0.18 * k if self.reveal is not None else 1e9
+            v = (t - ta) / 0.3
+            card = im.copy().convert("RGBA")
+            if v >= 0 and not real:
+                card = Image.blend(card, Image.new("RGBA", card.size, (60, 45, 30, 255)), 0.35 * min(1, v))
+            fr = rrect((self.cw + 10, self.ch + 10), 22, (255, 255, 255, 255) if (v >= 0 and real) else (0, 0, 0, 0))
+            fr.alpha_composite(round_img(card, 18), (5, 5))
+            spr = shadowed(fr, 14, (0, 8), 120)
+            sc = 0.7 + 0.3 * ease_back(min(1, u))
+            if v >= 0 and real:
+                sc *= 1 + 0.06 * ease_back(min(1, v))
+            put(c, spr, x, y + 40 * (1 - ease_out(min(1, u))), scale=sc, alpha=min(1, u * 2) * out)
+            if v < 0:
+                put(c, self.nums[k], x - self.cw / 2 + 44, y - self.ch / 2 + 44, alpha=min(1, u * 2) * out)
+            else:
+                b = self.badges["VRAIE PHOTO" if real else "IA"]
+                put(c, b, x, y, scale=0.5 + 0.5 * ease_back(min(1, v)), alpha=min(1, v * 2) * out, rot=-6 if not real else 4)
+
 TYPES = {"kinetic": Kinetic, "chapitre": Chapter, "carte_noire": DarkCard, "resultat": ResultCard,
-         "dm": DMStack, "telephone": Phone, "menu": Sheet, "commentaire": CommentCTA, "note": Note, "photos": Photos, "capture": Capture, "ecran": ScreenRec}
+         "dm": DMStack, "telephone": Phone, "menu": Sheet, "commentaire": CommentCTA, "note": Note, "photos": Photos, "capture": Capture, "ecran": ScreenRec, "feed": Feed}
 
 
 # ───────────────────── sous-titres : phrase entière, frappe manuscrite + curseur ─────────────────────
