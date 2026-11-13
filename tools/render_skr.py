@@ -25,6 +25,9 @@ def build_anims(ed, by_i, total, brand, layout):
             a, j = spec["at"], spec.get("jusqu_a", spec["at"])
             spec["_words"] = [(by_i[i]["ns"], by_i[i]["ne"], by_i[i]["text"])
                               for i in sorted(by_i) if a <= i <= j and by_i[i]["text"]]
+            if "bascule" in spec:
+                nxt = [w for i, w in sorted(by_i.items()) if i >= spec["bascule"]]
+                spec["_bascule"] = nxt[0]["ns"] if nxt else total
     return _orig(ed, by_i, total, brand, layout)
 
 

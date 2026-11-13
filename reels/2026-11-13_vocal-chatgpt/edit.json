@@ -177,12 +177,10 @@
    "text": "Le petit hack"
   },
   {
-   "type": "bulle",
+   "type": "aloe",
    "at": 184,
-   "jusqu_a": 206,
-   "style": "commentaire",
-   "nom": "Ton accroche",
-   "text": "Après avoir vu des dizaines d'aloe vera mourir dans leur pot, voilà la seule chose qui les a vraiment sauvés."
+   "bascule": 195,
+   "jusqu_a": 206
   },
   {
    "type": "mot_cle",
