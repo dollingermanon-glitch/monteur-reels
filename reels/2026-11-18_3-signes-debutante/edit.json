@@ -1,0 +1,255 @@
+{
+ "rythme": "max",
+ "zoom": "alterne",
+ "zoom_punch": [0, 149, 341, 353, 388, 424, 454],
+ "drop": [
+  [13, 15],
+  [50, 64]
+ ],
+ "fix": {
+  "6": "l'Instagram",
+  "49": "reel",
+  "76": "reel",
+  "203": "Instagram",
+  "204": "",
+  "223": "posts",
+  "237": "posts",
+  "254": "posts",
+  "281": "post",
+  "303": "post",
+  "373": "10K",
+  "374": "",
+  "424": "BF2026",
+  "425": "",
+  "426": "",
+  "427": "",
+  "428": ""
+ },
+ "animations": [
+  {
+   "type": "titre",
+   "at": 0,
+   "jusqu_a": 12,
+   "text": "3 SIGNES",
+   "sub": "que tu gères ton Insta comme une débutante"
+  },
+  {
+   "type": "mot_cle",
+   "at": 30,
+   "jusqu_a": 32,
+   "text": "NE DÉCOLLE PAS"
+  },
+  {
+   "type": "section",
+   "at": 33,
+   "dur": 1.4,
+   "text": "Signe #1"
+  },
+  {
+   "type": "mot_cle",
+   "at": 37,
+   "jusqu_a": 39,
+   "text": "JUSTE POUR POSTER"
+  },
+  {
+   "type": "bulle",
+   "at": 40,
+   "jusqu_a": 49,
+   "style": "dm",
+   "nom": "Toi",
+   "text": "Faut que je poste un reel aujourd'hui"
+  },
+  {
+   "type": "liste",
+   "at": 81,
+   "jusqu_a": 86,
+   "title": "Ton reel est censé t'apporter :",
+   "items": [
+    {"text": "Des abonnés", "at": 82},
+    {"text": "De l'engagement", "at": 84},
+    {"text": "Des ventes", "at": 86}
+   ]
+  },
+  {
+   "type": "bulle",
+   "at": 94,
+   "jusqu_a": 100,
+   "style": "dm",
+   "nom": "Une coachée",
+   "text": "Les trois, Manon !"
+  },
+  {
+   "type": "mot_cle",
+   "at": 105,
+   "jusqu_a": 110,
+   "text": "ÇA NE MARCHE PAS COMME ÇA"
+  },
+  {
+   "type": "section",
+   "at": 115,
+   "dur": 1.4,
+   "text": "Signe #2"
+  },
+  {
+   "type": "souligne",
+   "at": 138,
+   "jusqu_a": 141,
+   "text": "Une équipe de foot"
+  },
+  {
+   "type": "liste",
+   "at": 142,
+   "jusqu_a": 200,
+   "title": "Sur un terrain :",
+   "items": [
+    {"text": "Des attaquants", "at": 149},
+    {"text": "Des milieux", "at": 171},
+    {"text": "Des défenseurs", "at": 180},
+    {"text": "Un gardien", "at": 183}
+   ]
+  },
+  {
+   "type": "mot_cle",
+   "at": 205,
+   "jusqu_a": 207,
+   "text": "C'EST EXACTEMENT PAREIL"
+  },
+  {
+   "type": "section",
+   "at": 208,
+   "dur": 1.4,
+   "text": "Signe #3"
+  },
+  {
+   "type": "liste",
+   "at": 210,
+   "jusqu_a": 274,
+   "title": "3 types de contenus :",
+   "items": [
+    {"text": "Attirer → abonnés", "at": 225},
+    {"text": "Engager → commentaires & DM", "at": 239},
+    {"text": "Convertir → ventes", "at": 256}
+   ]
+  },
+  {
+   "type": "mot_cle",
+   "at": 288,
+   "jusqu_a": 289,
+   "text": "PAS FORCÉMENT"
+  },
+  {
+   "type": "mot_cle",
+   "at": 312,
+   "jusqu_a": 314,
+   "text": "ÉNORMÉMENT DE VENTES"
+  },
+  {
+   "type": "souligne",
+   "at": 337,
+   "jusqu_a": 340,
+   "text": "Ta stratégie sur Instagram"
+  },
+  {
+   "type": "chiffre",
+   "at": 341,
+   "jusqu_a": 345,
+   "prefix": "<",
+   "value": "10 000",
+   "suffix": "",
+   "label": "abonnés"
+  },
+  {
+   "type": "chiffre",
+   "at": 348,
+   "jusqu_a": 357,
+   "prefix": ">",
+   "value": "200 000",
+   "suffix": "€",
+   "label": "de CA généré"
+  },
+  {
+   "type": "souligne",
+   "at": 365,
+   "jusqu_a": 368,
+   "text": "Faire grossir mon compte"
+  },
+  {
+   "type": "mot_cle",
+   "at": 373,
+   "jusqu_a": 376,
+   "text": "10K AVANT NOËL"
+  },
+  {
+   "type": "mot_cle",
+   "at": 382,
+   "jusqu_a": 384,
+   "text": "STRATÉGIE DE CROISSANCE"
+  },
+  {
+   "type": "chiffre",
+   "at": 388,
+   "jusqu_a": 397,
+   "prefix": "+",
+   "value": "1 400",
+   "suffix": "",
+   "label": "abonnés en 1 mois et demi"
+  },
+  {
+   "type": "mot_cle",
+   "at": 404,
+   "jusqu_a": 406,
+   "text": "QUOI POSTER"
+  },
+  {
+   "type": "souligne",
+   "at": 418,
+   "jusqu_a": 422,
+   "text": "Mini-formation offerte de 11 jours"
+  },
+  {
+   "type": "cta",
+   "at": 423,
+   "jusqu_a": 428,
+   "text": "BF2026",
+   "icone": "commentaire"
+  },
+  {
+   "type": "liste",
+   "at": 436,
+   "jusqu_a": 440,
+   "title": "Chaque jour, un hack pour :",
+   "items": [
+    {"text": "Attirer", "at": 437},
+    {"text": "Engager", "at": 438},
+    {"text": "Vendre", "at": 440}
+   ]
+  },
+  {
+   "type": "souligne",
+   "at": 446,
+   "jusqu_a": 448,
+   "text": "Ta liste VIP"
+  },
+  {
+   "type": "chiffre",
+   "at": 453,
+   "jusqu_a": 456,
+   "prefix": "-",
+   "value": "60",
+   "suffix": "%",
+   "label": "Black Friday"
+  },
+  {
+   "type": "mot_cle",
+   "at": 463,
+   "jusqu_a": 467,
+   "text": "1 ACHETÉ = 1 OFFERT"
+  },
+  {
+   "type": "mot_cle",
+   "at": 473,
+   "jusqu_a": 475,
+   "text": "LE CASSAGE DE L'ANNÉE"
+  }
+ ]
+}
