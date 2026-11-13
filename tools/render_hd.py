@@ -87,6 +87,16 @@ def plan(tr, ed):
     for s in segs:
         s["s"] = round(s["s"] * FPS) / FPS
         s["e"] = max(s["s"] + 2 / FPS, round(s["e"] * FPS) / FPS)
+    # plans muets insérés après un mot (« pause » pour laisser lire une animation) : {"index": [début, fin] en s source}
+    for k, (a, b) in sorted(((int(k), v) for k, v in ed.get("inserer_apres", {}).items()), reverse=True):
+        j = next(n for n, sg in enumerate(segs) if any(w["i"] == k for w in sg["words"]))
+        sg = segs[j]
+        if sg["words"][-1]["i"] != k:   # coupe le plan juste après ce mot
+            m = [w["i"] for w in sg["words"]].index(k) + 1
+            cut_t = round(sg["words"][m]["start"] * FPS) / FPS
+            segs.insert(j + 1, {"s": cut_t, "e": sg["e"], "last": sg["last"], "words": sg["words"][m:]})
+            sg["e"], sg["last"], sg["words"] = cut_t, k, sg["words"][:m]
+        segs.insert(j + 1, {"s": round(a * FPS) / FPS, "e": round(b * FPS) / FPS, "last": k, "words": []})
     # nouvelle timeline
     t = 0.0
     for s in segs:

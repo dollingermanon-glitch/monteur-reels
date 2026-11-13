@@ -2,39 +2,222 @@
  "sous_titres_y": 0.64,
  "phrases_serif": [],
  "fondus": [],
- "photos_sous_titres": [9.0, 34.0],
+ "photos_sous_titres": [
+  9.0,
+  34.0
+ ],
  "elements": [
-  {"type": "kinetic", "at": 0, "fin": 12, "y": 0.8, "entete": "il y a plus d'un an,",
-   "lignes": [{"text": "j'ai fait un test", "style": "sans", "at": 6},
-              {"text": "avec mon beau-père.", "style": "serif_y", "at": 10}]},
-  {"type": "kinetic", "at": 26, "fin": 38, "y": 0.8,
-   "lignes": [{"text": "Quelle photo", "style": "sans", "at": 26},
-              {"text": "est de l'IA ?", "style": "serif_y", "at": 30}]},
-  {"type": "chapitre", "at": 39, "dur": 1.6, "text": "Le défi :", "sub": "trouve la vraie photo", "y": 0.72},
-  {"type": "feed", "at": 49, "fin": 62, "y": 0.62, "revele_at": 61,
-   "entete": "Laquelle est vraie ?", "entete_revele": "4 sur 5 : IA",
-   "images": [{"image": "inserts/1.webp"}, {"image": "2.webp"}, {"image": "3.webp"},
-              {"image": "inserts/4.webp", "vraie": true}, {"image": "5.webp"}]},
-  {"type": "kinetic", "at": 70, "fin": 79, "y": 0.8,
-   "lignes": [{"text": "mon beau-père", "style": "serif", "at": 72},
-              {"text": "n'a rien vu", "style": "sans_y", "at": 76}]},
-  {"type": "resultat", "at": 85, "fin": 104, "label": "Carrousel avec une photo IA", "valeur": "158 000 vues", "y": 0.82},
-  {"type": "kinetic", "at": 105, "fin": 117, "y": 0.8,
-   "lignes": [{"text": "Quand c'est bien fait,", "style": "serif", "at": 105},
-              {"text": "personne ne voit", "style": "sans", "at": 110},
-              {"text": "la différence.", "style": "serif_y", "at": 116}]},
-  {"type": "kinetic", "at": 124, "fin": 131, "y": 0.8, "entete": "avec l'IA :",
-   "lignes": [{"text": "couvertures de Reels", "style": "sans", "at": 124},
-              {"text": "carrousels", "style": "serif_y", "at": 130}]},
-  {"type": "note", "at": 152, "fin": 171, "text": "zéro selfie\nen stock", "x": 0.26, "y": 0.13},
-  {"type": "kinetic", "at": 186, "fin": 195, "y": 0.8, "entete": "tu choisis :",
-   "lignes": [{"text": "ton branding", "style": "sans", "at": 186},
-              {"text": "ton décor", "style": "serif", "at": 189},
-              {"text": "tes vêtements", "style": "serif_y", "at": 192}]},
-  {"type": "commentaire", "at": 204, "fin": 214, "mot": "BFDM26", "y": 0.82},
-  {"type": "carte_noire", "at": 216, "fin": 224, "valeur": "-60 %", "label": "sur toutes mes stratégies", "y": 0.83},
-  {"type": "carte_noire", "at": 228, "fin": 245, "valeur": "1 acheté = 1 offert", "label": "une 2e formation gratuite", "y": 0.83},
-  {"type": "carte_noire", "at": 262, "fin": 288, "valeur": "Bonus", "label": "ma mini-formation offerte", "y": 0.83},
-  {"type": "commentaire", "at": 299, "fin": 303, "mot": "BFDM26", "y": 0.82}
+  {
+   "type": "kinetic",
+   "at": 0,
+   "fin": 12,
+   "y": 0.8,
+   "entete": "il y a plus d'un an,",
+   "lignes": [
+    {
+     "text": "j'ai fait un test",
+     "style": "sans",
+     "at": 6
+    },
+    {
+     "text": "avec mon beau-père.",
+     "style": "serif_y",
+     "at": 10
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 26,
+   "fin": 38,
+   "y": 0.8,
+   "lignes": [
+    {
+     "text": "Quelle photo",
+     "style": "sans",
+     "at": 26
+    },
+    {
+     "text": "est de l'IA ?",
+     "style": "serif_y",
+     "at": 30
+    }
+   ]
+  },
+  {
+   "type": "chapitre",
+   "at": 39,
+   "dur": 1.6,
+   "text": "Le défi :",
+   "sub": "trouve la vraie photo",
+   "y": 0.72
+  },
+  {
+   "type": "feed",
+   "at": 49,
+   "fin": "20.82s",
+   "y": 0.55,
+   "revele_at": 59,
+   "entete": "Laquelle est vraie ?",
+   "entete_revele": "4 sur 5 : IA",
+   "images": [
+    {
+     "image": "inserts/1.webp"
+    },
+    {
+     "image": "inserts/2.webp"
+    },
+    {
+     "image": "inserts/3.webp"
+    },
+    {
+     "image": "inserts/4.webp",
+     "vraie": true
+    },
+    {
+     "image": "inserts/5.webp"
+    }
+   ],
+   "pas_revele": 0.55,
+   "legende_revele": "Une seule vraie photo : la n°4"
+  },
+  {
+   "type": "kinetic",
+   "at": 70,
+   "fin": 79,
+   "y": 0.8,
+   "lignes": [
+    {
+     "text": "mon beau-père",
+     "style": "serif",
+     "at": 72
+    },
+    {
+     "text": "n'a rien vu",
+     "style": "sans_y",
+     "at": 76
+    }
+   ]
+  },
+  {
+   "type": "resultat",
+   "at": 85,
+   "fin": 104,
+   "label": "Carrousel avec une photo IA",
+   "valeur": "158 000 vues",
+   "y": 0.82
+  },
+  {
+   "type": "kinetic",
+   "at": 105,
+   "fin": 117,
+   "y": 0.8,
+   "lignes": [
+    {
+     "text": "Quand c'est bien fait,",
+     "style": "serif",
+     "at": 105
+    },
+    {
+     "text": "personne ne voit",
+     "style": "sans",
+     "at": 110
+    },
+    {
+     "text": "la différence.",
+     "style": "serif_y",
+     "at": 116
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 124,
+   "fin": 131,
+   "y": 0.8,
+   "entete": "avec l'IA :",
+   "lignes": [
+    {
+     "text": "couvertures de Reels",
+     "style": "sans",
+     "at": 124
+    },
+    {
+     "text": "carrousels",
+     "style": "serif_y",
+     "at": 130
+    }
+   ]
+  },
+  {
+   "type": "note",
+   "at": 152,
+   "fin": 171,
+   "text": "zéro selfie\nen stock",
+   "x": 0.26,
+   "y": 0.13
+  },
+  {
+   "type": "kinetic",
+   "at": 186,
+   "fin": 195,
+   "y": 0.8,
+   "entete": "tu choisis :",
+   "lignes": [
+    {
+     "text": "ton branding",
+     "style": "sans",
+     "at": 186
+    },
+    {
+     "text": "ton décor",
+     "style": "serif",
+     "at": 189
+    },
+    {
+     "text": "tes vêtements",
+     "style": "serif_y",
+     "at": 192
+    }
+   ]
+  },
+  {
+   "type": "commentaire",
+   "at": 204,
+   "fin": 214,
+   "mot": "BF2026",
+   "y": 0.82
+  },
+  {
+   "type": "carte_noire",
+   "at": 216,
+   "fin": 224,
+   "valeur": "-60 %",
+   "label": "sur toutes mes stratégies",
+   "y": 0.83
+  },
+  {
+   "type": "carte_noire",
+   "at": 228,
+   "fin": 245,
+   "valeur": "1 acheté = 1 offert",
+   "label": "une 2e formation gratuite",
+   "y": 0.83
+  },
+  {
+   "type": "carte_noire",
+   "at": 262,
+   "fin": 288,
+   "valeur": "Bonus",
+   "label": "ma mini-formation offerte",
+   "y": 0.83
+  },
+  {
+   "type": "commentaire",
+   "at": 299,
+   "fin": 303,
+   "mot": "BF2026",
+   "y": 0.82
+  }
  ]
 }

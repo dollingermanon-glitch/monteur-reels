@@ -682,6 +682,13 @@ class Feed(El):
         self.head = text_spr(s["entete"], "black", 78, YELLOW) if s.get("entete") else None
         self.head2 = text_spr(s["entete_revele"], "black", 78, YELLOW) if s.get("entete_revele") else None
         self.reveal = T(s["revele_at"]) if "revele_at" in s else None
+        self.step = s.get("pas_revele", 0.18)
+        self.leg = None
+        if s.get("legende_revele"):
+            tx = text_spr(s["legende_revele"], "semi", 46, (122, 91, 56, 255), shadow=False)
+            pill = rrect((tx.width + 70, tx.height + 40), (tx.height + 40) // 2, (255, 255, 255, 250))
+            pill.alpha_composite(tx, (35, 20))
+            self.leg = shadowed(pill, 14, (0, 8), 120)
         self.badges = {}
         for txt, bg, fg in (("IA", (246, 228, 170, 255), (122, 91, 56, 255)), ("VRAIE PHOTO", (255, 255, 255, 255), (122, 91, 56, 255))):
             tx = text_spr(txt, "black", 44 if txt == "IA" else 36, fg, shadow=False)
@@ -697,14 +704,16 @@ class Feed(El):
             self.nums.append(b)
         self.sfx = [(self.t0, "woosh", 0.4)] + [(self.t0 + 0.12 * k, "pop", 0.25) for k in range(n)]
         if self.reveal is not None:
-            self.sfx += [(self.reveal + 0.18 * k, "click2" if not c[1] else "notif2", 0.6) for k, c in enumerate(self.cells)]
+            self.sfx += [(self.reveal + self.step * k, "click2" if not c[1] else "notif2", 0.6) for k, c in enumerate(self.cells)]
+            if self.leg:
+                self.sfx.append((self.reveal + self.step * len(self.cells) + 0.2, "pop", 0.4))
 
     def draw(self, c, t):
         _, out = self.life(t)
         inn = min(1, (t - self.t0) / 0.3)
         dim = Image.new("RGBA", (W, H), (40, 28, 18, int(150 * inn * out)))
         c.alpha_composite(dim)
-        rv = self.reveal is not None and t >= self.reveal
+        rv = self.reveal is not None and t >= self.reveal + self.step * (len(self.cells) - 1) + 0.3
         hd = self.head2 if (rv and self.head2) else self.head
         if hd:
             put(c, hd, W / 2, self.top - hd.height / 2 - 20, alpha=ease_out((t - self.t0) / 0.3) * out)
@@ -712,7 +721,7 @@ class Feed(El):
             u = (t - self.t0 - 0.12 * k) / 0.35
             if u < 0:
                 continue
-            ta = self.reveal + 0.18 * k if self.reveal is not None else 1e9
+            ta = self.reveal + self.step * k if self.reveal is not None else 1e9
             v = (t - ta) / 0.3
             card = im.copy().convert("RGBA")
             if v >= 0 and not real:
@@ -729,6 +738,12 @@ class Feed(El):
             else:
                 b = self.badges["VRAIE PHOTO" if real else "IA"]
                 put(c, b, x, y, scale=0.5 + 0.5 * ease_back(min(1, v)), alpha=min(1, v * 2) * out, rot=-6 if not real else 4)
+        if self.leg and self.reveal is not None:
+            tl = self.reveal + self.step * len(self.cells) + 0.2
+            u = (t - tl) / 0.35
+            if u >= 0:
+                yb = self.pos[-1][1] + self.ch / 2 + 30 + self.leg.height / 2
+                put(c, self.leg, W / 2, yb + 30 * (1 - ease_out(min(1, u))), scale=0.85 + 0.15 * ease_back(min(1, u)), alpha=min(1, u * 2) * out)
 
 TYPES = {"kinetic": Kinetic, "chapitre": Chapter, "carte_noire": DarkCard, "resultat": ResultCard,
          "dm": DMStack, "telephone": Phone, "menu": Sheet, "commentaire": CommentCTA, "note": Note, "photos": Photos, "capture": Capture, "ecran": ScreenRec, "feed": Feed}
