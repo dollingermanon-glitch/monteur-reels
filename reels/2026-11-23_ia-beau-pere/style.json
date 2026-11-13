@@ -100,12 +100,44 @@
    ]
   },
   {
-   "type": "resultat",
-   "at": 85,
+   "type": "capture",
+   "at": 80,
+   "fin": 86,
+   "image": "inserts/9.webp",
+   "largeur": 540,
+   "y": 0.77,
+   "legende": "ce carrousel",
+   "cache_st": true
+  },
+  {
+   "type": "capture",
+   "at": 87,
+   "fin": 95,
+   "image": "inserts/8.png",
+   "largeur": 900,
+   "y": 0.76,
+   "focus": [
+    {
+     "box": [
+      425,
+      92,
+      545,
+      130
+     ],
+     "at": 91
+    }
+   ],
+   "cache_st": true
+  },
+  {
+   "type": "capture",
+   "at": 96,
    "fin": 104,
-   "label": "Carrousel avec une photo IA",
-   "valeur": "158 000 vues",
-   "y": 0.82
+   "image": "inserts/9.webp",
+   "largeur": 540,
+   "y": 0.77,
+   "legende": "photo 100 % IA",
+   "cache_st": true
   },
   {
    "type": "kinetic",
