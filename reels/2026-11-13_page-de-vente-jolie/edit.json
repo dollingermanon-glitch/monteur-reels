@@ -1,0 +1,274 @@
+{
+ "rythme": "max",
+ "zoom": "alterne",
+ "zoom_punch": [
+  0,
+  34,
+  132,
+  214,
+  282,
+  377
+ ],
+ "drop": [
+  [
+   42,
+   52
+  ]
+ ],
+ "fix": {
+  "143": "80",
+  "144": "",
+  "145": "%",
+  "146": "",
+  "235": "ChatGPT.",
+  "267": "Sauf",
+  "370": "11",
+  "379": "BF2026.",
+  "380": "",
+  "381": "",
+  "382": "",
+  "394": "acheté"
+ },
+ "animations": [
+  {
+   "type": "titre",
+   "at": 0,
+   "jusqu_a": 9,
+   "text": "Arrête la page jolie",
+   "sub": "fais une page qui vend"
+  },
+  {
+   "type": "liste",
+   "at": 10,
+   "jusqu_a": 33,
+   "title": "Laquelle vend le plus ?",
+   "items": [
+    {
+     "text": "Page 1",
+     "at": 22
+    },
+    {
+     "text": "Page 2",
+     "at": 24
+    }
+   ]
+  },
+  {
+   "type": "mot_cle",
+   "at": 34,
+   "jusqu_a": 41,
+   "text": "La deuxième"
+  },
+  {
+   "type": "section",
+   "at": 53,
+   "dur": 1.4,
+   "text": "Erreur #1"
+  },
+  {
+   "type": "souligne",
+   "at": 58,
+   "jusqu_a": 70,
+   "text": "Le nom en énorme"
+  },
+  {
+   "type": "mot_cle",
+   "at": 89,
+   "jusqu_a": 97,
+   "text": "Ça ne fait pas acheter"
+  },
+  {
+   "type": "bulle",
+   "at": 98,
+   "jusqu_a": 110,
+   "style": "commentaire",
+   "nom": "ta future cliente",
+   "text": "Ok, mais ça va m'apporter quoi ?"
+  },
+  {
+   "type": "souligne",
+   "at": 111,
+   "jusqu_a": 113,
+   "text": "Ta promesse"
+  },
+  {
+   "type": "chiffre",
+   "at": 114,
+   "jusqu_a": 122,
+   "value": 3,
+   "suffix": " sec",
+   "label": "pour la comprendre"
+  },
+  {
+   "type": "mot_cle",
+   "at": 123,
+   "jusqu_a": 131,
+   "text": "Pas 15 paragraphes"
+  },
+  {
+   "type": "section",
+   "at": 132,
+   "dur": 1.4,
+   "text": "Erreur #2"
+  },
+  {
+   "type": "mot_cle",
+   "at": 138,
+   "jusqu_a": 142,
+   "text": "Une disserte"
+  },
+  {
+   "type": "chiffre",
+   "at": 143,
+   "jusqu_a": 156,
+   "value": 80,
+   "suffix": " %",
+   "label": "de texte"
+  },
+  {
+   "type": "liste",
+   "at": 157,
+   "jusqu_a": 181,
+   "title": "Comme un livre pour enfants",
+   "items": [
+    {
+     "text": "Beaucoup de visuels",
+     "at": 169
+    },
+    {
+     "text": "Des phrases simples",
+     "at": 172
+    },
+    {
+     "text": "Juste l'essentiel",
+     "at": 176
+    }
+   ]
+  },
+  {
+   "type": "mot_cle",
+   "at": 186,
+   "jusqu_a": 196,
+   "text": "Pas un roman"
+  },
+  {
+   "type": "souligne",
+   "at": 197,
+   "jusqu_a": 213,
+   "text": "Fait pour elle"
+  },
+  {
+   "type": "section",
+   "at": 214,
+   "dur": 1.4,
+   "text": "Erreur #3"
+  },
+  {
+   "type": "bulle",
+   "at": 230,
+   "jusqu_a": 242,
+   "style": "dm",
+   "nom": "ChatGPT",
+   "text": "Crée-moi une page de vente"
+  },
+  {
+   "type": "mot_cle",
+   "at": 243,
+   "jusqu_a": 251,
+   "text": "Copier, coller"
+  },
+  {
+   "type": "mot_cle",
+   "at": 257,
+   "jusqu_a": 266,
+   "text": "Pourquoi là"
+  },
+  {
+   "type": "mot_cle",
+   "at": 270,
+   "jusqu_a": 281,
+   "text": "Pas des blocs"
+  },
+  {
+   "type": "souligne",
+   "at": 282,
+   "jusqu_a": 285,
+   "text": "Chemin psychologique"
+  },
+  {
+   "type": "liste",
+   "at": 286,
+   "jusqu_a": 309,
+   "title": "Chaque section :",
+   "items": [
+    {
+     "text": "répond à une question",
+     "at": 295
+    },
+    {
+     "text": "lève une objection",
+     "at": 299
+    },
+    {
+     "text": "donne envie de lire la suite",
+     "at": 304
+    }
+   ]
+  },
+  {
+   "type": "mot_cle",
+   "at": 318,
+   "jusqu_a": 327,
+   "text": "La 2e convertit"
+  },
+  {
+   "type": "mot_cle",
+   "at": 328,
+   "jusqu_a": 335,
+   "text": "Pas jolie"
+  },
+  {
+   "type": "souligne",
+   "at": 336,
+   "jusqu_a": 353,
+   "text": "Conçue pour convertir"
+  },
+  {
+   "type": "souligne",
+   "at": 354,
+   "jusqu_a": 367,
+   "text": "Un système de vente"
+  },
+  {
+   "type": "chiffre",
+   "at": 368,
+   "jusqu_a": 376,
+   "value": 11,
+   "suffix": " jours",
+   "label": "de formation offerte"
+  },
+  {
+   "type": "cta",
+   "at": 377,
+   "jusqu_a": 382,
+   "text": "Commente BF2026",
+   "icone": "commentaire"
+  },
+  {
+   "type": "chiffre",
+   "at": 383,
+   "jusqu_a": 391,
+   "value": 60,
+   "prefix": "-",
+   "suffix": " %",
+   "label": "pendant le Black Friday"
+  },
+  {
+   "type": "mot_cle",
+   "at": 392,
+   "jusqu_a": 405,
+   "text": "1 acheté = 1 offert"
+  }
+ ],
+ "sous_titres_y": 0.87
+}

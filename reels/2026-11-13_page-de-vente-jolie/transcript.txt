@@ -1,0 +1,51 @@
+   2.81s  [0]Arrête [1]de [2]faire [3]une [4]page [5]de [6]vente [7]qui [8]est [9]jolie.
+   7.77s  [10]Regarde [11]ces [12]deux [13]pages.
+  10.81s  [14]Selon [15]toi, [16]laquelle [17]fait [18]le [19]plus [20]de [21]ventes?
+  14.33s  [22]La [23]première?
+  15.58s  ⟨?0.3s⟩ [24]Ou [25]la [26]deuxième.
+  19.10s  [27]Je [28]te [29]laisse [30]deux [31]secondes [32]pour [33]choisir.
+  25.27s  [34]C'est [35]la [36]deuxième, [37]et [38]tu [39]vas [40]comprendre [41]pourquoi.
+  32.31s  [42]Combien [43]de [44]personnes [45]j'ai [46]vu [47]le
+  34.39s  [48]Combien [49]de [50]personnes [51]j'ai [52]vu
+  39.55s  [53]Combien [54]de [55]personnes [56]j'ai [57]vu
+  41.71s  [58]mettre [59]le [60]nom [61]de [62]leur [63]formation [64]en [65]énorme?
+  44.49s  [66]En [67]haut [68]de [69]la [70]page.
+  45.77s  [71]Je [72]sais [73]que [74]t'es [75]fière [76]de [77]ce [78]que [79]t'as [80]fait.
+  48.54s  [81]Peut-être [82]que [83]le [84]nom [85]il [86]est [87]très [88]cool.
+  53.37s  [89]Mais [90]c'est [91]pas [92]ça [93]qui [94]fera [95]acheter [96]les [97]gens.
+  59.13s  [98]Eux, [99]ce [100]qui [101]les [102]intéresse,
+  61.69s  [103]c'est [104]ce [105]que [106]ta [107]formation [108]va [109]leur [110]apporter.
+  63.98s  [111]Donc [112]sa [113]promesse.
+  68.28s  [114]Et [115]surtout [116]ils [117]doivent [118]le [119]comprendre [120]en [121]quelques [122]secondes.
+  72.67s  [123]Pas [124]après [125]avoir [126]lu [127]quinze [128]paragraphes [129]sur [130]ta [131]page.
+  78.68s  [132]Deuxième [133]erreur, [134]ta [135]page [136]de [137]vente [138]elle [139]ressemble [140]à [141]une [142]disserte.
+  84.31s  [143]Quatre [144]vingt [145]pour [146]cent [147]de [148]texte [149]pour [150]20 [151]% [152]d'images?
+  86.71s  [153]Ah(filler) [154]c'est [155]pas [156]possible.
+  90.84s  [157]J'aime [158]bien [159]avoir [160]mes [161]pages [162]de [163]vente [164]comme [165]un [166]livre [167]pour [168]enfants.
+  95.07s  [169]Beaucoup [170]de [171]visuels,
+  97.79s  [172]des [173]phrases [174]simples.
+ 101.05s  [175]et [176]uniquement [177]les [178]informations [179]qui [180]sont [181]nécessaires.
+ 106.23s  [182]Parce [183]que [184]ton [185]objectif, [186]c'est [187]pas [188]de [189]lui [190]faire [191]lire [192]un [193]roman [194]à [195]ta [196]cliente.
+ 111.19s  [197]C'est [198]surtout [199]lui [200]faire [201]comprendre [202]pourquoi [203]ton [204]produit [205]est [206]fait [207]pour [208]elle [209]et [210]comment [211]il [212]peut [213]l'aider.
+ 119.26s  [214]Et [215]la [216]troisième [217]erreur, [218]que [219]je [220]vois [221]tout [222]le [223]temps [224]en [225]ce [226]moment, [227]j'en [228]peux [229]plus.
+ 127.19s  [230]Tu [231]demandes [232]à [233]Claude, [234]ou [235]Djibétié.
+ 131.35s  [236]De [237]te [238]créer [239]une [240]page [241]de [242]vente.
+ 135.16s  [243]Tu [244]copies, [245]tu [246]colles, [247]tu [248]dis [249]vas-y [250]c'est [251]joli.
+ 139.51s  [252]Mais [253]tu [254]sais [255]même [256]pas [257]pourquoi [258]il [259]a [260]placé [261]cette [262]section [263]à [264]cet [265]endroit, [266]etc.
+ 146.59s  [267]Sau [268]qu'une [269]page [270]de [271]vente, [272]c'est [273]pas [274]juste [275]des [276]textes [277]et [278]des [279]blocs [280]empilés, [281]hein.(filler)
+ 152.31s  [282]C'est [283]un [284]chemin
+ 153.83s  [285]psychologique.
+ 157.16s  [286]Et [287]chaque [288]section [289]arrive [290]dans [291]un [292]ordre [293]précis.
+ 160.43s  [294]Et [295]répond [296]à [297]une [298]question.
+ 166.17s  [299]Doit [300]lever [301]une [302]objection
+ 168.25s  [303]ou [304]donner [305]envie [306]de [307]découvrir [308]la [309]suite.
+ 173.08s  [310]Si [311]maintenant [312]on [313]revient [314]à [315]ces [316]deux [317]pages-là,
+ 177.88s  [318]Tu [319]comprends [320]pourquoi [321]c'est [322]la [323]deuxième [324]qui [325]convertit [326]le [327]mieux.
+ 182.43s  [328]Elle [329]n'a [330]pas [331]été [332]conçue [333]pour [334]être [335]jolie.
+ 186.36s  [336]Elle [337]a [338]été [339]conçue [340]pour [341]convertir.
+ 191.39s  [342]Et [343]je [344]crois [345]que [346]t'as [347]compris [348]que [349]c'était [350]pas [351]la [352]même [353]chose.
+ 196.92s  [354]Alors, [355]si [356]tu [357]veux [358]apprendre [359]à [360]utiliser [361]Instagram [362]comme [363]un [364]vrai [365]système [366]de [367]vente?
+ 202.23s  [368]Je [369]t'offre [370]onze [371]jours [372]de [373]formation [374]gratuite [375]par [376]mail.
+ 206.25s  [377]En [378]commentant [379]BF [380]deux [381]mille [382]vingt-six.
+ 210.68s  [383]Et [384]en [385]plus [386]tu [387]profites [388]de [389]moins [390]60 [391]%.
+ 215.74s  [392]Et [393]un [394]acheter [395]égale [396]un [397]offert [398]sur [399]toutes [400]mes [401]formations [402]dès [403]le [404]Black [405]Friday.
