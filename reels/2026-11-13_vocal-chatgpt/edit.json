@@ -1,0 +1,302 @@
+{
+ "rythme": "max",
+ "zoom": "alterne",
+ "zoom_punch": [],
+ "drop": [
+  [
+   22,
+   25
+  ],
+  [
+   77,
+   83
+  ],
+  [
+   120,
+   121
+  ],
+  [
+   277,
+   282
+  ],
+  [
+   303,
+   308
+  ],
+  [
+   337,
+   344
+  ]
+ ],
+ "fix": {
+  "5": "ChatGPT :",
+  "6": "",
+  "7": "",
+  "8": "« Aide-moi",
+  "12": "Reel",
+  "13": "sur",
+  "14": "nanana »,",
+  "15": "envoie-lui",
+  "16": "",
+  "20": "2",
+  "28": "ta",
+  "32": "MIEL",
+  "50": "« Je",
+  "70": "début,",
+  "76": "curiosité. »",
+  "96": "Reel.",
+  "128": "« Crée",
+  "130": "Reel",
+  "135": "aloe vera. »",
+  "140": "OK ?",
+  "147": "ChatGPT,",
+  "150": "Gemini,",
+  "169": "hack",
+  "170": "qu'il n'y a que",
+  "175": "là,",
+  "183": "exemple :",
+  "184": "« Après",
+  "205": "chaque",
+  "206": "fois. »",
+  "209": "tu",
+  "210": "",
+  "222": "intéressant",
+  "224": "Reel",
+  "229": "ChatGPT",
+  "230": "",
+  "231": "t'aide",
+  "276": "vues.",
+  "302": "contenu,",
+  "321": "BF2026",
+  "322": "",
+  "355": "-60 %",
+  "356": "",
+  "357": "",
+  "363": "1",
+  "364": "acheté",
+  "365": "=",
+  "366": "1",
+  "373": "même ?",
+  "377": "le",
+  "378": "27."
+ },
+ "animations": [
+  {
+   "type": "titre",
+   "at": 0,
+   "jusqu_a": 7,
+   "text": "Stop au prompt vague",
+   "sub": "fais plutôt ça"
+  },
+  {
+   "type": "bulle",
+   "at": 8,
+   "jusqu_a": 14,
+   "style": "dm",
+   "nom": "Toi à ChatGPT",
+   "text": "Aide-moi à écrire un Reel sur…"
+  },
+  {
+   "type": "mot_cle",
+   "at": 15,
+   "jusqu_a": 21,
+   "text": "Un vocal de 2 min"
+  },
+  {
+   "type": "cta",
+   "at": 26,
+   "jusqu_a": 44,
+   "text": "Commente MIEL",
+   "icone": "commentaire"
+  },
+  {
+   "type": "section",
+   "at": 45,
+   "dur": 1.4,
+   "text": "Ce que tu lui dis"
+  },
+  {
+   "type": "liste",
+   "at": 50,
+   "jusqu_a": 76,
+   "title": "Ton vocal :",
+   "items": [
+    {
+     "text": "script face caméra",
+     "at": 56
+    },
+    {
+     "text": "environ 1 minute",
+     "at": 63
+    },
+    {
+     "text": "ton accroche au début",
+     "at": 66
+    },
+    {
+     "text": "une boucle de curiosité",
+     "at": 71
+    }
+   ]
+  },
+  {
+   "type": "souligne",
+   "at": 97,
+   "jusqu_a": 108,
+   "text": "Tes points d'expertise"
+  },
+  {
+   "type": "bulle",
+   "at": 122,
+   "jusqu_a": 135,
+   "style": "dm",
+   "nom": "Toi à ChatGPT",
+   "text": "Crée un Reel sur comment entretenir les aloe vera"
+  },
+  {
+   "type": "mot_cle",
+   "at": 136,
+   "jusqu_a": 140,
+   "text": "Super banal"
+  },
+  {
+   "type": "liste",
+   "at": 141,
+   "jusqu_a": 152,
+   "title": "Déjà partout :",
+   "items": [
+    {
+     "text": "ChatGPT",
+     "at": 147
+    },
+    {
+     "text": "YouTube",
+     "at": 148
+    },
+    {
+     "text": "Google",
+     "at": 149
+    },
+    {
+     "text": "Gemini",
+     "at": 150
+    },
+    {
+     "text": "TikTok",
+     "at": 151
+    }
+   ]
+  },
+  {
+   "type": "souligne",
+   "at": 166,
+   "jusqu_a": 173,
+   "text": "Le petit hack"
+  },
+  {
+   "type": "bulle",
+   "at": 184,
+   "jusqu_a": 206,
+   "style": "commentaire",
+   "nom": "Ton accroche",
+   "text": "Après avoir vu des dizaines d'aloe vera mourir dans leur pot, voilà la seule chose qui les a vraiment sauvés."
+  },
+  {
+   "type": "mot_cle",
+   "at": 219,
+   "jusqu_a": 226,
+   "text": "Bien plus fort"
+  },
+  {
+   "type": "souligne",
+   "at": 227,
+   "jusqu_a": 238,
+   "text": "ChatGPT met en forme"
+  },
+  {
+   "type": "mot_cle",
+   "at": 239,
+   "jusqu_a": 245,
+   "text": "Il ne remplace pas"
+  },
+  {
+   "type": "mot_cle",
+   "at": 252,
+   "jusqu_a": 263,
+   "text": "Hyper générique"
+  },
+  {
+   "type": "reels",
+   "at": 264,
+   "jusqu_a": 276,
+   "vues": [
+    "214",
+    "187",
+    "231"
+   ]
+  },
+  {
+   "type": "stats",
+   "at": 283,
+   "jusqu_a": 290,
+   "title": "Ton compte",
+   "valeur": "+0 %",
+   "barres": [
+    5,
+    5,
+    5,
+    5,
+    5
+   ]
+  },
+  {
+   "type": "souligne",
+   "at": 294,
+   "jusqu_a": 302,
+   "text": "L'IA, intelligemment"
+  },
+  {
+   "type": "cta",
+   "at": 309,
+   "jusqu_a": 322,
+   "text": "Commente BF2026",
+   "icone": "commentaire"
+  },
+  {
+   "type": "notif",
+   "at": 323,
+   "jusqu_a": 336,
+   "icone": "vente",
+   "text": "Ta mini-formation offerte est arrivée par mail"
+  },
+  {
+   "type": "section",
+   "at": 345,
+   "jusqu_a": 351,
+   "text": "Black Friday"
+  },
+  {
+   "type": "chiffre",
+   "at": 352,
+   "jusqu_a": 361,
+   "value": "60",
+   "prefix": "-",
+   "suffix": " %",
+   "label": "sur toutes mes formations"
+  },
+  {
+   "type": "mot_cle",
+   "at": 362,
+   "jusqu_a": 373,
+   "text": "Le 2e offert"
+  },
+  {
+   "type": "cta",
+   "at": 374,
+   "jusqu_a": 378,
+   "text": "Rendez-vous le 27",
+   "icone": "coeur"
+  }
+ ],
+ "sous_titres_y": 0.85
+}
