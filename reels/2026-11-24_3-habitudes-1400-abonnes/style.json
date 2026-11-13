@@ -5,9 +5,18 @@
  "photos_sous_titres": [],
  "elements": [
   {
+   "type": "derriere",
+   "at": 0,
+   "fin": 12,
+   "image": "inserts/9.png",
+   "largeur": 1160,
+   "y": 0.2,
+   "rot": -4
+  },
+  {
    "type": "kinetic",
    "at": 0,
-   "fin": 19,
+   "fin": 12,
    "y": 0.8,
    "lignes": [
     {
@@ -19,25 +28,42 @@
      "text": "+1 400 abonnés",
      "style": "sans_y",
      "at": 8
-    },
-    {
-     "text": "en 1 mois et demi.",
-     "style": "serif",
-     "at": 13
     }
    ]
   },
   {
-   "type": "resultat",
-   "at": 20,
+   "type": "capture",
+   "at": 13,
    "fin": 22,
-   "label": "nouveaux abonnés en octobre",
-   "valeur": "+1 400",
-   "y": 0.83
+   "image": "inserts/6.png",
+   "largeur": 980,
+   "y": 0.76,
+   "cache_st": true,
+   "legende": "en 1 mois et demi",
+   "focus": [
+    {
+     "box": [
+      478,
+      70,
+      640,
+      102
+     ],
+     "at": 13
+    },
+    {
+     "box": [
+      296,
+      212,
+      648,
+      240
+     ],
+     "at": 20
+    }
+   ]
   },
   {
    "type": "kinetic",
-   "at": 23,
+   "at": 29,
    "fin": 38,
    "y": 0.8,
    "lignes": [
@@ -47,7 +73,7 @@
      "at": 29
     },
     {
-     "text": "pour avoir un calendrier",
+     "text": "pour un calendrier",
      "style": "serif",
      "at": 33
     },
@@ -59,12 +85,37 @@
    ]
   },
   {
-   "type": "carte_noire",
+   "type": "fx",
+   "anim": "liste",
+   "at": 39,
+   "fin": 53,
+   "y": 0.76,
+   "title": "Je créais quand…",
+   "items": [
+    {
+     "text": "j'avais une idée",
+     "at": 43
+    },
+    {
+     "text": "j'étais inspirée",
+     "at": 47
+    },
+    {
+     "text": "j'avais de l'énergie",
+     "at": 50
+    }
+   ],
+   "cache_st": true
+  },
+  {
+   "type": "capture",
    "at": 62,
    "fin": 70,
-   "valeur": "800+",
-   "label": "posts publiés sur Instagram",
-   "y": 0.83
+   "image": "inserts/5.png",
+   "largeur": 560,
+   "y": 0.77,
+   "legende": "(et ça continue)",
+   "cache_st": true
   },
   {
    "type": "kinetic",
@@ -94,7 +145,7 @@
   },
   {
    "type": "kinetic",
-   "at": 104,
+   "at": 99,
    "fin": 109,
    "y": 0.8,
    "lignes": [
@@ -116,43 +167,87 @@
    ]
   },
   {
-   "type": "carte_noire",
-   "at": 114,
+   "type": "sticker",
+   "at": 110,
    "fin": 120,
-   "valeur": "Stratégiste",
-   "label": "casquette n°1",
-   "y": 0.83
+   "cache_st": true,
+   "items": [
+    {
+     "image": "inserts/casquette.png",
+     "at": 112,
+     "x": 0.27,
+     "y": 0.71,
+     "taille": 330,
+     "rot": -8,
+     "legende": "stratégiste"
+    },
+    {
+     "image": "inserts/casquette_creme.png",
+     "at": 113,
+     "x": 0.73,
+     "y": 0.71,
+     "taille": 330,
+     "rot": 8,
+     "legende": "exécutante"
+    }
+   ]
+  },
+  {
+   "type": "derriere",
+   "at": 126,
+   "fin": 139,
+   "image": "inserts/9.png",
+   "largeur": 1160,
+   "y": 0.2,
+   "rot": 3
   },
   {
    "type": "note",
    "at": 121,
-   "fin": 131,
+   "fin": 125,
    "text": "1 fois\npar mois",
    "x": 0.22,
-   "y": 0.5,
+   "y": 0.42,
    "cache_st": true
   },
   {
-   "type": "dm",
+   "type": "menu",
    "at": 140,
+   "fin": 154,
+   "options": [
+    "Posts qui attirent",
+    "Posts qui engagent",
+    "Posts qui vendent"
+   ],
+   "actif": "Posts qui vendent",
+   "tap_at": 153,
+   "y": 0.77
+  },
+  {
+   "type": "fx",
+   "anim": "mot_cle",
+   "at": 155,
    "fin": 160,
-   "y": 0.67,
-   "cache_st": true,
-   "entete": "ce que je décide...",
-   "messages": [
+   "y": 0.78,
+   "text": "Ma stratégie",
+   "cache_st": true
+  },
+  {
+   "type": "sticker",
+   "at": 161,
+   "fin": 170,
+   "items": [
     {
-     "text": "Quels posts vont attirer des abonnés ?",
-     "at": 140
-    },
-    {
-     "text": "Lesquels vont engager ?",
-     "at": 146
-    },
-    {
-     "text": "Lesquels vont vendre ?",
-     "at": 151
+     "image": "inserts/casquette.png",
+     "at": 167,
+     "x": 0.5,
+     "y": 0.73,
+     "taille": 360,
+     "rot": -6,
+     "legende": "je change de casquette"
     }
-   ]
+   ],
+   "cache_st": true
   },
   {
    "type": "chapitre",
@@ -169,14 +264,14 @@
    "y": 0.8,
    "lignes": [
     {
-     "text": "Des trous",
-     "style": "sans_y",
-     "at": 201
-    },
-    {
-     "text": "volontairement",
+     "text": "Volontairement",
      "style": "serif",
      "at": 199
+    },
+    {
+     "text": "des trous",
+     "style": "sans_y",
+     "at": 201
     },
     {
      "text": "dans mon calendrier.",
@@ -186,27 +281,51 @@
    ]
   },
   {
-   "type": "kinetic",
-   "at": 221,
-   "fin": 238,
-   "y": 0.8,
-   "lignes": [
+   "type": "capture",
+   "at": 207,
+   "fin": 220,
+   "image": "inserts/9.png",
+   "crop": [
+    1020,
+    760,
+    1788,
+    1026
+   ],
+   "largeur": 900,
+   "y": 0.77,
+   "legende": "rien de prévu ici",
+   "cache_st": true,
+   "focus": [
     {
-     "text": "Une idée demain ?",
-     "style": "sans",
-     "at": 224
-    },
-    {
-     "text": "Je la publie",
-     "style": "serif",
-     "at": 228
-    },
-    {
-     "text": "sans tout casser.",
-     "style": "serif_y",
-     "at": 234
+     "box": [
+      1530,
+      775,
+      1782,
+      1015
+     ],
+     "at": 217
     }
    ]
+  },
+  {
+   "type": "fx",
+   "anim": "bulle",
+   "at": 221,
+   "fin": 238,
+   "y": 0.77,
+   "style": "commentaire",
+   "nom": "mon cerveau, un mardi soir",
+   "text": "Et si je postais ça demain ?",
+   "cache_st": true
+  },
+  {
+   "type": "fx",
+   "anim": "mot_cle",
+   "at": 245,
+   "fin": 251,
+   "y": 0.78,
+   "text": "Réconciliée",
+   "cache_st": true
   },
   {
    "type": "kinetic",
@@ -240,20 +359,54 @@
    "y": 0.72
   },
   {
-   "type": "carte_noire",
-   "at": 279,
-   "fin": 288,
-   "valeur": "< 2 h",
-   "label": "de création par semaine",
-   "y": 0.83
+   "type": "derriere",
+   "at": 268,
+   "fin": 278,
+   "image": "inserts/8.png",
+   "largeur": 1060,
+   "y": 0.17,
+   "rot": -3
   },
   {
-   "type": "carte_noire",
+   "type": "fx",
+   "anim": "chiffre",
+   "at": 279,
+   "fin": 288,
+   "y": 0.77,
+   "value": 2,
+   "prefix": "< ",
+   "suffix": " h",
+   "label": "de création par semaine",
+   "cache_st": true
+  },
+  {
+   "type": "sticker",
    "at": 295,
    "fin": 304,
-   "valeur": "Exécutante",
-   "label": "casquette n°2",
-   "y": 0.83
+   "items": [
+    {
+     "image": "inserts/casquette_creme.png",
+     "at": 300,
+     "x": 0.5,
+     "y": 0.72,
+     "taille": 360,
+     "rot": 6,
+     "legende": "casquette n°2 : exécutante"
+    }
+   ],
+   "cache_st": true
+  },
+  {
+   "type": "capture",
+   "at": 305,
+   "fin": 316,
+   "image": "inserts/7.webp",
+   "largeur": 980,
+   "y": 0.76,
+   "zoom": 0.08,
+   "rot": -2,
+   "legende": "mon feed en ce moment",
+   "cache_st": true
   },
   {
    "type": "kinetic",
@@ -293,12 +446,14 @@
    ]
   },
   {
-   "type": "carte_noire",
+   "type": "telephone",
    "at": 369,
    "fin": 394,
-   "valeur": "0 abonné",
-   "label": "avec un mème posté dans le rush",
-   "y": 0.83
+   "text": "Un mème posté dans le rush à 18 h",
+   "verdict": "ko",
+   "etiquette": "0 abonné",
+   "badge_at": 2.5,
+   "image_t": 3.0
   },
   {
    "type": "photos",
@@ -419,12 +574,27 @@
    ]
   },
   {
-   "type": "carte_noire",
-   "at": 445,
+   "type": "fx",
+   "anim": "liste",
+   "at": 442,
    "fin": 473,
-   "valeur": "Mini-formation",
-   "label": "gratuite · 11 jours · hacks + outils",
-   "y": 0.83
+   "y": 0.76,
+   "title": "Mini-formation gratuite · 11 jours",
+   "items": [
+    {
+     "text": "mes hacks Instagram",
+     "at": 455
+    },
+    {
+     "text": "mes outils de création",
+     "at": 461
+    },
+    {
+     "text": "rester organisée",
+     "at": 469
+    }
+   ],
+   "cache_st": true
   },
   {
    "type": "commentaire",
@@ -434,28 +604,27 @@
    "y": 0.82
   },
   {
-   "type": "carte_noire",
+   "type": "kinetic",
    "at": 483,
-   "fin": 495,
-   "valeur": "Liste VIP",
-   "label": "Black Friday",
-   "y": 0.83
-  },
-  {
-   "type": "carte_noire",
-   "at": 496,
-   "fin": 505,
-   "valeur": "-60 %",
-   "label": "sur toutes mes formations",
-   "y": 0.83
-  },
-  {
-   "type": "carte_noire",
-   "at": 506,
    "fin": 519,
-   "valeur": "1 acheté = 1 offert",
-   "label": "sur toutes mes formations",
-   "y": 0.83
+   "y": 0.8,
+   "lignes": [
+    {
+     "text": "Liste VIP Black Friday",
+     "style": "sans",
+     "at": 483
+    },
+    {
+     "text": "-60 % sur tout",
+     "style": "serif_y",
+     "at": 500
+    },
+    {
+     "text": "1 acheté = 1 offert",
+     "style": "sans_y",
+     "at": 509
+    }
+   ]
   }
  ]
 }

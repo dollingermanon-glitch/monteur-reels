@@ -16,8 +16,10 @@ sys.path.insert(0, HERE)
 import render_hd as rh  # plan de coupe (mêmes coupes que le montage déjà rendu)
 
 W, H, FPS = 1080, 1920, 30
-FD = os.path.join(ROOT, "fonts")
-SFX = os.path.join(ROOT, "sfx")
+FD = os.path.join(ROOT, "fonts") if os.path.isdir(os.path.join(ROOT, "fonts")) else os.path.join(HERE, "fonts")
+SFX = os.path.join(ROOT, "sfx") if os.path.isdir(os.path.join(ROOT, "sfx")) else os.path.join(HERE, "sfx")
+SEG_MODEL = os.environ.get("SEG_MODEL", "/home/user/models/selfie_multiclass.tflite")
+CUT = None   # montage sans texte (renseigné dans main)
 
 WHITE = (255, 255, 255, 255)
 YELLOW = (246, 228, 170, 255)      # jaune beurre pastel (doux)
@@ -607,7 +609,9 @@ class Capture(El):
                 a = int(200 * (1 - min(1, u / 1.6)))
                 d.ellipse((cx - r, cy - r, cx + r, cy + r), outline=(255, 255, 255, a), width=6)
         cy = self.y + 70 * (1 - ease_out(inn))
-        put(c, img, W / 2, cy, scale=0.85 + 0.15 * ease_back(inn), alpha=min(1, inn * 2) * out)
+        kb = 1 + self.s.get("zoom", 0) * min(1, max(0, (t - self.t0) / max(0.1, self.t1 - self.t0)))
+        put(c, img, W / 2, cy, scale=(0.85 + 0.15 * ease_back(inn)) * kb, alpha=min(1, inn * 2) * out,
+            rot=self.s.get("rot", 0))
         if self.lab:
             put(c, self.lab, W / 2, cy - img.height / 2 - 30, alpha=ease_out((t - self.t0 - 0.2) / 0.3) * out)
 
@@ -651,7 +655,112 @@ class ScreenRec(El):
         if self.lab:
             put(c, self.lab, W / 2, cy - spr.height / 2 + 6, alpha=ease_out((t - self.t0 - 0.3) / 0.3) * out)
 
-TYPES = {"kinetic": Kinetic, "chapitre": Chapter, "carte_noire": DarkCard, "resultat": ResultCard,
+
+class Behind(El):
+    """Image posée DERRIÈRE la personne (détourage image par image) : calendrier, tableau, feed…"""
+
+    def __init__(self, s, T):
+        super().__init__(s, T)
+        im = Image.open(_wd_path(s["image"])).convert("RGBA")
+        if s.get("crop"):
+            im = im.crop(tuple(s["crop"]))
+        w = s.get("largeur", 1180)
+        im = im.resize((w, int(im.height * w / im.width)), Image.LANCZOS)
+        b = s.get("bord", 20)
+        card = Image.new("RGBA", (im.width + 2 * b, im.height + 2 * b), (255, 255, 255, 255))
+        card.alpha_composite(im, (b, b))
+        self.card = shadowed(round_img(card, 18), 22, (0, 12), 110)
+        self.cy = s.get("y", 0.2) * H
+        self.rot = s.get("rot", -4)
+        self.masks = self._masks()
+        self.sfx = [(self.t0, "woosh", 0.4)]
+
+    def _masks(self):
+        import numpy as np
+        d = os.path.join(WORKDIR, f"_seg_{os.path.basename(self.s['image'])}_{self.t0:.2f}_{self.t1:.2f}")
+        if not os.path.isdir(d):
+            os.makedirs(d + "/f")
+            subprocess.run(f'ffmpeg -v error -y -ss {self.t0:.3f} -t {self.t1 - self.t0 + 0.1:.3f} -i "{CUT}" '
+                           f'-vf fps={FPS} "{d}/f/%05d.png"', shell=True, check=True)
+            import mediapipe as mp
+            from mediapipe.tasks.python import vision, BaseOptions
+            seg = vision.ImageSegmenter.create_from_options(vision.ImageSegmenterOptions(
+                base_options=BaseOptions(model_asset_path=SEG_MODEL), output_confidence_masks=True))
+            for f in sorted(os.listdir(d + "/f")):
+                fr = np.array(Image.open(f"{d}/f/{f}").convert("RGB"))
+                m = 1 - seg.segment(mp.Image(image_format=mp.ImageFormat.SRGB, data=fr)).confidence_masks[0].numpy_view()[..., 0]
+                m = np.clip((m - 0.3) / 0.4, 0, 1)
+                Image.fromarray((m * 255).astype("uint8")).filter(ImageFilter.GaussianBlur(2)).save(f"{d}/{f}")
+                os.remove(f"{d}/f/{f}")
+            seg.close()
+        return [os.path.join(d, f) for f in sorted(os.listdir(d)) if f.endswith(".png")]
+
+    def draw(self, c, t):
+        import numpy as np
+        inn, out = self.life(t)
+        k = ease_out(min(1, (t - self.t0) / 0.55))
+        layer = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+        drift = 0.03 * (t - self.t0) / max(0.5, self.t1 - self.t0)
+        put(layer, self.card, W / 2, self.cy - 260 * (1 - k), scale=(0.9 + 0.1 * ease_back(k)) * (1 + drift),
+            alpha=min(1, k * 1.5) * out, rot=self.rot * (0.4 + 0.6 * k))
+        i = min(len(self.masks) - 1, max(0, int(round((t - self.t0) * FPS))))
+        m = np.array(Image.open(self.masks[i]), dtype=np.uint16)
+        a = np.array(layer.getchannel("A"), dtype=np.uint16) * (255 - m) // 255
+        layer.putalpha(Image.fromarray(a.astype("uint8")))
+        c.alpha_composite(layer)
+
+
+class Sticker(El):
+    """Stickers (ex. emoji casquette) qui pop, se dandinent, avec une légende manuscrite."""
+
+    def __init__(self, s, T):
+        super().__init__(s, T)
+        self.items = []
+        for k, it in enumerate(s["items"]):
+            im = Image.open(_wd_path(it["image"])).convert("RGBA")
+            w = it.get("taille", 300)
+            im = im.resize((w, int(im.height * w / im.width)), Image.LANCZOS)
+            lab = text_spr(it["legende"], "hand_b", it.get("taille_legende", 58), HAND_Y) if it.get("legende") else None
+            self.items.append((im, lab, T(it["at"]) if "at" in it else self.t0 + 0.3 * k,
+                               it.get("x", 0.5) * W, it.get("y", 0.72) * H, it.get("rot", 0)))
+        self.sfx = [(ta, "pop", 0.5) for _, _, ta, _, _, _ in self.items]
+
+    def draw(self, c, t):
+        _, out = self.life(t)
+        for im, lab, ta, x, y, rot in self.items:
+            u = (t - ta) / 0.4
+            if u < 0:
+                continue
+            wob = 5 * math.sin((t - ta) * 5) * (1 if u > 1 else u)
+            put(c, im, x, y, scale=0.3 + 0.7 * ease_back(min(1, u), 2.4), alpha=min(1, u * 2) * out, rot=rot + wob)
+            if lab:
+                v = ease_out((t - ta - 0.25) / 0.3)
+                put(c, lab, x, y + im.height / 2 + 40, alpha=v * out, rot=-3)
+
+
+class FxWrap(El):
+    """Animations de la bibliothèque Reels Studio (liste, notif, bulle, onglets, recherche, stats, chiffre, mot_cle…)."""
+
+    def __init__(self, s, T):
+        super().__init__(s, T)
+        fx = rh.fx
+        if not hasattr(FxWrap, "brand"):
+            FxWrap.brand = fx.Brand()
+            FxWrap.layout = fx.Layout(FxWrap.brand)
+        spec = {k: v for k, v in s.items() if k not in ("type", "anim", "at", "fin", "y")}
+        spec.update(type=s["anim"], _start=self.t0, _dur=self.t1 - self.t0)
+        for it in spec.get("items", []):
+            it["_t"] = T(it["at"]) if "at" in it else self.t0 + 0.3
+        self.a = fx.TYPES[s["anim"]](spec, FxWrap.brand, FxWrap.layout)
+        self.a.cy = s.get("y", 0.78) * H
+        self.a.fit = min(self.a.fit, s.get("echelle", 1.0)) if "echelle" in s else min(1.0, (W - 70) / self.a.box[0])
+        son = {"notif": "notif2", "bulle": "notif1", "onglets": "click2", "recherche": "typing1"}.get(s["anim"], "pop")
+        self.sfx = [(self.t0, son, 0.45)] + [(it["_t"], "pop", 0.3) for it in spec.get("items", [])]
+
+    def draw(self, c, t):
+        self.a.draw(c, t - self.t0)
+
+TYPES = {"derriere": Behind, "sticker": Sticker, "fx": FxWrap, "kinetic": Kinetic, "chapitre": Chapter, "carte_noire": DarkCard, "resultat": ResultCard,
          "dm": DMStack, "telephone": Phone, "menu": Sheet, "commentaire": CommentCTA, "note": Note, "photos": Photos, "capture": Capture, "ecran": ScreenRec}
 
 
@@ -778,6 +887,8 @@ def main():
         return nxt[0]["ns"] if nxt else total
 
     cut = os.path.join(wd, "montage_sans_texte.mp4")
+    global CUT
+    CUT = cut
 
     def frame_at(t):
         p = os.path.join(wd, f"_f{t:.2f}.png")
@@ -814,9 +925,12 @@ def main():
         wa = wash_alpha(t)
         if wa > 0:
             full = Image.fromarray(np.dstack([wash_rgb, np.full((H, W, 1), int(wa * 255), np.uint8)]), "RGBA")
+        for e in els:   # images derrière la personne : sous les sous-titres et les autres éléments
+            if isinstance(e, Behind) and e.t0 <= t < e.t1:
+                e.draw(full, t)
         caps.draw(full, t, hidden)
         for e in els:
-            if e.t0 <= t < e.t1:
+            if not isinstance(e, Behind) and e.t0 <= t < e.t1:
                 e.draw(full, t)
         return full
 
