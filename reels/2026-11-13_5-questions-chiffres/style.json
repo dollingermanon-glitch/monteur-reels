@@ -1,41 +1,449 @@
 {
- "sous_titres_y": 0.64, "phrases_serif": [], "fondus": [], "photos_sous_titres": [],
+ "sous_titres_y": 0.64,
+ "phrases_serif": [],
+ "fondus": [],
+ "photos_sous_titres": [],
  "elements": [
-  {"type": "kinetic", "at": 0, "fin": 23, "y": 0.8, "entete": "[si t'étais en coaching avec moi]",
-   "lignes": [{"text": "5 questions", "style": "sans", "at": 8}, {"text": "pour comprendre pourquoi", "style": "serif", "at": 14},
-              {"text": "tu ne vends pas", "style": "sans_y", "at": 17}]},
-  {"type": "kinetic", "at": 31, "fin": 41, "y": 0.8,
-   "lignes": [{"text": "Tes abonnés ?", "style": "sans", "at": 31}, {"text": "Je m'en fous.", "style": "serif_y", "at": 38}]},
-  {"type": "carte_noire", "at": 52, "fin": 58, "valeur": "Tes chiffres", "label": "ceux que tu ne connais pas (encore)", "y": 0.82},
-  {"type": "chapitre", "at": 59, "dur": 2.2, "text": "Question #1 :", "sub": "tes visites", "y": 0.72},
-  {"type": "carte_noire", "at": 88, "fin": 104, "valeur": "2 %", "label": "= 50 visiteurs pour 1 vente", "y": 0.82},
-  {"type": "kinetic", "at": 125, "fin": 135, "y": 0.8,
-   "lignes": [{"text": "Personne ne voit", "style": "sans_y", "at": 129}, {"text": "ton produit.", "style": "serif", "at": 132}]},
-  {"type": "chapitre", "at": 136, "dur": 2.2, "text": "Question #2 :", "sub": "ton taux de conversion", "y": 0.72},
-  {"type": "carte_noire", "at": 149, "fin": 165, "valeur": "1 % vs 4 %", "label": "deux pages, deux résultats", "y": 0.82},
-  {"type": "resultat", "at": 166, "fin": 179, "label": "même nombre de visiteurs", "valeur": "x4 ventes", "y": 0.83},
-  {"type": "kinetic", "at": 180, "fin": 187, "y": 0.8,
-   "lignes": [{"text": "Sans créer", "style": "sans", "at": 181}, {"text": "un seul Reel de plus.", "style": "serif_y", "at": 184}]},
-  {"type": "chapitre", "at": 196, "dur": 2.2, "text": "Question #3 :", "sub": "ton trafic réel", "y": 0.72},
-  {"type": "kinetic", "at": 214, "fin": 233, "y": 0.8,
-   "lignes": [{"text": "Pas tes vues Insta,", "style": "sans", "at": 214}, {"text": "tes visites", "style": "sans_y", "at": 226},
-              {"text": "sur ta page de vente.", "style": "serif", "at": 229}]},
-  {"type": "carte_noire", "at": 241, "fin": 270, "valeur": "15 / 50", "label": "visites par jour : l'écart à combler", "y": 0.82},
-  {"type": "chapitre", "at": 271, "dur": 2.2, "text": "Question #4 :", "sub": "ton panier moyen", "y": 0.72},
-  {"type": "carte_noire", "at": 286, "fin": 296, "valeur": "27 €", "label": "ton produit digital", "y": 0.82},
-  {"type": "resultat", "at": 298, "fin": 318, "label": "panier moyen avec ton tunnel", "valeur": "50 €", "y": 0.83},
-  {"type": "chapitre", "at": 323, "dur": 2.2, "text": "Question #5 :", "sub": "ton coût d'acquisition", "y": 0.72},
-  {"type": "carte_noire", "at": 363, "fin": 383, "valeur": "0 €", "label": "sur Instagram (juste ton temps)", "y": 0.82},
-  {"type": "carte_noire", "at": 391, "fin": 400, "valeur": "5000 €", "label": "de CA... sur le papier", "y": 0.82},
-  {"type": "resultat", "at": 401, "fin": 421, "sens": "down", "label": "dépensés en pub pour les générer", "valeur": "6000 €", "y": 0.83},
-  {"type": "kinetic", "at": 422, "fin": 448, "y": 0.8,
-   "lignes": [{"text": "Arrête de piloter", "style": "sans", "at": 426}, {"text": "au feeling.", "style": "serif_y", "at": 433},
-              {"text": "Connais tes chiffres.", "style": "sans_y", "at": 438}]},
-  {"type": "commentaire", "at": 449, "fin": 458, "mot": "BF2026", "y": 0.82},
-  {"type": "carte_noire", "at": 459, "fin": 479, "valeur": "-60 %", "label": "+ 1 produit acheté = 1 offert", "y": 0.82},
-  {"type": "carte_noire", "at": 480, "fin": 498, "valeur": "Le Blueprint", "label": "tous les chiffres à suivre", "y": 0.82},
-  {"type": "carte_noire", "at": 503, "fin": 516, "valeur": "11 jours", "label": "de mini-formation offerte par mail", "y": 0.82},
-  {"type": "kinetic", "at": 517, "fin": 528, "y": 0.8,
-   "lignes": [{"text": "Transforme tes vues", "style": "sans", "at": 519}, {"text": "en ventes.", "style": "serif_y", "at": 527}]}
+  {
+   "type": "kinetic",
+   "at": 0,
+   "fin": 23,
+   "y": 0.8,
+   "lignes": [
+    {
+     "text": "5 questions",
+     "style": "sans",
+     "at": 8
+    },
+    {
+     "text": "pour comprendre pourquoi",
+     "style": "serif",
+     "at": 14
+    },
+    {
+     "text": "tu ne vends pas",
+     "style": "sans_y",
+     "at": 17
+    }
+   ],
+   "entete": "[si t'étais en coaching avec moi]"
+  },
+  {
+   "type": "rature",
+   "at": 31,
+   "fin": 41,
+   "entete": "je m'en fous :",
+   "text": "ton nombre d'abonnés",
+   "barre_at": 39,
+   "y": 0.82
+  },
+  {
+   "type": "surligneur",
+   "at": 52,
+   "fin": 58,
+   "text": "Tes chiffres",
+   "sub": "ceux que tu ne connais pas",
+   "sub_at": 55,
+   "y": 0.8
+  },
+  {
+   "type": "chapitre",
+   "at": 59,
+   "dur": 2.2,
+   "text": "Question #1 :",
+   "sub": "tes visites",
+   "y": 0.72
+  },
+  {
+   "type": "regle",
+   "at": 61,
+   "fin": 135,
+   "n": 1,
+   "total": 5,
+   "text": "QUESTION 1"
+  },
+  {
+   "type": "cycle",
+   "at": 86,
+   "fin": 104,
+   "y": 0.76,
+   "etapes": [
+    {
+     "text": "page à 2 %",
+     "at": 88
+    },
+    {
+     "text": "50 visiteurs",
+     "at": 99
+    },
+    {
+     "text": "1 vente",
+     "at": 104
+    }
+   ]
+  },
+  {
+   "type": "rature",
+   "at": 114,
+   "fin": 124,
+   "entete": "le problème, c'est pas :",
+   "text": "ton produit",
+   "barre_at": 120,
+   "y": 0.82
+  },
+  {
+   "type": "kinetic",
+   "at": 125,
+   "fin": 135,
+   "y": 0.8,
+   "lignes": [
+    {
+     "text": "Personne ne voit",
+     "style": "sans_y",
+     "at": 129
+    },
+    {
+     "text": "ton produit.",
+     "style": "serif",
+     "at": 132
+    }
+   ]
+  },
+  {
+   "type": "chapitre",
+   "at": 136,
+   "dur": 2.2,
+   "text": "Question #2 :",
+   "sub": "ton taux de conversion",
+   "y": 0.72
+  },
+  {
+   "type": "regle",
+   "at": 138,
+   "fin": 195,
+   "n": 2,
+   "total": 5,
+   "text": "QUESTION 2"
+  },
+  {
+   "type": "cycle",
+   "at": 149,
+   "fin": 165,
+   "y": 0.76,
+   "etapes": [
+    {
+     "text": "page à 1 %",
+     "at": 156
+    },
+    {
+     "text": "page à 4 %",
+     "at": 163
+    }
+   ],
+   "fin_texte": "même trafic !",
+   "fin_at": 166
+  },
+  {
+   "type": "resultat",
+   "at": 172,
+   "fin": 179,
+   "label": "même nombre de visiteurs",
+   "valeur": "x4 ventes",
+   "y": 0.83
+  },
+  {
+   "type": "kinetic",
+   "at": 180,
+   "fin": 187,
+   "y": 0.8,
+   "lignes": [
+    {
+     "text": "Sans créer",
+     "style": "sans",
+     "at": 181
+    },
+    {
+     "text": "un seul Reel de plus.",
+     "style": "serif_y",
+     "at": 184
+    }
+   ]
+  },
+  {
+   "type": "surligneur",
+   "at": 189,
+   "fin": 195,
+   "text": "C'est là",
+   "sub": "que ça devient intéressant",
+   "sub_at": 193,
+   "y": 0.8
+  },
+  {
+   "type": "chapitre",
+   "at": 196,
+   "dur": 2.2,
+   "text": "Question #3 :",
+   "sub": "ton trafic réel",
+   "y": 0.72
+  },
+  {
+   "type": "regle",
+   "at": 198,
+   "fin": 270,
+   "n": 3,
+   "total": 5,
+   "text": "QUESTION 3"
+  },
+  {
+   "type": "rature",
+   "at": 214,
+   "fin": 222,
+   "entete": "on ne compte pas :",
+   "text": "tes vues Instagram",
+   "barre_at": 218,
+   "y": 0.82
+  },
+  {
+   "type": "kinetic",
+   "at": 223,
+   "fin": 233,
+   "y": 0.8,
+   "lignes": [
+    {
+     "text": "Tes visites",
+     "style": "sans_y",
+     "at": 224
+    },
+    {
+     "text": "sur ta page de vente.",
+     "style": "serif",
+     "at": 229
+    }
+   ]
+  },
+  {
+   "type": "jauge",
+   "at": 237,
+   "fin": 248,
+   "label": "15 visites sur 50 visées",
+   "y": 0.82,
+   "paliers": [
+    {
+     "at": 246,
+     "valeur": 0.3
+    }
+   ]
+  },
+  {
+   "type": "checklist",
+   "at": 249,
+   "fin": 270,
+   "y": 0.77,
+   "titre": "maintenant tu sais...",
+   "items": [
+    {
+     "text": "Quoi travailler",
+     "at": 256
+    },
+    {
+     "text": "Quelle stratégie choisir",
+     "at": 264
+    }
+   ]
+  },
+  {
+   "type": "chapitre",
+   "at": 271,
+   "dur": 2.2,
+   "text": "Question #4 :",
+   "sub": "ton panier moyen",
+   "y": 0.72
+  },
+  {
+   "type": "regle",
+   "at": 273,
+   "fin": 318,
+   "n": 4,
+   "total": 5,
+   "text": "QUESTION 4"
+  },
+  {
+   "type": "surligneur",
+   "at": 288,
+   "fin": 296,
+   "text": "27 €",
+   "sub": "c'est bien...",
+   "sub_at": 295,
+   "y": 0.8
+  },
+  {
+   "type": "resultat",
+   "at": 298,
+   "fin": 318,
+   "label": "panier moyen avec ton tunnel",
+   "valeur": "50 €",
+   "y": 0.83
+  },
+  {
+   "type": "chapitre",
+   "at": 323,
+   "dur": 2.2,
+   "text": "Question #5 :",
+   "sub": "ton coût d'acquisition",
+   "y": 0.72
+  },
+  {
+   "type": "regle",
+   "at": 327,
+   "fin": 421,
+   "n": 5,
+   "total": 5,
+   "text": "QUESTION 5"
+  },
+  {
+   "type": "surligneur",
+   "at": 363,
+   "fin": 370,
+   "text": "0 €",
+   "sub": "assez magique",
+   "sub_at": 369,
+   "y": 0.8
+  },
+  {
+   "type": "kinetic",
+   "at": 371,
+   "fin": 383,
+   "y": 0.8,
+   "lignes": [
+    {
+     "text": "À part ton temps",
+     "style": "sans",
+     "at": 371
+    },
+    {
+     "text": "pour créer du contenu.",
+     "style": "serif",
+     "at": 379
+    }
+   ]
+  },
+  {
+   "type": "surligneur",
+   "at": 391,
+   "fin": 400,
+   "text": "5000 € de CA",
+   "sub": "cool sur le papier",
+   "sub_at": 397,
+   "y": 0.8
+  },
+  {
+   "type": "resultat",
+   "at": 401,
+   "fin": 412,
+   "sens": "down",
+   "label": "dépensés en pub pour les générer",
+   "valeur": "6000 €",
+   "y": 0.83
+  },
+  {
+   "type": "kinetic",
+   "at": 414,
+   "fin": 421,
+   "y": 0.8,
+   "lignes": [
+    {
+     "text": "Petit souci,",
+     "style": "sans_y",
+     "at": 414
+    },
+    {
+     "text": "non ?",
+     "style": "serif",
+     "at": 421
+    }
+   ]
+  },
+  {
+   "type": "kinetic",
+   "at": 422,
+   "fin": 448,
+   "y": 0.8,
+   "lignes": [
+    {
+     "text": "Arrête de piloter",
+     "style": "sans",
+     "at": 426
+    },
+    {
+     "text": "au feeling.",
+     "style": "serif_y",
+     "at": 433
+    },
+    {
+     "text": "Connais tes chiffres.",
+     "style": "sans_y",
+     "at": 438
+    }
+   ]
+  },
+  {
+   "type": "commentaire",
+   "at": 449,
+   "fin": 458,
+   "mot": "BF2026",
+   "y": 0.82
+  },
+  {
+   "type": "checklist",
+   "at": 459,
+   "fin": 498,
+   "y": 0.76,
+   "titre": "pour le Black Friday...",
+   "items": [
+    {
+     "text": "-60 % sur la boutique",
+     "at": 461
+    },
+    {
+     "text": "1 acheté = 1 offert",
+     "at": 465
+    },
+    {
+     "text": "Le Blueprint",
+     "at": 480
+    },
+    {
+     "text": "Tous tes chiffres à suivre",
+     "at": 486
+    }
+   ]
+  },
+  {
+   "type": "surligneur",
+   "at": 503,
+   "fin": 516,
+   "text": "11 jours",
+   "sub": "de mini-formation offerte",
+   "sub_at": 505,
+   "y": 0.8
+  },
+  {
+   "type": "kinetic",
+   "at": 517,
+   "fin": 528,
+   "y": 0.8,
+   "lignes": [
+    {
+     "text": "Transforme tes vues",
+     "style": "sans",
+     "at": 519
+    },
+    {
+     "text": "en ventes.",
+     "style": "serif_y",
+     "at": 527
+    }
+   ]
+  }
  ]
 }
