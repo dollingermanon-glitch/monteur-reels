@@ -16,8 +16,8 @@ sys.path.insert(0, HERE)
 import render_hd as rh  # plan de coupe (mêmes coupes que le montage déjà rendu)
 
 W, H, FPS = 1080, 1920, 30
-FD = os.path.join(ROOT, "fonts")
-SFX = os.path.join(ROOT, "sfx")
+FD = next(d for d in (os.path.join(HERE, "fonts"), os.path.join(ROOT, "fonts")) if os.path.isdir(d))
+SFX = next(d for d in (os.path.join(HERE, "sfx"), os.path.join(ROOT, "sfx")) if os.path.isdir(d))
 
 WHITE = (255, 255, 255, 255)
 YELLOW = (246, 228, 170, 255)      # jaune beurre pastel (doux)
@@ -651,8 +651,473 @@ class ScreenRec(El):
         if self.lab:
             put(c, self.lab, W / 2, cy - spr.height / 2 + 6, alpha=ease_out((t - self.t0 - 0.3) / 0.3) * out)
 
+# ───────────────────── nouveaux effets (règles de placement) ─────────────────────
+def dashed_rrect(d, box, r, fill, width=6, dash=26, gap=16, phase=0.0):
+    """Contour arrondi en pointillés qui « défilent » (phase en px)."""
+    x0, y0, x1, y1 = box
+    r = min(r, (x1 - x0) / 2, (y1 - y0) / 2)
+    pts = []
+    for (cx, cy, a0) in ((x1 - r, y0 + r, -90), (x1 - r, y1 - r, 0), (x0 + r, y1 - r, 90), (x0 + r, y0 + r, 180)):
+        for k in range(13):
+            a = math.radians(a0 + 90 * k / 12)
+            pts.append((cx + r * math.cos(a), cy + r * math.sin(a)))
+    pts.append(pts[0])
+    seg = []
+    for a, b in zip(pts, pts[1:]):
+        L = math.hypot(b[0] - a[0], b[1] - a[1])
+        seg.append((a, b, L))
+    per = dash + gap
+    pos = -phase % per - per
+    tot = sum(L for _, _, L in seg)
+    def at(u):
+        for a, b, L in seg:
+            if u <= L:
+                f = u / L if L else 0
+                return (a[0] + (b[0] - a[0]) * f, a[1] + (b[1] - a[1]) * f)
+            u -= L
+        return pts[-1]
+    while pos < tot:
+        u0, u1 = max(0, pos), min(tot, pos + dash)
+        if u1 > u0:
+            d.line([at(u0), at((u0 + u1) / 2), at(u1)], fill=fill, width=width, joint="curve")
+        pos += per
+
+
+def badge_icon(ok, size=96):
+    bd = Image.new("RGBA", (size, size), (0, 0, 0, 0))
+    dd = ImageDraw.Draw(bd)
+    dd.ellipse((0, 0, size - 1, size - 1), fill=GREEN if ok else RED)
+    k = size / 120
+    if ok:
+        dd.line((30 * k, 62 * k, 52 * k, 84 * k, 92 * k, 38 * k), fill="white", width=int(13 * k), joint="curve")
+    else:
+        dd.line((36 * k, 36 * k, 84 * k, 84 * k), fill="white", width=int(13 * k))
+        dd.line((84 * k, 36 * k, 36 * k, 84 * k), fill="white", width=int(13 * k))
+    return shadowed(bd, 8, (0, 4), 110)
+
+
+def pill(text, kind="sans", size=40, bg=(252, 238, 201, 245), fg=(122, 91, 56, 255)):
+    tx = text_spr(text, kind, size, fg, shadow=False)
+    p = rrect((tx.width + 56, tx.height + 26), (tx.height + 26) // 2, bg)
+    p.alpha_composite(tx, (28, 13))
+    return shadowed(p, 10, (0, 5), 90)
+
+
+class Zones(El):
+    """Zones de l'écran entourées en pointillés : ✓ « ici » (jaune) / ✗ « pas ici » (rouge)."""
+
+    def __init__(self, s, T):
+        super().__init__(s, T)
+        self.items = []
+        for it in s["zones"]:
+            ok = it.get("ok", True)
+            box = (it.get("x", 0.06) * W, it["y"] * H, it.get("x2", 0.94) * W, it["y2"] * H)
+            lab = pill(it["label"], "sans", 38, (252, 238, 201, 245) if ok else (226, 72, 64, 240),
+                       (122, 91, 56, 255) if ok else WHITE) if it.get("label") else None
+            ex = None
+            if it.get("exemple"):
+                ex = text_spr(it["exemple"].upper(), "black", it.get("taille", 96), YELLOW if ok else (255, 255, 255, 150))
+            self.items.append({"ok": ok, "box": box, "t": T(it["at"]) if "at" in it else self.t0,
+                               "lab": lab, "badge": badge_icon(ok), "ex": ex,
+                               "fin": T(it["fin"], end=True) if "fin" in it else None})
+        self.sfx = [(it["t"], "button" if it["ok"] else "pop", 0.5) for it in self.items]
+
+    def draw(self, c, t):
+        _, out = self.life(t)
+        ov = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+        d = ImageDraw.Draw(ov)
+        tops = []
+        for it in self.items:
+            u = (t - it["t"]) / 0.35
+            if u < 0:
+                continue
+            a = min(1, u * 1.5) * out
+            if it["fin"] is not None and t > it["fin"]:
+                a *= max(0, 1 - (t - it["fin"]) / 0.25)
+            if a <= 0:
+                continue
+            x0, y0, x1, y1 = it["box"]
+            g = 26 * (1 - ease_out(u))
+            col = (246, 214, 120) if it["ok"] else (226, 72, 64)
+            d.rounded_rectangle((x0 - g, y0 - g, x1 + g, y1 + g), 34, fill=col + (int((38 if it["ok"] else 70) * a),))
+            dashed_rrect(d, (x0 - g, y0 - g, x1 + g, y1 + g), 34, col + (int(255 * a),), 7, phase=(t - it["t"]) * 60)
+            tops.append((it, a, u))
+        c.alpha_composite(ov)
+        for it, a, u in tops:
+            x0, y0, x1, y1 = it["box"]
+            if it["ex"] is not None:
+                put(c, it["ex"], (x0 + x1) / 2, (y0 + y1) / 2, scale=0.85 + 0.15 * ease_back(min(1, u)), alpha=a)
+                if not it["ok"]:
+                    p = ease_out((u - 0.6) / 0.8)
+                    if p > 0:
+                        sl = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+                        w2 = it["ex"].width / 2 - 10
+                        cx, cy = (x0 + x1) / 2, (y0 + y1) / 2
+                        ImageDraw.Draw(sl).line((cx - w2, cy + 8, cx - w2 + 2 * w2 * p, cy - 8 + 0), fill=RED[:3] + (int(255 * a),), width=12)
+                        c.alpha_composite(sl)
+            put(c, it["badge"], x1 - 20, y0 + 10, scale=0.3 + 0.7 * ease_back(min(1, u)), alpha=a)
+            if it["lab"] is not None:
+                put(c, it["lab"], x0 + 24 + it["lab"].width / 2, y0 + 4, alpha=a, scale=0.9 + 0.1 * ease_out(u))
+
+
+class RulePill(El):
+    """Pastille « RÈGLE 2 » en haut + points de progression."""
+
+    def __init__(self, s, T):
+        super().__init__(s, T)
+        self.n, self.tot = s["n"], s.get("total", 5)
+        self.txt = pill(s["text"], "black", 40, (242, 210, 127, 250), (122, 91, 56, 255))
+        self.y = s.get("y", 0.075) * H
+        self.sfx = [(self.t0, "woosh", 0.3)]
+
+    def draw(self, c, t):
+        inn, out = self.life(t)
+        x = ease_back(min(1, (t - self.t0) / 0.4))
+        put(c, self.txt, W / 2, self.y - 40 * (1 - x), alpha=min(1, inn * 2) * out, scale=0.8 + 0.2 * x)
+        ov = Image.new("RGBA", (W, 60), (0, 0, 0, 0))
+        d = ImageDraw.Draw(ov)
+        sp = 34
+        x0 = W / 2 - sp * (self.tot - 1) / 2
+        for k in range(self.tot):
+            r = 9 if k + 1 == self.n else 6
+            fill = (252, 238, 201, int(255 * out * inn)) if k + 1 <= self.n else (255, 255, 255, int(110 * out * inn))
+            d.ellipse((x0 + k * sp - r, 30 - r, x0 + k * sp + r, 30 + r), fill=fill)
+        c.alpha_composite(ov, (0, int(self.y + self.txt.height / 2 - 4)))
+
+
+class MiniPhone(El):
+    """Mini téléphone (image de la vidéo dedans) : l'objectif entouré ✓, l'écran barré ✗."""
+    hides_caps = True
+
+    def __init__(self, s, T, frame):
+        super().__init__(s, T)
+        pw = s.get("largeur", 360)
+        ph = int(pw * H / W)
+        scr = frame.resize((pw, ph), Image.LANCZOS).convert("RGBA")
+        bez = 18
+        body = rrect((pw + 2 * bez, ph + 2 * bez + 40), 54, (250, 246, 236, 255))
+        m = Image.new("L", scr.size, 0)
+        ImageDraw.Draw(m).rounded_rectangle((0, 0, pw - 1, ph - 1), 36, fill=255)
+        scr.putalpha(m)
+        body.alpha_composite(scr, (bez, bez + 40))
+        d = ImageDraw.Draw(body)
+        self.lens = (pw / 2 + bez, 22)
+        d.ellipse((self.lens[0] - 9, 13, self.lens[0] + 9, 31), fill=(60, 50, 40, 255))
+        self.body = shadowed(body, 22, (0, 12), 120)
+        self.off = ((self.body.width - body.width) / 2, (self.body.height - body.height) / 2)
+        self.scr_c = (pw / 2 + bez, bez + 40 + ph * 0.5)
+        self.t_ok = T(s["ok_at"]) if "ok_at" in s else self.t0 + 0.6
+        self.t_ko = T(s["ko_at"]) if "ko_at" in s else self.t0 + 1.4
+        self.lab_ok = pill(s.get("ok", "l'objectif"), "sans", 36)
+        self.lab_ko = pill(s.get("ko", "pas l'écran"), "sans", 36, (226, 72, 64, 240), WHITE)
+        self.cx, self.cy = s.get("x", 0.5) * W, s.get("y", 0.76) * H
+        self.sfx = [(self.t0, "woosh", 0.4), (self.t_ok, "button", 0.5), (self.t_ko, "pop", 0.5)]
+
+    def draw(self, c, t):
+        inn, out = self.life(t)
+        cy = self.cy + 650 * (1 - ease_back(min(1, (t - self.t0) / 0.45), 1.2))
+        put(c, self.body, self.cx, cy, alpha=out, rot=-3)
+        bx, by = self.cx - self.body.width / 2 + self.off[0], cy - self.body.height / 2 + self.off[1]
+        ov = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+        d = ImageDraw.Draw(ov)
+        u = (t - self.t_ok) / 0.35
+        if u >= 0:
+            lx, ly = bx + self.lens[0], by + self.lens[1]
+            r = 30 + 30 * (1 - ease_out(u))
+            d.ellipse((lx - r, ly - r, lx + r, ly + r), outline=(246, 214, 120, int(255 * out)), width=8)
+            if u < 2:
+                rr = 30 + 90 * min(1, u / 2)
+                d.ellipse((lx - rr, ly - rr, lx + rr, ly + rr), outline=(255, 255, 255, int(160 * (1 - min(1, u / 2)) * out)), width=5)
+        v = (t - self.t_ko) / 0.35
+        if v >= 0:
+            sx, sy = bx + self.scr_c[0], by + self.scr_c[1]
+            p = ease_out(v)
+            for dx in (1, -1):
+                d.line((sx - 90 * dx, sy - 90, sx - 90 * dx + 180 * dx * p, sy - 90 + 180 * p), fill=RED[:3] + (int(240 * out),), width=16)
+        c.alpha_composite(ov)
+        if u >= 0:
+            put(c, self.lab_ok, bx + self.lens[0] + 250, by + self.lens[1] + 10, alpha=min(1, u * 2) * out, scale=0.85 + 0.15 * ease_back(min(1, u)))
+            put(c, badge_icon(True, 70), bx + self.lens[0] + 250 + self.lab_ok.width / 2 + 20, by + self.lens[1] - 20,
+                alpha=min(1, u * 2) * out, scale=0.3 + 0.7 * ease_back(min(1, u)))
+        if v >= 0:
+            sx, sy = bx + self.scr_c[0], by + self.scr_c[1]
+            put(c, self.lab_ko, sx + 260, sy + 40, alpha=min(1, v * 2) * out, scale=0.85 + 0.15 * ease_back(min(1, v)))
+
+
+class Strike(El):
+    """Carte crème avec un texte qui se fait barrer en rouge (« les idées des autres »)."""
+
+    def __init__(self, s, T):
+        super().__init__(s, T)
+        f = font("sans", 54)
+        lines = wrap(s["text"], f, 760)
+        tw = max(f.getlength(l) for l in lines)
+        cw, ch = int(tw) + 110, 70 * len(lines) + 80
+        card = rrect((cw, ch), 34, (252, 243, 222, 250))
+        d = ImageDraw.Draw(card)
+        for j, l in enumerate(lines):
+            d.text(((cw - f.getlength(l)) / 2, 36 + 70 * j), l, font=f, fill=(122, 91, 56, 255))
+        self.card, self.cw, self.ch, self.n = card, cw, ch, len(lines)
+        self.lens = [f.getlength(l) for l in lines]
+        self.head = text_spr(s["entete"], "hand_b", 58, WHITE) if s.get("entete") else None
+        self.t_bar = T(s["barre_at"]) if "barre_at" in s else self.t0 + 0.8
+        self.y = s.get("y", 0.82) * H
+        self.rot = s.get("rot", -2.5)
+        self.sfx = [(self.t0, "pop", 0.4), (self.t_bar, "click2", 0.7), (self.t_bar + 0.35, "pop", 0.35)]
+
+    def draw(self, c, t):
+        inn, out = self.life(t)
+        img = self.card.copy()
+        d = ImageDraw.Draw(img)
+        p = ease_out((t - self.t_bar) / 0.45)
+        if p > 0:
+            for j, L in enumerate(self.lens):
+                x0 = (self.cw - L) / 2 - 16
+                y = 36 + 70 * j + 38
+                d.line((x0, y + 6, x0 + (L + 32) * p, y - 6 * p), fill=RED, width=11)
+        spr = shadowed(img, 18, (0, 10), 100)
+        put(c, spr, W / 2, self.y + 60 * (1 - ease_out(inn)), scale=0.8 + 0.2 * ease_back(inn), alpha=min(1, inn * 2) * out, rot=self.rot)
+        if self.head:
+            put(c, self.head, W / 2, self.y - spr.height / 2 - 30, alpha=ease_out((t - self.t0 - 0.15) / 0.3) * out, rot=self.rot)
+        if t >= self.t_bar + 0.35:
+            x = (t - self.t_bar - 0.35) / 0.3
+            put(c, badge_icon(False, 90), W / 2 + spr.width / 2 - 40, self.y - spr.height / 2 + 20,
+                scale=0.3 + 0.7 * ease_back(min(1, x)), alpha=min(1, x * 2) * out)
+
+
+class ReelUI(El):
+    """Interface d'un Reel Instagram (icônes à droite, pseudo + légende en bas) + encart rouge interdit."""
+
+    def __init__(self, s, T):
+        super().__init__(s, T)
+        self.t_red = T(s["rouge_at"]) if "rouge_at" in s else self.t0 + 0.8
+        ui = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+        d = ImageDraw.Draw(ui)
+        g = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+        gd = ImageDraw.Draw(g)
+        for k in range(60):   # dégradé sombre en bas, comme dans l'appli
+            y = H - 520 + k * 520 / 60
+            gd.rectangle((0, y, W, y + 520 / 60 + 1), fill=(20, 14, 8, int(130 * (k / 60) ** 1.4)))
+        ui.alpha_composite(g)
+        x = W - 92
+        ys = [1090, 1250, 1400, 1545]
+        ui.alpha_composite(heart_icon(70, WHITE, fill=False), (x - 35, ys[0] - 35))
+        sm = font("semi", 30)
+        for y, lab in zip(ys, ["12,4 k", "318", "1 204", ""]):
+            if lab:
+                d.text((x - sm.getlength(lab) / 2, y + 44), lab, font=sm, fill=WHITE)
+        d.rounded_rectangle((x - 34, ys[1] - 30, x + 34, ys[1] + 26), 24, outline="white", width=6)
+        d.polygon([(x - 18, ys[1] + 22), (x - 26, ys[1] + 40), (x - 2, ys[1] + 26)], fill="white")
+        d.polygon([(x - 34, ys[2] - 4), (x + 34, ys[2] - 30), (x + 8, ys[2] + 34), (x - 2, ys[2] + 4)], outline="white", width=6)
+        for k in range(3):
+            d.ellipse((x - 26 + k * 22, ys[3] - 5, x - 16 + k * 22, ys[3] + 5), fill="white")
+        d.rounded_rectangle((x - 30, 1680, x + 30, 1740), 12, outline="white", width=5)
+        d.ellipse((40, 1640, 110, 1710), fill=(230, 210, 190, 255), outline="white", width=4)
+        acc = s.get("compte", "socialskindlyroad")
+        f = font("semi", 34)
+        d.text((128, 1652), acc, font=f, fill=WHITE)
+        bx = 128 + f.getlength(acc) + 22
+        d.rounded_rectangle((bx, 1648, bx + 130, 1698), 12, outline="white", width=3)
+        d.text((bx + 22, 1654), "Suivre", font=font("semi", 30), fill=WHITE)
+        d.text((40, 1730), s.get("legende", "Les 5 règles de placement d'un Reel… plus"), font=font("reg", 32), fill=(255, 255, 255, 230))
+        d.text((40, 1790), "♫  son original", font=font("reg", 28), fill=(255, 255, 255, 200))
+        self.ui = ui
+        self.zones = [(30, 1615, W - 30, 1860), (W - 160, 1010, W - 22, 1600)]
+        self.lab = pill(s.get("etiquette", "zone interdite"), "black", 40, (226, 72, 64, 245), WHITE)
+        self.sfx = [(self.t0, "woosh", 0.4), (self.t_red, "timer", 0.45, 0.6), (self.t_red + 0.1, "pop", 0.5)]
+
+    def draw(self, c, t):
+        inn, out = self.life(t)
+        a = min(1, inn * 1.4) * out
+        if a <= 0:
+            return
+        ui = self.ui.copy()
+        if a < 1:
+            ui.putalpha(ui.getchannel("A").point(lambda v: int(v * a)))
+        c.alpha_composite(ui)
+        u = (t - self.t_red) / 0.3
+        if u >= 0:
+            ov = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+            d = ImageDraw.Draw(ov)
+            pulse = 0.5 + 0.5 * math.sin((t - self.t_red) * 7)
+            for z in self.zones:
+                d.rounded_rectangle(z, 30, fill=(226, 72, 64, int((70 + 40 * pulse) * min(1, u) * out)))
+                dashed_rrect(d, z, 30, (226, 72, 64, int(255 * min(1, u) * out)), 8, phase=(t - self.t_red) * 70)
+            c.alpha_composite(ov)
+            put(c, self.lab, W / 2 - 60, self.zones[0][1] - 52, scale=0.5 + 0.5 * ease_back(min(1, u)), alpha=min(1, u * 2) * out, rot=-3)
+            put(c, badge_icon(False, 100), W - 92, self.zones[1][1] - 40, scale=0.3 + 0.7 * ease_back(min(1, u)), alpha=min(1, u * 2) * out)
+
+
+# ───────────── effets clairs (charte SKR : crème / jaune / caramel, jamais de noir) ─────────────
+CARD = (255, 250, 238, 250)
+TRACK = (240, 228, 204, 255)
+GOLD = (242, 210, 127, 255)
+CARAMEL = (122, 91, 56, 255)
+
+
+class Progress(El):
+    """Carte crème + jauge jaune qui se remplit par paliers (la confiance qui se construit)."""
+
+    def __init__(self, s, T):
+        super().__init__(s, T)
+        self.lab = text_spr(s["label"], "semi", 42, CARAMEL, shadow=False)
+        self.paliers = [(T(p["at"]), p["valeur"]) for p in s["paliers"]]
+        self.y = s.get("y", 0.8) * H
+        self.sfx = [(self.t0, "woosh", 0.3)] + [(ta, "pop", 0.4) for ta, _ in self.paliers]
+
+    def level(self, t):
+        v, prev, t_prev = 0.0, 0.0, self.t0
+        for ta, val in self.paliers:
+            if t >= ta:
+                prev, t_prev, v = val, ta, val
+        # easing vers le dernier palier atteint
+        k = ease_out((t - t_prev) / 0.5)
+        before = 0.0
+        for ta, val in self.paliers:
+            if ta < t_prev:
+                before = val
+        return before + (v - before) * k
+
+    def draw(self, c, t):
+        inn, out = self.life(t)
+        cw, ch = 880, 240
+        img = rrect((cw, ch), 40, CARD)
+        img.alpha_composite(self.lab, (50, 40))
+        d = ImageDraw.Draw(img)
+        x0, y0, x1, y1 = 50, 140, cw - 180, 190
+        d.rounded_rectangle((x0, y0, x1, y1), 25, fill=TRACK)
+        v = self.level(t)
+        if v > 0.01:
+            d.rounded_rectangle((x0, y0, x0 + max(50, (x1 - x0) * v), y1), 25, fill=GOLD)
+        pc = text_spr(f"{int(round(v * 100))} %", "black", 58, CARAMEL, shadow=False)
+        img.alpha_composite(pc, (cw - 50 - pc.width, 165 - pc.height // 2))
+        put(c, shadowed(img, 18, (0, 10), 70), W / 2, self.y + 70 * (1 - ease_out(inn)),
+            scale=0.85 + 0.15 * ease_back(inn), alpha=min(1, inn * 2) * out)
+
+
+class Checklist(El):
+    """Titre manuscrit + liste crème dont chaque ligne se coche en jaune au moment où elle est dite."""
+    hides_caps = True
+
+    def __init__(self, s, T):
+        super().__init__(s, T)
+        self.head = text_spr(s["titre"], "hand_b", 62, WHITE) if s.get("titre") else None
+        self.items = [(text_spr(it["text"], "semi", 46, CARAMEL, shadow=False), T(it["at"])) for it in s["items"]]
+        self.y = s.get("y", 0.76) * H
+        self.sfx = [(self.t0, "woosh", 0.3)] + [(ta, "click2", 0.6) for _, ta in self.items]
+
+    def draw(self, c, t):
+        inn, out = self.life(t)
+        rh_ = 96
+        cw, ch = 760, rh_ * len(self.items) + 40
+        img = rrect((cw, ch), 36, CARD)
+        d = ImageDraw.Draw(img)
+        for k, (spr, ta) in enumerate(self.items):
+            cy = 20 + k * rh_ + rh_ // 2
+            u = (t - ta) / 0.3
+            if k:
+                d.line((40, 20 + k * rh_, cw - 40, 20 + k * rh_), fill=TRACK, width=3)
+            r = 26
+            if u >= 0:
+                rr = r * (0.6 + 0.4 * ease_back(min(1, u)))
+                d.ellipse((60 - rr, cy - rr, 60 + rr, cy + rr), fill=GOLD)
+                if u > 0.4:
+                    d.line((48, cy, 57, cy + 10, 74, cy - 10), fill=CARAMEL, width=7, joint="curve")
+                a = 1.0
+            else:
+                d.ellipse((60 - r, cy - r, 60 + r, cy + r), outline=TRACK, width=5)
+                a = 0.35
+            lay = spr.copy(); lay.putalpha(lay.getchannel("A").point(lambda v, a=a: int(v * a)))
+            img.alpha_composite(lay, (110, cy - spr.height // 2))
+        spr = shadowed(img, 18, (0, 10), 70)
+        y = self.y
+        if self.head:
+            put(c, self.head, W / 2, y - spr.height / 2 - 50, alpha=ease_out((t - self.t0) / 0.3) * out, rot=3)
+        put(c, spr, W / 2, y + 60 * (1 - ease_out(inn)), scale=0.9 + 0.1 * ease_back(inn), alpha=min(1, inn * 2) * out)
+
+
+class Marker(El):
+    """Mot en capitales caramel sur un coup de surligneur jaune qui balaie de gauche à droite."""
+    hides_caps = True
+
+    def __init__(self, s, T):
+        super().__init__(s, T)
+        self.txt = text_spr(s["text"].upper(), "black", s.get("taille", 120), CARAMEL, shadow=False)
+        if self.txt.width > 900:
+            self.txt = text_spr(s["text"].upper(), "black", int(s.get("taille", 120) * 900 / self.txt.width), CARAMEL, shadow=False)
+        self.sub = text_spr(s["sub"], "hand_b", 64, WHITE) if s.get("sub") else None
+        self.t_sub = T(s["sub_at"]) if "sub_at" in s else self.t0 + 0.6
+        self.y = s.get("y", 0.78) * H
+        self.sfx = [(self.t0, "woosh", 0.35)] + ([(self.t_sub, "pop", 0.3)] if self.sub else [])
+
+    def draw(self, c, t):
+        inn, out = self.life(t)
+        pw, ph = self.txt.width + 70, self.txt.height + 46
+        img = Image.new("RGBA", (pw, ph), (0, 0, 0, 0))
+        u = ease_out((t - self.t0) / 0.4)
+        if u > 0:
+            ImageDraw.Draw(img).rounded_rectangle((0, 8, max(20, pw * u), ph - 8), 18, fill=GOLD)
+        a = ease_out((t - self.t0 - 0.15) / 0.25)
+        lay = self.txt.copy(); lay.putalpha(lay.getchannel("A").point(lambda v: int(v * a)))
+        img.alpha_composite(lay, (35, 23))
+        put(c, shadowed(img, 14, (0, 6), 60), W / 2, self.y, alpha=out, rot=-2)
+        if self.sub:
+            x = ease_out((t - self.t_sub) / 0.35)
+            put(c, self.sub, W / 2 + 60, self.y + ph / 2 + 40, alpha=x * out, rot=-3)
+
+
+class Cycle(El):
+    """Pastilles qui apparaissent l'une sous l'autre, reliées par des flèches dessinées (A → B → C)."""
+    hides_caps = True
+
+    def __init__(self, s, T):
+        super().__init__(s, T)
+        self.steps = []
+        for k, st in enumerate(s["etapes"]):
+            last = k == len(s["etapes"]) - 1
+            tx = text_spr(st["text"], "black", 62, CARAMEL, shadow=False)
+            pill = rrect((tx.width + 90, tx.height + 44), (tx.height + 44) // 2, GOLD if last else CARD)
+            pill.alpha_composite(tx, (45, 22))
+            self.steps.append((shadowed(pill, 14, (0, 8), 70), T(st["at"])))
+        self.foot = text_spr(s["fin_texte"], "hand_b", 66, WHITE) if s.get("fin_texte") else None
+        self.t_foot = T(s["fin_at"]) if "fin_at" in s else self.t1 - 1
+        self.gap = 70
+        self.y = s.get("y", 0.75) * H
+        self.sfx = [(ta, "pop", 0.4) for _, ta in self.steps] + ([(self.t_foot, "notif2", 0.35)] if self.foot else [])
+
+    def draw(self, c, t):
+        _, out = self.life(t)
+        hs = [sp.height for sp, _ in self.steps]
+        tot = sum(hs) + self.gap * (len(hs) - 1)
+        y = self.y - tot / 2
+        ov = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+        d = ImageDraw.Draw(ov)
+        centers = []
+        for (sp, ta), h in zip(self.steps, hs):
+            centers.append((y + h / 2, ta, sp))
+            y += h + self.gap
+        for k in range(1, len(centers)):
+            (ya, _, spa), (yb, tb, _) = centers[k - 1], centers[k]
+            p = ease_out((t - (tb - 0.35)) / 0.3)
+            if p > 0:
+                y0, y1 = ya + spa.height / 2 - 14, yb - centers[k][2].height / 2 + 14
+                ye = y0 + (y1 - y0) * p
+                d.line((W / 2, y0, W / 2, ye), fill=(255, 255, 255, int(255 * out)), width=7)
+                if p > 0.95:
+                    d.line((W / 2 - 18, ye - 20, W / 2, ye, W / 2 + 18, ye - 20), fill=(255, 255, 255, int(255 * out)), width=7, joint="curve")
+        c.alpha_composite(ov)
+        for cy, ta, sp in centers:
+            u = (t - ta) / 0.35
+            if u >= 0:
+                put(c, sp, W / 2, cy, scale=0.6 + 0.4 * ease_back(min(1, u)), alpha=min(1, u * 2) * out)
+        if self.foot:
+            x = ease_out((t - self.t_foot) / 0.35)
+            put(c, self.foot, W / 2 + 120, y - self.gap + 50, alpha=x * out, rot=-5)
+
 TYPES = {"kinetic": Kinetic, "chapitre": Chapter, "carte_noire": DarkCard, "resultat": ResultCard,
-         "dm": DMStack, "telephone": Phone, "menu": Sheet, "commentaire": CommentCTA, "note": Note, "photos": Photos, "capture": Capture, "ecran": ScreenRec}
+         "dm": DMStack, "telephone": Phone, "menu": Sheet, "commentaire": CommentCTA, "note": Note, "photos": Photos, "capture": Capture, "ecran": ScreenRec,
+         "jauge": Progress, "checklist": Checklist, "surligneur": Marker, "cycle": Cycle,
+         "zones": Zones, "regle": RulePill, "mini_tel": MiniPhone, "rature": Strike, "ui_reel": ReelUI}
 
 
 # ───────────────────── sous-titres : phrase entière, frappe manuscrite + curseur ─────────────────────
@@ -786,8 +1251,8 @@ def main():
 
     els = []
     for s in st["elements"]:
-        if s["type"] == "telephone":
-            els.append(Phone(s, T, frame_at(float(s.get("image_t", 2.0)))))
+        if s["type"] in ("telephone", "mini_tel"):
+            els.append(TYPES[s["type"]](s, T, frame_at(float(s.get("image_t", 2.0)))))
         else:
             els.append(TYPES[s["type"]](s, T))
     for k, (e, s_) in enumerate(zip(els, st["elements"])):
