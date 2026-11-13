@@ -1,5 +1,5 @@
 {
- "rythme": "max",
+ "rythme": "naturel",
  "zoom": "alterne",
  "zoom_punch": [],
  "drop": [
@@ -78,7 +78,8 @@
   "366": "1",
   "373": "même ?",
   "377": "le",
-  "378": "27."
+  "378": "27.",
+  "62": "caméra"
  },
  "animations": [
   {
@@ -116,28 +117,10 @@
    "text": "Ce que tu lui dis"
   },
   {
-   "type": "liste",
+   "type": "vocal_gpt",
    "at": 50,
-   "jusqu_a": 76,
-   "title": "Ton vocal :",
-   "items": [
-    {
-     "text": "script face caméra",
-     "at": 56
-    },
-    {
-     "text": "environ 1 minute",
-     "at": 63
-    },
-    {
-     "text": "ton accroche au début",
-     "at": 66
-    },
-    {
-     "text": "une boucle de curiosité",
-     "at": 71
-    }
-   ]
+   "jusqu_a": 96,
+   "cacher_sous_titres": true
   },
   {
    "type": "souligne",
