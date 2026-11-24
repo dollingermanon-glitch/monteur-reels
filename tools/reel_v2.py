@@ -16,8 +16,8 @@ sys.path.insert(0, HERE)
 import render_hd as rh  # plan de coupe (mêmes coupes que le montage déjà rendu)
 
 W, H, FPS = 1080, 1920, 30
-FD = os.path.join(ROOT, "fonts")
-SFX = os.path.join(ROOT, "sfx")
+FD = os.path.join(ROOT, "fonts") if os.path.isdir(os.path.join(ROOT, "fonts")) else os.path.join(HERE, "fonts")
+SFX = os.path.join(ROOT, "sfx") if os.path.isdir(os.path.join(ROOT, "sfx")) else os.path.join(HERE, "sfx")
 
 WHITE = (255, 255, 255, 255)
 YELLOW = (246, 228, 170, 255)      # jaune beurre pastel (doux)
@@ -651,7 +651,81 @@ class ScreenRec(El):
         if self.lab:
             put(c, self.lab, W / 2, cy - spr.height / 2 + 6, alpha=ease_out((t - self.t0 - 0.3) / 0.3) * out)
 
-TYPES = {"kinetic": Kinetic, "chapitre": Chapter, "carte_noire": DarkCard, "resultat": ResultCard,
+
+class Ranking(El):
+    """Classement persistant façon « Building a brand in 2026 » : titre + « le plus important » +
+    lignes 1 → N qui se remplissent dans le désordre, chaque élément annoncé en gros au centre."""
+
+    def __init__(self, s, T):
+        super().__init__(s, T)
+        self.x = s.get("x", 0.055) * W
+        self.y = s.get("y", 0.045) * H
+        self.lh = s.get("interligne", 56)
+        self.title = text_spr(s["titre"], "serif_i", s.get("taille_titre", 82), YELLOW)
+        if self.title.width > 980:
+            self.title = text_spr(s["titre"], "serif_i", int(s.get("taille_titre", 82) * 980 / self.title.width), YELLOW)
+        hs, fs = s.get("taille_entete", 54), s.get("taille_liste", 42)
+        self.fs = fs
+        self.top = text_spr(s.get("haut", "Le plus important"), "serif_i", hs, WHITE)
+        self.bot = text_spr(s.get("bas", "Le moins important"), "serif_i", hs, WHITE)
+        n = s.get("n", 9)
+        self.nums = [text_spr(f"{k + 1}.", "semi", fs, WHITE) for k in range(n)]
+        self.items = {}
+        for it in s["items"]:
+            ann = T(it["at"])
+            land = ann + it.get("delai", 1.7)
+            lab = text_spr(it.get("annonce", it["text"]).upper(), "black", 104, YELLOW)
+            if lab.width > 980:
+                lab = text_spr(it.get("annonce", it["text"]).upper(), "black", int(104 * 980 / lab.width), YELLOW)
+            self.items[it["rang"]] = dict(ann=ann, land=land, lab=lab,
+                                          w=text_spr(it["text"], "semi", fs, WHITE),
+                                          y_=text_spr(it["text"], "semi", fs, YELLOW))
+        self.ay = s.get("annonce_y", 0.7) * H
+        self.n = n
+        self.sfx = [(v["ann"], "woosh", 0.3) for v in self.items.values()] + \
+                   [(v["land"], "pop", 0.35) for v in self.items.values()]
+        # voile brun chaud très doux derrière le texte (lisibilité sur fond clair)
+        import numpy as np
+        yy = np.linspace(0, 1, H)[:, None]; xx = np.linspace(0, 1, W)[None, :]
+        e = 1 - ((xx / s.get("voile_w", 0.62)) ** 2 + (yy / s.get("voile_h", 0.5)) ** 2)
+        band = 1 - yy / 0.14
+        a = np.clip(np.maximum(np.clip(e, 0, 1) ** 0.6 * s.get("voile", 0.62), np.clip(band, 0, 1) ** 0.8 * s.get("voile", 0.62) * 0.85), 0, 1)
+        rgb = np.zeros((H, W, 3), np.uint8); rgb[..., 0], rgb[..., 1], rgb[..., 2] = 52, 36, 22
+        self.veil = Image.fromarray(np.dstack([rgb, (a * 255).astype(np.uint8)]), "RGBA")
+
+    def masque(self, t):
+        return any(v["ann"] - 0.05 <= t < v["land"] for v in self.items.values())
+
+    def draw(self, c, t):
+        a0 = ease_out((t - self.t0) / 0.4)
+        if a0 < 0.99:
+            v = self.veil.copy(); v.putalpha(v.getchannel("A").point(lambda q: int(q * a0))); c.alpha_composite(v)
+        else:
+            c.alpha_composite(self.veil)
+        x, y = self.x, self.y
+        c.alpha_composite(self.title, (int(x - 10), int(y))) if a0 >= 0.99 else put(c, self.title, x - 10 + self.title.width / 2, y + self.title.height / 2, alpha=a0)
+        y += self.title.height + 14
+        put(c, self.top, x + self.top.width / 2, y + self.top.height / 2, alpha=a0)
+        y += self.top.height + 20
+        last = max([r for r, v in self.items.items() if v["land"] <= t], key=lambda r: self.items[r]["land"], default=None)
+        for k in range(self.n):
+            ry = y + k * self.lh
+            put(c, self.nums[k], x + 8 + self.nums[k].width / 2, ry + self.nums[k].height / 2, alpha=a0)
+            it = self.items.get(k + 1)
+            if it and t >= it["land"]:
+                u = ease_out((t - it["land"]) / 0.35)
+                spr = it["y_"] if k + 1 == last else it["w"]
+                put(c, spr, x + self.fs * 1.55 + spr.width / 2 - 30 * (1 - u), ry + spr.height / 2, alpha=u)
+        y += self.n * self.lh + 10
+        put(c, self.bot, x + self.bot.width / 2, y + self.bot.height / 2, alpha=a0)
+        # annonce en gros (THE LOGO → LOGO)
+        for it in self.items.values():
+            if it["ann"] <= t < it["land"]:
+                u = (t - it["ann"]) / 0.22
+                out = min(1, max(0, (it["land"] - t) / 0.2))
+                put(c, it["lab"], W / 2, self.ay, scale=1.3 - 0.3 * ease_out(u), alpha=min(1, u * 1.6) * out)
+
+TYPES = {"classement": Ranking, "kinetic": Kinetic, "chapitre": Chapter, "carte_noire": DarkCard, "resultat": ResultCard,
          "dm": DMStack, "telephone": Phone, "menu": Sheet, "commentaire": CommentCTA, "note": Note, "photos": Photos, "capture": Capture, "ecran": ScreenRec}
 
 
@@ -807,7 +881,8 @@ def main():
         return 0
 
     def hidden(a, b, t):
-        return any((e.hides_caps or e.s.get("cache_st")) and e.t0 - 0.05 <= t < e.t1 for e in els)
+        return any((e.hides_caps or e.s.get("cache_st")) and e.t0 - 0.05 <= t < e.t1 for e in els) or \
+            any(hasattr(e, "masque") and e.masque(t) for e in els)
 
     def compose(t):
         full = Image.new("RGBA", (W, H), (0, 0, 0, 0))

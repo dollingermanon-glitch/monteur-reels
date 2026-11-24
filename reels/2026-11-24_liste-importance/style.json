@@ -1,0 +1,90 @@
+{
+ "sous_titres_y": 0.7,
+ "phrases_serif": [],
+ "fondus": [],
+ "photos_sous_titres": [
+  0.6,
+  1.4,
+  3.5,
+  12.0,
+  30.0,
+  55.0,
+  70.0,
+  80.5,
+  84.0,
+  90.0
+ ],
+ "elements": [
+  {
+   "type": "classement",
+   "at": "0s",
+   "fin": 469,
+   "titre": "Ta marque sur Insta en 2026",
+   "haut": "Le plus important",
+   "bas": "Le moins important",
+   "annonce_y": 0.7,
+   "items": [
+    {
+     "rang": 8,
+     "text": "Logo",
+     "at": 1
+    },
+    {
+     "rang": 3,
+     "text": "Ton histoire",
+     "at": 21
+    },
+    {
+     "rang": 5,
+     "text": "Feed cohérent",
+     "at": 70
+    },
+    {
+     "rang": 4,
+     "text": "Identité visuelle",
+     "at": 112
+    },
+    {
+     "rang": 9,
+     "text": "Mission",
+     "at": 166
+    },
+    {
+     "rang": 2,
+     "text": "Positionnement",
+     "at": 230
+    },
+    {
+     "rang": 6,
+     "text": "Nom de compte",
+     "at": 275
+    },
+    {
+     "rang": 7,
+     "text": "Charte graphique",
+     "at": 319
+    },
+    {
+     "rang": 1,
+     "text": "Ton contenu",
+     "at": 401
+    }
+   ],
+   "x": 0.04,
+   "y": 0.035,
+   "taille_titre": 76,
+   "taille_entete": 46,
+   "taille_liste": 36,
+   "interligne": 46,
+   "voile_w": 0.55,
+   "voile_h": 0.47
+  },
+  {
+   "type": "commentaire",
+   "at": 463,
+   "fin": 469,
+   "mot": "CLUB",
+   "y": 0.84
+  }
+ ]
+}
